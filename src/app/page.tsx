@@ -1,9 +1,9 @@
-import { Navigation } from '@/components/layout/navigation';
-import { Hero } from '@/components/sections/hero';
-import { Collections } from '@/components/sections/collections';
-import { About } from '@/components/sections/about';
-import { Contact } from '@/components/sections/contact';
-import { Footer } from '@/components/sections/footer';
+import { Navigation } from "@/components/layout/navigation";
+import { Hero } from "@/components/sections/hero";
+import { Collections } from "@/components/sections/collections";
+import { About } from "@/components/sections/about";
+import { Contact } from "@/components/sections/contact";
+import { Footer } from "@/components/sections/footer";
 
 export default function Home(): React.ReactElement {
   return (
@@ -17,7 +17,6 @@ export default function Home(): React.ReactElement {
         <Hero />
         <Collections />
         <About />
-        <Contact />
       </main>
 
       <Footer />
