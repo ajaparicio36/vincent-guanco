@@ -45,3 +45,6 @@ next-env.d.ts
 /assets/stitch-designs/*.png
 /assets/stitch-designs/*.jpg
 /assets/stitch-designs/*.jpeg
+
+# AI
+.claude/
