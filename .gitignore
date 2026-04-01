@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Stitch design references (generated files, not source-controlled)
+/assets/stitch-designs/*.html
+/assets/stitch-designs/*.png
+/assets/stitch-designs/*.jpg
+/assets/stitch-designs/*.jpeg
