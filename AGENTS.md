@@ -20,6 +20,12 @@ This version has breaking changes — APIs, conventions, and file structure may 
 - Keep route handlers (`app/**/route.ts`) thin: parse/validate input, delegate to domain helpers, return typed responses.
 - Avoid coupling UI components to transport shapes; map API/data layer results into view models close to boundaries.
 
+## UI component rules
+
+- Use ShadCN components as the primary source of reusable UI building blocks.
+- Prefer composing from `src/components/ui/*` before creating new shared components.
+- When a needed pattern exists in ShadCN, use or extend that component instead of re-implementing from scratch.
+
 ## Data fetching and async patterns
 
 - Avoid fetch/database calls inside render loops when batching/preloading is possible.
