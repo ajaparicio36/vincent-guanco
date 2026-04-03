@@ -138,12 +138,14 @@
 
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
     @apply font-sans;
   }
 
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "kern" 1, "liga" 1;
+    overflow-x: hidden;
   }
 }
 

@@ -20,6 +20,60 @@ import { useNavigation } from '@/contexts/navigation-context';
 const PAGE_SIZE_PHOTO = 4;
 const PAGE_SIZE_VIDEO = 2;
 
+function isWideVideo(key: string): boolean {
+  const withoutExt = key.replace(/\.[^.]+$/, '');
+  return withoutExt.endsWith('_16_9');
+}
+
+interface MediaItemProps {
+  readonly item: { readonly key: string; readonly url: string };
+  readonly isWide: boolean;
+  readonly type: 'photo' | 'video';
+  readonly displayName: string;
+}
+
+function MediaItem({
+  item,
+  isWide,
+  type,
+  displayName,
+}: MediaItemProps): React.ReactElement {
+  const [loaded, setLoaded] = useState(false);
+
+  return (
+    <div
+      className={`relative overflow-hidden bg-surface-container-high ${
+        isWide ? 'md:col-span-2 aspect-video' : 'aspect-[4/5]'
+      }`}
+    >
+      {!loaded && type === 'photo' && (
+        <div className="absolute inset-0 animate-pulse bg-surface-container-high" />
+      )}
+      {type === 'photo' ? (
+        <Image
+          src={item.url}
+          alt={displayName}
+          fill
+          unoptimized
+          className={`object-cover transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`}
+          onLoad={() => setLoaded(true)}
+          loading="lazy"
+        />
+      ) : (
+        <video
+          src={item.url}
+          muted
+          playsInline
+          loop
+          autoPlay
+          className="w-full h-full object-cover"
+          style={{ objectPosition: isWide ? 'center center' : 'center 25%' }}
+        />
+      )}
+    </div>
+  );
+}
+
 function CategoryMediaGrid({
   category,
   isOpen,
@@ -82,33 +136,20 @@ function CategoryMediaGrid({
   return (
     <div className="py-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {visible.map((item) => (
-          <div
-            key={item.key}
-            className="relative aspect-[4/5] overflow-hidden"
-          >
-            {category.type === 'photo' ? (
-              <Image
-                src={item.url}
-                alt={category.displayName}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-                loading="lazy"
-              />
-            ) : (
-              <video
-                src={item.url}
-                muted
-                playsInline
-                loop
-                autoPlay
-                className="w-full h-full object-cover"
-                style={{ objectPosition: 'center 25%' }}
-              />
-            )}
-          </div>
-        ))}
+        {visible.map((item) => {
+          const isWide =
+            category.type === 'video' && isWideVideo(item.key);
+
+          return (
+            <MediaItem
+              key={item.key}
+              item={item}
+              isWide={isWide}
+              type={category.type}
+              displayName={category.displayName}
+            />
+          );
+        })}
       </div>
 
       {hasMore && (

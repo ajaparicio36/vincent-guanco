@@ -1,21 +1,21 @@
 videos/
 
-- zuhair-murad
-- tony-ward
-- streetsyle
-- stephane-rolland
-- georges-hobeika
-- fashion-week
-- events
-- cannes
-- brands
-- balmain
-- amiri
+- AMIRI
+- BALMAIN
+- BRANDS
+- CANNES
+- EVENTS
+- FASHION_WEEK
+- GEORGES_HOBEIKA
+- STEPHANE_ROLLAND
+- STREETSTYLE
+- TONY_WARD
+- ZUHAIR_MURAD
 
 photos/
 
-- zuhair-murad
-- miumiu
-- loewe
-- leonardo
-- aline
+- ALINE
+- LEONARDO
+- LOEWE
+- MIUMIU
+- ZUHAIR_MURAD
