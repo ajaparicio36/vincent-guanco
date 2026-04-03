@@ -133,9 +133,17 @@ function CategoryMediaGrid({
   const pageSize =
     category.type === "video" ? PAGE_SIZE_VIDEO : PAGE_SIZE_PHOTO;
 
+  const isSingleItem = visible.length === 1;
+
   return (
     <div className="py-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div
+        className={`grid gap-4 ${
+          isSingleItem
+            ? "grid-cols-1 max-w-md mx-auto"
+            : "grid-cols-1 md:grid-cols-2"
+        }`}
+      >
         {visible.map((item) => {
           const isWide = category.type === "video" && isWideVideo(item.key);
 

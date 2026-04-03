@@ -59,7 +59,7 @@ export function Hero({ videos }: HeroProps): React.ReactElement {
                   loop
                   playsInline
                   className="w-full h-full object-cover"
-                  style={{ objectPosition: "center 25%" }}
+                  style={{ objectPosition: "center 30%" }}
                 />
               </div>
             ))}
