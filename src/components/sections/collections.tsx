@@ -1,6 +1,12 @@
 "use client";
 
-import { useRef, useEffect, useState, startTransition } from "react";
+import {
+  useRef,
+  useEffect,
+  useState,
+  startTransition,
+  useCallback,
+} from "react";
 import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import {
@@ -179,13 +185,34 @@ function CategoryGroup({
   title,
   categories,
   openSlugs,
-  onToggle,
+  onValueChange,
 }: {
   readonly title: string;
   readonly categories: readonly MediaCategory[];
   readonly openSlugs: Set<string>;
-  readonly onToggle: (slug: string) => void;
+  readonly onValueChange: (value: string[]) => void;
 }): React.ReactElement {
+  const handleValueChange = useCallback(
+    (newValue: string[]) => {
+      // Find newly opened items to scroll into view
+      const newlyOpened = newValue.filter((v) => !openSlugs.has(v));
+      onValueChange(newValue);
+
+      if (newlyOpened.length > 0) {
+        // Scroll the newly opened accordion item into view
+        requestAnimationFrame(() => {
+          const el = document.querySelector(
+            `[data-accordion-key="${newlyOpened[0]}"]`,
+          );
+          if (el) {
+            el.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        });
+      }
+    },
+    [openSlugs, onValueChange],
+  );
+
   return (
     <div>
       {/* Category group header */}
@@ -201,18 +228,17 @@ function CategoryGroup({
         </span>
       </div>
 
-      <Accordion>
+      <Accordion
+        value={Array.from(openSlugs)}
+        onValueChange={handleValueChange}
+        multiple
+      >
         {categories.map((cat) => {
-          const isOpen = openSlugs.has(`${cat.type}-${cat.slug}`);
+          const key = `${cat.type}-${cat.slug}`;
+          const isOpen = openSlugs.has(key);
           return (
-            <AccordionItem
-              key={`${cat.type}-${cat.slug}`}
-              value={`${cat.type}-${cat.slug}`}
-            >
-              <AccordionTrigger
-                className="h-[72px] pl-6 md:pl-12 border-b border-[#babab0]/10 hover:bg-surface-container-low transition-colors duration-300 hover:no-underline"
-                onClick={() => onToggle(`${cat.type}-${cat.slug}`)}
-              >
+            <AccordionItem key={key} value={key} data-accordion-key={key}>
+              <AccordionTrigger className="h-[72px] pl-6 md:pl-12 border-b border-[#babab0]/10 hover:bg-surface-container-low transition-colors duration-300 hover:no-underline">
                 <span className="font-serif text-[22px] text-on-surface">
                   {cat.displayName}
                 </span>
@@ -238,17 +264,9 @@ export function Collections(): React.ReactElement {
   const { activeCategory, setActiveCategory } = useNavigation();
   const [openSlugs, setOpenSlugs] = useState<Set<string>>(new Set());
 
-  const handleToggle = (key: string): void => {
-    setOpenSlugs((prev) => {
-      const next = new Set(prev);
-      if (next.has(key)) {
-        next.delete(key);
-      } else {
-        next.add(key);
-      }
-      return next;
-    });
-  };
+  const handleValueChange = useCallback((newValue: string[]) => {
+    setOpenSlugs(new Set(newValue));
+  }, []);
 
   // Handle navigation context target
   useEffect(() => {
@@ -298,13 +316,13 @@ export function Collections(): React.ReactElement {
           title="PHOTOS"
           categories={PHOTO_CATEGORIES}
           openSlugs={openSlugs}
-          onToggle={handleToggle}
+          onValueChange={handleValueChange}
         />
         <CategoryGroup
           title="VIDEOS"
           categories={VIDEO_CATEGORIES}
           openSlugs={openSlugs}
-          onToggle={handleToggle}
+          onValueChange={handleValueChange}
         />
       </div>
 

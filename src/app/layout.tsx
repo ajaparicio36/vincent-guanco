@@ -16,7 +16,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Paris Photo & Video — Vincent Guanco",
+  title: "Vincent Guanco",
   description:
     "Paris-based photographer and videographer specializing in fashion, editorial, and cinema.",
 };
