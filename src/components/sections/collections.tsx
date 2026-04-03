@@ -1,34 +1,34 @@
-'use client';
+"use client";
 
-import { useRef, useEffect, useState, startTransition } from 'react';
-import { motion, useInView } from 'framer-motion';
-import Image from 'next/image';
+import { useRef, useEffect, useState, startTransition } from "react";
+import { motion, useInView } from "framer-motion";
+import Image from "next/image";
 import {
   Accordion,
   AccordionItem,
   AccordionTrigger,
   AccordionContent,
-} from '@/components/ui/accordion';
+} from "@/components/ui/accordion";
 import {
   VIDEO_CATEGORIES,
   PHOTO_CATEGORIES,
   type MediaCategory,
-} from '@/data/media-map';
-import { useCategoryMedia } from '@/hooks/use-category-media';
-import { useNavigation } from '@/contexts/navigation-context';
+} from "@/data/media-map";
+import { useCategoryMedia } from "@/hooks/use-category-media";
+import { useNavigation } from "@/contexts/navigation-context";
 
 const PAGE_SIZE_PHOTO = 4;
 const PAGE_SIZE_VIDEO = 2;
 
 function isWideVideo(key: string): boolean {
-  const withoutExt = key.replace(/\.[^.]+$/, '');
-  return withoutExt.endsWith('_16_9');
+  const withoutExt = key.replace(/\.[^.]+$/, "");
+  return withoutExt.endsWith("_16_9");
 }
 
 interface MediaItemProps {
   readonly item: { readonly key: string; readonly url: string };
   readonly isWide: boolean;
-  readonly type: 'photo' | 'video';
+  readonly type: "photo" | "video";
   readonly displayName: string;
 }
 
@@ -43,19 +43,19 @@ function MediaItem({
   return (
     <div
       className={`relative overflow-hidden bg-surface-container-high ${
-        isWide ? 'md:col-span-2 aspect-video' : 'aspect-[4/5]'
+        isWide ? "md:col-span-2 aspect-video" : "aspect-[4/5]"
       }`}
     >
-      {!loaded && type === 'photo' && (
+      {!loaded && type === "photo" && (
         <div className="absolute inset-0 animate-pulse bg-surface-container-high" />
       )}
-      {type === 'photo' ? (
+      {type === "photo" ? (
         <Image
           src={item.url}
           alt={displayName}
           fill
           unoptimized
-          className={`object-cover transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`}
+          className={`object-cover transition-opacity duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}
           onLoad={() => setLoaded(true)}
           loading="lazy"
         />
@@ -67,7 +67,7 @@ function MediaItem({
           loop
           autoPlay
           className="w-full h-full object-cover"
-          style={{ objectPosition: isWide ? 'center center' : 'center 25%' }}
+          style={{ objectPosition: isWide ? "center center" : "center 25%" }}
         />
       )}
     </div>
@@ -87,14 +87,16 @@ function CategoryMediaGrid({
     isOpen,
   );
   const [visibleCount, setVisibleCount] = useState(
-    category.type === 'video' ? PAGE_SIZE_VIDEO : PAGE_SIZE_PHOTO,
+    category.type === "video" ? PAGE_SIZE_VIDEO : PAGE_SIZE_PHOTO,
   );
 
   // Reset visible count when accordion closes/reopens
   useEffect(() => {
     if (isOpen) {
       startTransition(() => {
-        setVisibleCount(category.type === 'video' ? PAGE_SIZE_VIDEO : PAGE_SIZE_PHOTO);
+        setVisibleCount(
+          category.type === "video" ? PAGE_SIZE_VIDEO : PAGE_SIZE_PHOTO,
+        );
       });
     }
   }, [isOpen, category.type]);
@@ -115,9 +117,7 @@ function CategoryMediaGrid({
   }
 
   if (error) {
-    return (
-      <p className="py-6 font-sans text-sm text-secondary">{error}</p>
-    );
+    return <p className="py-6 font-sans text-sm text-secondary">{error}</p>;
   }
 
   if (items.length === 0) {
@@ -131,14 +131,13 @@ function CategoryMediaGrid({
   const visible = items.slice(0, visibleCount);
   const hasMore = visibleCount < items.length;
   const pageSize =
-    category.type === 'video' ? PAGE_SIZE_VIDEO : PAGE_SIZE_PHOTO;
+    category.type === "video" ? PAGE_SIZE_VIDEO : PAGE_SIZE_PHOTO;
 
   return (
     <div className="py-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {visible.map((item) => {
-          const isWide =
-            category.type === 'video' && isWideVideo(item.key);
+          const isWide = category.type === "video" && isWideVideo(item.key);
 
           return (
             <MediaItem
@@ -185,12 +184,12 @@ function CategoryGroup({
       <div className="w-full flex justify-between items-center h-[80px] border-b border-[#babab0]/30">
         <span
           className="font-sans text-[11px] uppercase font-medium text-on-surface"
-          style={{ letterSpacing: '0.4em' }}
+          style={{ letterSpacing: "0.4em" }}
         >
           {title}
         </span>
         <span className="font-mono text-[11px] text-secondary">
-          ({String(categories.length).padStart(2, '0')})
+          ({String(categories.length).padStart(2, "0")})
         </span>
       </div>
 
@@ -198,9 +197,12 @@ function CategoryGroup({
         {categories.map((cat) => {
           const isOpen = openSlugs.has(`${cat.type}-${cat.slug}`);
           return (
-            <AccordionItem key={`${cat.type}-${cat.slug}`} value={`${cat.type}-${cat.slug}`}>
+            <AccordionItem
+              key={`${cat.type}-${cat.slug}`}
+              value={`${cat.type}-${cat.slug}`}
+            >
               <AccordionTrigger
-                className="h-[72px] pl-12 border-b border-[#babab0]/10 hover:bg-surface-container-low transition-colors duration-300 hover:no-underline"
+                className="h-[72px] pl-6 md:pl-12 border-b border-[#babab0]/10 hover:bg-surface-container-low transition-colors duration-300 hover:no-underline"
                 onClick={() => onToggle(`${cat.type}-${cat.slug}`)}
               >
                 <span className="font-serif text-[22px] text-on-surface">
@@ -220,10 +222,10 @@ function CategoryGroup({
 
 export function Collections(): React.ReactElement {
   const headerRef = useRef<HTMLDivElement>(null);
-  const headerInView = useInView(headerRef, { once: true, margin: '-80px' });
+  const headerInView = useInView(headerRef, { once: true, margin: "-80px" });
 
   const quoteRef = useRef<HTMLDivElement>(null);
-  const quoteInView = useInView(quoteRef, { once: true, margin: '-80px' });
+  const quoteInView = useInView(quoteRef, { once: true, margin: "-80px" });
 
   const { activeCategory, setActiveCategory } = useNavigation();
   const [openSlugs, setOpenSlugs] = useState<Set<string>>(new Set());
@@ -260,7 +262,7 @@ export function Collections(): React.ReactElement {
   return (
     <section
       id="collections"
-      className="min-h-screen pt-32 pb-40 px-6 md:px-12 max-w-7xl mx-auto"
+      className="min-h-screen pt-24 md:pt-32 pb-24 md:pb-40 px-4 md:px-12 max-w-7xl mx-auto"
     >
       {/* Archive header */}
       <motion.div
@@ -270,15 +272,15 @@ export function Collections(): React.ReactElement {
         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         className="mb-24 flex flex-col md:flex-row justify-between items-baseline gap-4"
       >
-        <h2 className="font-serif text-7xl md:text-8xl tracking-tighter leading-none opacity-90">
+        <h2 className="font-serif text-5xl sm:text-7xl md:text-8xl tracking-tighter leading-none opacity-90">
           Archive
         </h2>
         <p
           className="font-sans text-[10px] uppercase text-secondary max-w-xs leading-relaxed"
-          style={{ letterSpacing: '0.4em' }}
+          style={{ letterSpacing: "0.4em" }}
         >
-          A curation of editorial narratives and motion studies captured
-          between Paris and Cannes.
+          A curation of editorial narratives and motion studies captured between
+          Paris and Cannes.
         </p>
       </motion.div>
 
@@ -299,7 +301,7 @@ export function Collections(): React.ReactElement {
       </div>
 
       {/* Editorial quote */}
-      <motion.div
+      {/* <motion.div
         ref={quoteRef}
         initial={{ opacity: 0, y: 24 }}
         animate={quoteInView ? { opacity: 1, y: 0 } : {}}
@@ -314,12 +316,12 @@ export function Collections(): React.ReactElement {
           <div className="w-20 h-px bg-[#babab0] mb-4" />
           <cite
             className="font-sans text-[10px] text-secondary not-italic"
-            style={{ letterSpacing: '0.4em' }}
+            style={{ letterSpacing: "0.4em" }}
           >
             PARIS / 2024
           </cite>
         </blockquote>
-      </motion.div>
+      </motion.div> */}
     </section>
   );
 }

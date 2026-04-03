@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import { useCallback, useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import useEmblaCarousel from 'embla-carousel-react';
-import Autoplay from 'embla-carousel-autoplay';
+import { useCallback, useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 
 export interface HeroVideo {
   readonly url: string;
@@ -15,19 +15,16 @@ interface HeroProps {
 }
 
 export function Hero({ videos }: HeroProps): React.ReactElement {
-  const [currentName, setCurrentName] = useState(
-    videos[0]?.displayName ?? '',
-  );
+  const [currentName, setCurrentName] = useState(videos[0]?.displayName ?? "");
 
-  const [emblaRef, emblaApi] = useEmblaCarousel(
-    { loop: true, duration: 40 },
-    [Autoplay({ delay: 6000, stopOnInteraction: false })],
-  );
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 40 }, [
+    Autoplay({ delay: 6000, stopOnInteraction: false }),
+  ]);
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
     const index = emblaApi.selectedScrollSnap();
-    setCurrentName(videos[index]?.displayName ?? '');
+    setCurrentName(videos[index]?.displayName ?? "");
   }, [emblaApi, videos]);
 
   useEffect(() => {
@@ -36,11 +33,11 @@ export function Hero({ videos }: HeroProps): React.ReactElement {
     // Random start position
     const randomIndex = Math.floor(Math.random() * videos.length);
     emblaApi.scrollTo(randomIndex, true);
-    setCurrentName(videos[randomIndex]?.displayName ?? '');
+    setCurrentName(videos[randomIndex]?.displayName ?? "");
 
-    emblaApi.on('select', onSelect);
+    emblaApi.on("select", onSelect);
     return () => {
-      emblaApi.off('select', onSelect);
+      emblaApi.off("select", onSelect);
     };
   }, [emblaApi, videos, onSelect]);
 
@@ -62,7 +59,7 @@ export function Hero({ videos }: HeroProps): React.ReactElement {
                   loop
                   playsInline
                   className="w-full h-full object-cover"
-                  style={{ objectPosition: 'center 25%' }}
+                  style={{ objectPosition: "center 25%" }}
                 />
               </div>
             ))}
@@ -74,8 +71,8 @@ export function Hero({ videos }: HeroProps): React.ReactElement {
             className="w-full h-full"
             style={{
               background:
-                'linear-gradient(160deg, #d4d3c7 0%, #c8c7bb 40%, #b8b7ab 100%)',
-              filter: 'contrast(1.02)',
+                "linear-gradient(160deg, #d4d3c7 0%, #c8c7bb 40%, #b8b7ab 100%)",
+              filter: "contrast(1.02)",
             }}
           />
         </div>
@@ -85,7 +82,7 @@ export function Hero({ videos }: HeroProps): React.ReactElement {
       <div className="absolute inset-0 bg-gradient-to-b from-[#fffcf7]/20 via-transparent to-[#fffcf7]/70 pointer-events-none z-[1]" />
 
       {/* Bottom-left editorial text */}
-      <div className="relative z-10 h-full flex flex-col justify-end p-8 md:p-12 pointer-events-none">
+      <div className="relative z-10 h-full flex flex-col justify-end p-6 md:p-12 pointer-events-none">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
@@ -103,7 +100,7 @@ export function Hero({ videos }: HeroProps): React.ReactElement {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2, delay: 1.2 }}
-          className="absolute bottom-8 right-8 md:bottom-12 md:right-12 flex items-center gap-6 pointer-events-auto"
+          className="absolute bottom-6 right-6 md:bottom-12 md:right-12 flex items-center gap-4 md:gap-6 pointer-events-auto"
         >
           <p className="font-sans text-[9px] tracking-[0.2em] uppercase text-secondary">
             Scroll to Explore

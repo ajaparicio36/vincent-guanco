@@ -1,22 +1,22 @@
-'use client';
+"use client";
 
-import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
 export function About(): React.ReactElement {
   const ref = useRef<HTMLElement>(null);
-  const inView = useInView(ref, { once: true, margin: '-100px' });
+  const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
     <section
       id="about"
       ref={ref}
-      className="min-h-screen flex flex-col md:flex-row bg-[#F5F2ED]"
+      className="min-h-screen flex flex-col md:flex-row bg-[#F5F2ED] overflow-x-hidden"
     >
       {/* Left: Portrait image */}
       <motion.div
-        initial={{ opacity: 0, x: -40 }}
-        animate={inView ? { opacity: 1, x: 0 } : {}}
+        initial={{ opacity: 0, y: 30 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
         className="w-full md:w-1/2 h-[480px] md:h-screen md:sticky md:top-0 overflow-hidden"
       >
@@ -25,18 +25,18 @@ export function About(): React.ReactElement {
           className="w-full h-full"
           style={{
             background:
-              'linear-gradient(170deg, #cac9bd 0%, #b8b7ab 50%, #aca9a0 100%)',
-            filter: 'contrast(1.05)',
+              "linear-gradient(170deg, #cac9bd 0%, #b8b7ab 50%, #aca9a0 100%)",
+            filter: "contrast(1.05)",
           }}
         />
       </motion.div>
 
       {/* Right: Content */}
       <motion.div
-        initial={{ opacity: 0, x: 40 }}
-        animate={inView ? { opacity: 1, x: 0 } : {}}
+        initial={{ opacity: 0, y: 30 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 1.1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-        className="w-full md:w-1/2 min-h-screen px-8 md:px-24 pt-16 md:pt-[180px] pb-24 flex flex-col"
+        className="w-full md:w-1/2 min-h-screen px-6 md:px-24 pt-16 md:pt-[180px] pb-24 flex flex-col"
       >
         <div className="max-w-xl">
           {/* Label with hairline */}
@@ -48,7 +48,7 @@ export function About(): React.ReactElement {
           </div>
 
           {/* Headline */}
-          <h2 className="font-serif text-5xl md:text-7xl text-on-surface leading-tight tracking-tight mb-16">
+          <h2 className="font-serif text-4xl sm:text-5xl md:text-7xl text-on-surface leading-tight tracking-tight mb-16">
             Vincent Guanco
           </h2>
 
@@ -56,10 +56,10 @@ export function About(): React.ReactElement {
           <div className="space-y-10">
             <p className="font-sans text-lg md:text-xl text-on-surface-variant font-light leading-relaxed">
               Based in Paris, Vincent Guanco specializes in high-fashion
-              portraiture and editorial narratives. His work frequently traverses
-              the distance between the historic arrondissements of the capital
-              and the luminous shores of Cannes, documenting the quiet elegance
-              of modern luxury through an analog lens.
+              portraiture and editorial narratives. His work frequently
+              traverses the distance between the historic arrondissements of the
+              capital and the luminous shores of Cannes, documenting the quiet
+              elegance of modern luxury through an analog lens.
             </p>
             <p className="font-sans text-lg md:text-xl text-on-surface-variant font-light leading-relaxed">
               His approach is rooted in technical precision and intimate energy.

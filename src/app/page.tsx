@@ -1,7 +1,6 @@
 import { Navigation } from "@/components/layout/navigation";
 import { Hero, type HeroVideo } from "@/components/sections/hero";
 import { Collections } from "@/components/sections/collections";
-import { About } from "@/components/sections/about";
 import { Footer } from "@/components/sections/footer";
 import { NavigationProvider } from "@/contexts/navigation-context";
 import { listMediaInFolder } from "@/lib/r2";
@@ -37,18 +36,19 @@ export default async function Home(): Promise<React.ReactElement> {
 
   return (
     <NavigationProvider>
-      {/* Film grain overlay — fixed to viewport at 3% opacity */}
-      <div className="film-grain" aria-hidden="true" />
+      <div className="w-full max-w-full overflow-x-hidden">
+        {/* Film grain overlay — fixed to viewport at 3% opacity */}
+        <div className="film-grain" aria-hidden="true" />
 
-      <Navigation />
+        <Navigation />
 
-      <main>
-        <Hero videos={heroVideos} />
-        <Collections />
-        <About />
-      </main>
+        <main>
+          <Hero videos={heroVideos} />
+          <Collections />
+        </main>
 
-      <Footer />
+        <Footer />
+      </div>
     </NavigationProvider>
   );
 }
