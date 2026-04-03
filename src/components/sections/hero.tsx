@@ -1,9 +1,10 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
+import { useFaceCenter } from "@/hooks/use-face-center";
 
 export interface HeroVideo {
   readonly url: string;
@@ -16,6 +17,10 @@ interface HeroProps {
 
 export function Hero({ videos }: HeroProps): React.ReactElement {
   const [currentName, setCurrentName] = useState(videos[0]?.displayName ?? "");
+
+  // Extract video URLs for face detection
+  const videoUrls = useMemo(() => videos.map((v) => v.url), [videos]);
+  const { positions: facePositions } = useFaceCenter(videoUrls);
 
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 40 }, [
     Autoplay({ delay: 6000, stopOnInteraction: false }),
@@ -59,7 +64,10 @@ export function Hero({ videos }: HeroProps): React.ReactElement {
                   loop
                   playsInline
                   className="w-full h-full object-cover"
-                  style={{ objectPosition: "center 30%" }}
+                  style={{
+                    objectPosition:
+                      facePositions.get(video.url) ?? "center 30%",
+                  }}
                 />
               </div>
             ))}
