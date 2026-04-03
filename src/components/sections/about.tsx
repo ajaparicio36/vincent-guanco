@@ -48,7 +48,7 @@ export function About(): React.ReactElement {
           </div>
 
           {/* Headline */}
-          <h2 className="font-serif italic text-5xl md:text-7xl text-on-surface leading-tight tracking-tight mb-16">
+          <h2 className="font-serif text-5xl md:text-7xl text-on-surface leading-tight tracking-tight mb-16">
             Vincent Guanco
           </h2>
 

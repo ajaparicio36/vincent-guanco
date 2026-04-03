@@ -1,84 +1,179 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useEffect, useState, startTransition } from 'react';
 import { motion, useInView } from 'framer-motion';
+import Image from 'next/image';
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from '@/components/ui/accordion';
+import {
+  VIDEO_CATEGORIES,
+  PHOTO_CATEGORIES,
+  type MediaCategory,
+} from '@/data/media-map';
+import { useCategoryMedia } from '@/hooks/use-category-media';
+import { useNavigation } from '@/contexts/navigation-context';
 
-interface CollectionItem {
-  readonly label: string;
-  readonly stripCount: number;
-}
+const PAGE_SIZE_PHOTO = 4;
+const PAGE_SIZE_VIDEO = 2;
 
-interface CollectionCategory {
-  readonly id: string;
-  readonly title: string;
-  readonly items: readonly CollectionItem[];
-}
+function CategoryMediaGrid({
+  category,
+  isOpen,
+}: {
+  readonly category: MediaCategory;
+  readonly isOpen: boolean;
+}): React.ReactElement {
+  const { items, loading, error } = useCategoryMedia(
+    category.type,
+    category.slug,
+    isOpen,
+  );
+  const [visibleCount, setVisibleCount] = useState(
+    category.type === 'video' ? PAGE_SIZE_VIDEO : PAGE_SIZE_PHOTO,
+  );
 
-const COLLECTIONS: readonly CollectionCategory[] = [
-  {
-    id: 'photos',
-    title: 'PHOTOS',
-    items: [
-      { label: 'Editorial', stripCount: 4 },
-      { label: 'Brands', stripCount: 3 },
-      { label: 'Portrait', stripCount: 2 },
-      { label: 'Campaign', stripCount: 2 },
-      { label: 'Personal', stripCount: 2 },
-    ],
-  },
-  {
-    id: 'videos',
-    title: 'VIDEOS',
-    items: [
-      { label: 'Motion', stripCount: 2 },
-      { label: 'Commercial', stripCount: 1 },
-      { label: 'Documentary', stripCount: 2 },
-    ],
-  },
-] as const;
+  // Reset visible count when accordion closes/reopens
+  useEffect(() => {
+    if (isOpen) {
+      startTransition(() => {
+        setVisibleCount(category.type === 'video' ? PAGE_SIZE_VIDEO : PAGE_SIZE_PHOTO);
+      });
+    }
+  }, [isOpen, category.type]);
 
-function FilmStrip({ count }: { readonly count: number }): React.ReactElement {
+  if (!isOpen) return <></>;
+
+  if (loading) {
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-6">
+        {Array.from({ length: 4 }).map((_, i) => (
+          <div
+            key={i}
+            className="aspect-[4/5] bg-surface-container-high animate-pulse"
+          />
+        ))}
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <p className="py-6 font-sans text-sm text-secondary">{error}</p>
+    );
+  }
+
+  if (items.length === 0) {
+    return (
+      <p className="py-6 font-sans text-sm text-secondary">
+        No media available.
+      </p>
+    );
+  }
+
+  const visible = items.slice(0, visibleCount);
+  const hasMore = visibleCount < items.length;
+  const pageSize =
+    category.type === 'video' ? PAGE_SIZE_VIDEO : PAGE_SIZE_PHOTO;
+
   return (
-    <div className="flex-grow flex justify-center gap-2 overflow-hidden px-8 opacity-0 translate-y-1 transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:opacity-100 group-hover:translate-y-0">
-      {Array.from({ length: count }).map((_, i) => (
-        <div
-          key={i}
-          className="w-[60px] h-[45px] bg-surface-container-high shrink-0"
-          aria-hidden="true"
-        />
-      ))}
+    <div className="py-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {visible.map((item) => (
+          <div
+            key={item.key}
+            className="relative aspect-[4/5] overflow-hidden"
+          >
+            {category.type === 'photo' ? (
+              <Image
+                src={item.url}
+                alt={category.displayName}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                loading="lazy"
+              />
+            ) : (
+              <video
+                src={item.url}
+                muted
+                playsInline
+                loop
+                autoPlay
+                className="w-full h-full object-cover"
+                style={{ objectPosition: 'center 25%' }}
+              />
+            )}
+          </div>
+        ))}
+      </div>
+
+      {hasMore && (
+        <button
+          type="button"
+          onClick={() => setVisibleCount((prev) => prev + pageSize)}
+          className="mt-8 w-full flex items-center justify-center gap-3 py-4 border-t border-[#babab0]/20 font-sans text-[10px] uppercase tracking-[0.3em] text-secondary hover:text-on-surface transition-colors duration-300 cursor-pointer"
+        >
+          Show More
+          <span className="font-mono text-[11px]">
+            ({visible.length}/{items.length})
+          </span>
+        </button>
+      )}
     </div>
   );
 }
 
-function CollectionRow({
-  item,
-  index,
+function CategoryGroup({
+  title,
+  categories,
+  openSlugs,
+  onToggle,
 }: {
-  readonly item: CollectionItem;
-  readonly index: number;
+  readonly title: string;
+  readonly categories: readonly MediaCategory[];
+  readonly openSlugs: Set<string>;
+  readonly onToggle: (slug: string) => void;
 }): React.ReactElement {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: '-60px' });
-
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, x: -16 }}
-      animate={inView ? { opacity: 1, x: 0 } : {}}
-      transition={{
-        duration: 0.7,
-        delay: index * 0.08,
-        ease: [0.16, 1, 0.3, 1],
-      }}
-      className="group flex items-center h-[72px] border-b border-[#babab0]/10 pl-12 cursor-pointer hover:bg-surface-container-low transition-colors duration-300"
-    >
-      <span className="font-serif text-[22px] italic text-on-surface min-w-[140px]">
-        {item.label}
-      </span>
-      <FilmStrip count={item.stripCount} />
-      <span className="text-secondary ml-auto text-sm select-none shrink-0">→</span>
-    </motion.div>
+    <div>
+      {/* Category group header */}
+      <div className="w-full flex justify-between items-center h-[80px] border-b border-[#babab0]/30">
+        <span
+          className="font-sans text-[11px] uppercase font-medium text-on-surface"
+          style={{ letterSpacing: '0.4em' }}
+        >
+          {title}
+        </span>
+        <span className="font-mono text-[11px] text-secondary">
+          ({String(categories.length).padStart(2, '0')})
+        </span>
+      </div>
+
+      <Accordion>
+        {categories.map((cat) => {
+          const isOpen = openSlugs.has(`${cat.type}-${cat.slug}`);
+          return (
+            <AccordionItem key={`${cat.type}-${cat.slug}`} value={`${cat.type}-${cat.slug}`}>
+              <AccordionTrigger
+                className="h-[72px] pl-12 border-b border-[#babab0]/10 hover:bg-surface-container-low transition-colors duration-300 hover:no-underline"
+                onClick={() => onToggle(`${cat.type}-${cat.slug}`)}
+              >
+                <span className="font-serif text-[22px] text-on-surface">
+                  {cat.displayName}
+                </span>
+              </AccordionTrigger>
+              <AccordionContent className="px-4 md:px-12">
+                <CategoryMediaGrid category={cat} isOpen={isOpen} />
+              </AccordionContent>
+            </AccordionItem>
+          );
+        })}
+      </Accordion>
+    </div>
   );
 }
 
@@ -89,8 +184,43 @@ export function Collections(): React.ReactElement {
   const quoteRef = useRef<HTMLDivElement>(null);
   const quoteInView = useInView(quoteRef, { once: true, margin: '-80px' });
 
+  const { activeCategory, setActiveCategory } = useNavigation();
+  const [openSlugs, setOpenSlugs] = useState<Set<string>>(new Set());
+
+  const handleToggle = (key: string): void => {
+    setOpenSlugs((prev) => {
+      const next = new Set(prev);
+      if (next.has(key)) {
+        next.delete(key);
+      } else {
+        next.add(key);
+      }
+      return next;
+    });
+  };
+
+  // Handle navigation context target
+  useEffect(() => {
+    if (!activeCategory) return;
+
+    startTransition(() => {
+      setOpenSlugs((prev) => {
+        const next = new Set(prev);
+        next.add(activeCategory);
+        return next;
+      });
+    });
+
+    // Clear the active category after opening
+    const timer = setTimeout(() => setActiveCategory(null), 100);
+    return () => clearTimeout(timer);
+  }, [activeCategory, setActiveCategory]);
+
   return (
-    <section id="collections" className="min-h-screen pt-32 pb-40 px-6 md:px-12 max-w-7xl mx-auto">
+    <section
+      id="collections"
+      className="min-h-screen pt-32 pb-40 px-6 md:px-12 max-w-7xl mx-auto"
+    >
       {/* Archive header */}
       <motion.div
         ref={headerRef}
@@ -99,7 +229,7 @@ export function Collections(): React.ReactElement {
         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         className="mb-24 flex flex-col md:flex-row justify-between items-baseline gap-4"
       >
-        <h2 className="font-serif text-7xl md:text-8xl tracking-tighter leading-none italic opacity-90">
+        <h2 className="font-serif text-7xl md:text-8xl tracking-tighter leading-none opacity-90">
           Archive
         </h2>
         <p
@@ -113,30 +243,18 @@ export function Collections(): React.ReactElement {
 
       {/* Collection categories */}
       <div className="flex flex-col gap-12">
-        {COLLECTIONS.map((category) => (
-          <div key={category.id}>
-            {/* Category header row */}
-            <div className="w-full flex justify-between items-center h-[80px] border-b border-[#babab0]/30">
-              <span
-                className="font-sans text-[11px] uppercase font-medium text-on-surface"
-                style={{ letterSpacing: '0.4em' }}
-              >
-                {category.title}
-              </span>
-              <div className="flex items-center gap-6 font-mono text-[11px] text-secondary">
-                <span>({String(category.items.length).padStart(2, '0')})</span>
-                <span className="text-lg leading-none">+</span>
-              </div>
-            </div>
-
-            {/* Items */}
-            <div className="flex flex-col">
-              {category.items.map((item, i) => (
-                <CollectionRow key={item.label} item={item} index={i} />
-              ))}
-            </div>
-          </div>
-        ))}
+        <CategoryGroup
+          title="PHOTOS"
+          categories={PHOTO_CATEGORIES}
+          openSlugs={openSlugs}
+          onToggle={handleToggle}
+        />
+        <CategoryGroup
+          title="VIDEOS"
+          categories={VIDEO_CATEGORIES}
+          openSlugs={openSlugs}
+          onToggle={handleToggle}
+        />
       </div>
 
       {/* Editorial quote */}
@@ -148,7 +266,7 @@ export function Collections(): React.ReactElement {
         className="mt-48 grid grid-cols-1 md:grid-cols-12"
       >
         <blockquote className="md:col-start-7 md:col-span-6">
-          <p className="font-serif text-3xl italic leading-tight text-on-surface-variant mb-6">
+          <p className="font-serif text-3xl leading-tight text-on-surface-variant mb-6">
             &ldquo;Photography is not about what is seen, but about the space
             between the light and the silence.&rdquo;
           </p>

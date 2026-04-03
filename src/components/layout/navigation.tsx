@@ -1,22 +1,20 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-
-const NAV_LINKS = [
-  { label: "WORK", href: "#collections" },
-  { label: "ABOUT", href: "#about" },
-  { label: "CONTACT", href: "#contact" },
-] as const;
-
-const SECTION_IDS = ["hero", "collections", "about", "contact"] as const;
-type SectionId = (typeof SECTION_IDS)[number];
+import {
+  Sheet,
+  SheetTrigger,
+  SheetContent,
+  SheetTitle,
+  SheetClose,
+} from "@/components/ui/sheet";
+import { VIDEO_CATEGORIES, PHOTO_CATEGORIES } from "@/data/media-map";
+import { useNavigation } from "@/contexts/navigation-context";
 
 export function Navigation(): React.ReactElement {
-  const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState<SectionId>("hero");
-
-  const closeMenu = useCallback(() => setMenuOpen(false), []);
+  const [open, setOpen] = useState(false);
+  const { setActiveCategory } = useNavigation();
 
   useEffect(() => {
     const handleScroll = (): void => setScrolled(window.scrollY > 80);
@@ -24,29 +22,20 @@ export function Navigation(): React.ReactElement {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id as SectionId);
-          }
-        }
-      },
-      { threshold: 0.3 },
-    );
+  const handleCategoryClick = useCallback(
+    (type: string, slug: string) => {
+      setOpen(false);
+      setActiveCategory(`${type}-${slug}`);
 
-    for (const id of SECTION_IDS) {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  const isActive = (href: string): boolean =>
-    href === `#${activeSection}` ||
-    (href === "#collections" && activeSection === "hero");
+      // Scroll to collections after sheet closes
+      setTimeout(() => {
+        document
+          .getElementById("collections")
+          ?.scrollIntoView({ behavior: "smooth" });
+      }, 150);
+    },
+    [setActiveCategory],
+  );
 
   return (
     <nav
@@ -56,8 +45,11 @@ export function Navigation(): React.ReactElement {
           : "bg-transparent backdrop-blur-sm"
       }`}
     >
-      <div className="flex justify-between items-center px-6 md:px-12 py-6">
-        {/* Branding */}
+      <div className="flex items-center px-6 md:px-12 py-6">
+        {/* Spacer for centering */}
+        <div className="flex-1" />
+
+        {/* Centered branding */}
         <a
           href="#hero"
           className="font-sans uppercase tracking-[0.2em] text-sm font-semibold text-[#0e0e0c] hover:text-secondary transition-colors duration-300"
@@ -65,59 +57,85 @@ export function Navigation(): React.ReactElement {
           VINCENT GUANCO
         </a>
 
-        {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-10">
-          {NAV_LINKS.map(({ label, href }) => (
-            <a
-              key={label}
-              href={href}
-              className={`font-sans uppercase tracking-[0.15em] text-[10px] transition-colors duration-300 pb-0.5 ${
-                isActive(href)
-                  ? "text-[#0e0e0c] border-b border-[#0e0e0c]"
-                  : "text-secondary hover:text-[#0e0e0c]"
-              }`}
+        {/* Right side: hamburger */}
+        <div className="flex-1 flex justify-end">
+          <Sheet open={open} onOpenChange={setOpen}>
+            <SheetTrigger
+              className="flex flex-col justify-center gap-[5px] p-1 cursor-pointer"
+              aria-label="Open menu"
             >
-              {label}
-            </a>
-          ))}
-        </div>
+              <span className="block w-5 h-px bg-[#0e0e0c]" />
+              <span className="block w-5 h-px bg-[#0e0e0c]" />
+              <span className="block w-3 h-px bg-[#0e0e0c]" />
+            </SheetTrigger>
 
-        {/* Mobile hamburger */}
-        <button
-          onClick={() => setMenuOpen((prev) => !prev)}
-          className="md:hidden flex flex-col justify-center gap-[5px] p-1"
-          aria-label="Toggle menu"
-          aria-expanded={menuOpen}
-        >
-          <span
-            className={`block w-5 h-px bg-[#0e0e0c] transition-all duration-300 ${menuOpen ? "translate-y-[6px] rotate-45" : ""}`}
-          />
-          <span
-            className={`block w-5 h-px bg-[#0e0e0c] transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`}
-          />
-          <span
-            className={`block w-3 h-px bg-[#0e0e0c] transition-all duration-300 ${menuOpen ? "-translate-y-[6px] -rotate-45 w-5" : ""}`}
-          />
-        </button>
-      </div>
-
-      {/* Mobile menu */}
-      <div
-        className={`md:hidden overflow-hidden transition-all duration-400 ${
-          menuOpen ? "max-h-48 opacity-100" : "max-h-0 opacity-0"
-        } bg-background border-b border-[#0e0e0c]/10`}
-      >
-        <div className="flex flex-col gap-6 px-6 pb-8 pt-2">
-          {NAV_LINKS.map(({ label, href }) => (
-            <a
-              key={label}
-              href={href}
-              onClick={closeMenu}
-              className="font-sans uppercase tracking-[0.15em] text-[10px] text-secondary hover:text-[#0e0e0c] transition-colors duration-300"
+            <SheetContent
+              side="top"
+              showCloseButton={false}
+              className="bg-background/95 backdrop-blur-md px-8 md:px-12 py-12 max-h-[80vh] overflow-y-auto border-b border-[#0e0e0c]/10"
             >
-              {label}
-            </a>
-          ))}
+              <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+
+              {/* Close button */}
+              <div className="flex justify-end mb-8">
+                <SheetClose className="flex flex-col justify-center gap-[5px] p-1 cursor-pointer">
+                  <span className="block w-5 h-px bg-[#0e0e0c] translate-y-[6px] rotate-45" />
+                  <span className="block w-5 h-px bg-[#0e0e0c] opacity-0" />
+                  <span className="block w-5 h-px bg-[#0e0e0c] -translate-y-[6px] -rotate-45" />
+                </SheetClose>
+              </div>
+
+              <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+                {/* Photos */}
+                <div>
+                  <span
+                    className="font-sans text-[10px] uppercase font-medium text-secondary block mb-6"
+                    style={{ letterSpacing: "0.3em" }}
+                  >
+                    PHOTOS
+                  </span>
+                  <div className="flex flex-col gap-4">
+                    {PHOTO_CATEGORIES.map((cat) => (
+                      <button
+                        key={cat.slug}
+                        type="button"
+                        onClick={() =>
+                          handleCategoryClick(cat.type, cat.slug)
+                        }
+                        className="font-serif text-2xl text-on-surface text-left hover:text-secondary transition-colors duration-300"
+                      >
+                        {cat.displayName}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Videos */}
+                <div>
+                  <span
+                    className="font-sans text-[10px] uppercase font-medium text-secondary block mb-6"
+                    style={{ letterSpacing: "0.3em" }}
+                  >
+                    VIDEOS
+                  </span>
+                  <div className="flex flex-col gap-4">
+                    {VIDEO_CATEGORIES.map((cat) => (
+                      <button
+                        key={cat.slug}
+                        type="button"
+                        onClick={() =>
+                          handleCategoryClick(cat.type, cat.slug)
+                        }
+                        className="font-serif text-2xl text-on-surface text-left hover:text-secondary transition-colors duration-300"
+                      >
+                        {cat.displayName}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </nav>

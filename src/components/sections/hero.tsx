@@ -1,23 +1,88 @@
 'use client';
 
+import { useCallback, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay';
 
-export function Hero(): React.ReactElement {
+export interface HeroVideo {
+  readonly url: string;
+  readonly displayName: string;
+}
+
+interface HeroProps {
+  readonly videos: readonly HeroVideo[];
+}
+
+export function Hero({ videos }: HeroProps): React.ReactElement {
+  const [currentName, setCurrentName] = useState(
+    videos[0]?.displayName ?? '',
+  );
+
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true, duration: 40 },
+    [Autoplay({ delay: 6000, stopOnInteraction: false })],
+  );
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    const index = emblaApi.selectedScrollSnap();
+    setCurrentName(videos[index]?.displayName ?? '');
+  }, [emblaApi, videos]);
+
+  useEffect(() => {
+    if (!emblaApi || videos.length === 0) return;
+
+    // Random start position
+    const randomIndex = Math.floor(Math.random() * videos.length);
+    emblaApi.scrollTo(randomIndex, true);
+    setCurrentName(videos[randomIndex]?.displayName ?? '');
+
+    emblaApi.on('select', onSelect);
+    return () => {
+      emblaApi.off('select', onSelect);
+    };
+  }, [emblaApi, videos, onSelect]);
+
   return (
     <section id="hero" className="relative h-screen w-full overflow-hidden">
-      {/* Hero image — TODO: swap with real fashion editorial portrait (4:5 or wider, grayscale-[0.2]) */}
-      <div className="absolute inset-0 z-0">
-        <div
-          className="w-full h-full"
-          style={{
-            background:
-              'linear-gradient(160deg, #d4d3c7 0%, #c8c7bb 40%, #b8b7ab 100%)',
-            filter: 'contrast(1.02)',
-          }}
-        />
-        {/* Tonal overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#fffcf7]/20 via-transparent to-[#fffcf7]/70 pointer-events-none" />
-      </div>
+      {/* Video carousel or fallback */}
+      {videos.length > 0 ? (
+        <div className="absolute inset-0 z-0" ref={emblaRef}>
+          <div className="flex h-full">
+            {videos.map((video) => (
+              <div
+                key={video.url}
+                className="min-w-0 shrink-0 grow-0 basis-full h-full"
+              >
+                <video
+                  src={video.url}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="w-full h-full object-cover"
+                  style={{ objectPosition: 'center 25%' }}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <div className="absolute inset-0 z-0">
+          <div
+            className="w-full h-full"
+            style={{
+              background:
+                'linear-gradient(160deg, #d4d3c7 0%, #c8c7bb 40%, #b8b7ab 100%)',
+              filter: 'contrast(1.02)',
+            }}
+          />
+        </div>
+      )}
+
+      {/* Tonal overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#fffcf7]/20 via-transparent to-[#fffcf7]/70 pointer-events-none z-[1]" />
 
       {/* Bottom-left editorial text */}
       <div className="relative z-10 h-full flex flex-col justify-end p-8 md:p-12 pointer-events-none">
@@ -28,13 +93,9 @@ export function Hero(): React.ReactElement {
           className="flex flex-col space-y-3 pointer-events-auto"
         >
           <div className="w-12 h-px bg-[#0e0e0c]/20" />
-          <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-[#0e0e0c]/80 flex items-center gap-3">
-            <span className="inline-block w-1.5 h-1.5 bg-secondary rounded-full animate-pulse" />
-            Paris — April 2026
+          <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-[#0e0e0c]/80">
+            {currentName}
           </p>
-          <h1 className="font-serif italic text-5xl md:text-7xl lg:text-8xl text-[#0e0e0c] mt-4 opacity-90 max-w-2xl leading-tight tracking-tight">
-            The Silent Curator
-          </h1>
         </motion.div>
 
         {/* Scroll indicator — bottom-right */}
