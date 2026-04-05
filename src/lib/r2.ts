@@ -36,6 +36,21 @@ export interface MediaItem {
   readonly lastModified: Date | undefined;
 }
 
+function leadingNumber(key: string): number {
+  // Extract a leading number from the file basename, e.g. "12_foo.mp4" → 12.
+  // Files without a numeric prefix sort after numbered ones.
+  const basename = key.split("/").pop() ?? key;
+  const match = basename.match(/^(\d+)/);
+  return match ? Number.parseInt(match[1], 10) : Number.POSITIVE_INFINITY;
+}
+
+function byLeadingNumber(a: MediaItem, b: MediaItem): number {
+  const na = leadingNumber(a.key);
+  const nb = leadingNumber(b.key);
+  if (na !== nb) return na - nb;
+  return a.key.localeCompare(b.key);
+}
+
 export async function listMediaInFolder(
   folder: string,
 ): Promise<MediaItem[]> {
@@ -56,7 +71,8 @@ export async function listMediaInFolder(
       key: obj.Key!,
       url: getPublicUrl(obj.Key!),
       lastModified: obj.LastModified,
-    }));
+    }))
+    .sort(byLeadingNumber);
 }
 
 export function getPublicUrl(key: string): string {
