@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { useFaceCenter } from "@/hooks/use-face-center";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export interface HeroVideo {
   readonly url: string;
@@ -12,14 +13,25 @@ export interface HeroVideo {
 }
 
 interface HeroProps {
-  readonly videos: readonly HeroVideo[];
+  readonly desktopVideos: readonly HeroVideo[];
+  readonly mobileVideos: readonly HeroVideo[];
 }
 
-export function Hero({ videos }: HeroProps): React.ReactElement {
+export function Hero({
+  desktopVideos,
+  mobileVideos,
+}: HeroProps): React.ReactElement {
+  const isMobile = useIsMobile();
+  const videos = isMobile ? mobileVideos : desktopVideos;
+
   const [currentName, setCurrentName] = useState(videos[0]?.displayName ?? "");
 
-  // Extract video URLs for face detection
-  const videoUrls = useMemo(() => videos.map((v) => v.url), [videos]);
+  // Extract video URLs for face detection (mobile only — desktop thumbnails
+  // are curated 16:9 and don't benefit from face recentering).
+  const videoUrls = useMemo(
+    () => (isMobile ? videos.map((v) => v.url) : []),
+    [isMobile, videos],
+  );
   const { positions: facePositions } = useFaceCenter(videoUrls);
 
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 40 }, [
@@ -35,7 +47,8 @@ export function Hero({ videos }: HeroProps): React.ReactElement {
   useEffect(() => {
     if (!emblaApi || videos.length === 0) return;
 
-    // Random start position
+    emblaApi.reInit();
+    // Random start position so each load feels fresh.
     const randomIndex = Math.floor(Math.random() * videos.length);
     emblaApi.scrollTo(randomIndex, true);
     setCurrentName(videos[randomIndex]?.displayName ?? "");
@@ -45,6 +58,8 @@ export function Hero({ videos }: HeroProps): React.ReactElement {
       emblaApi.off("select", onSelect);
     };
   }, [emblaApi, videos, onSelect]);
+
+  const objectFitClass = isMobile ? "object-cover" : "md:object-cover";
 
   return (
     <section id="hero" className="relative h-screen w-full overflow-hidden">
@@ -63,10 +78,11 @@ export function Hero({ videos }: HeroProps): React.ReactElement {
                   muted
                   loop
                   playsInline
-                  className="w-full h-full object-cover"
+                  className={`w-full h-full ${objectFitClass}`}
                   style={{
-                    objectPosition:
-                      facePositions.get(video.url) ?? "center 30%",
+                    objectPosition: isMobile
+                      ? (facePositions.get(video.url) ?? "center 30%")
+                      : "center center",
                   }}
                 />
               </div>
@@ -91,17 +107,19 @@ export function Hero({ videos }: HeroProps): React.ReactElement {
 
       {/* Bottom-left editorial text */}
       <div className="relative z-10 h-full flex flex-col justify-end p-6 md:p-12 pointer-events-none">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col space-y-3 pointer-events-auto"
-        >
-          <div className="w-12 h-px bg-[#0e0e0c]/20" />
-          <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-[#0e0e0c]/80">
-            {currentName}
-          </p>
-        </motion.div>
+        {currentName ? (
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col space-y-3 pointer-events-auto"
+          >
+            <div className="w-12 h-px bg-[#0e0e0c]/20" />
+            <p className="font-sans text-[10px] uppercase tracking-[0.3em] text-[#0e0e0c]/80">
+              {currentName}
+            </p>
+          </motion.div>
+        ) : null}
 
         {/* Scroll indicator — bottom-right */}
         <motion.div

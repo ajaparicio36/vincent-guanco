@@ -8,6 +8,7 @@ import {
   type RefObject,
 } from "react";
 import { motion, useInView } from "framer-motion";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export interface ViralVideo {
   readonly url: string;
@@ -43,6 +44,7 @@ function Tile({
 }: TileProps): React.ReactElement {
   const containerRef = useRef<HTMLDivElement>(null);
   const inView = useInView(containerRef, { once: true, margin: "-80px" });
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const el = videoRef.current;
@@ -62,12 +64,11 @@ function Tile({
       initial={{ opacity: 0, y: 24 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-      className={`w-full flex ${position === "middle" ? "justify-start" : "justify-center"} ${POSITION_OFFSETS[position]}`}
+      className={`flex-1 md:flex-initial md:w-full flex ${position === "middle" ? "md:justify-start justify-center" : "justify-center"} ${isMobile ? "" : POSITION_OFFSETS[position]}`}
     >
       <div
         ref={containerRef}
-        className="relative aspect-[9/16] bg-surface-container-high overflow-hidden h-[32vh] md:h-[32vh] max-h-[420px]"
-        style={{ width: "auto" }}
+        className="relative aspect-[9/16] bg-surface-container-high overflow-hidden w-full md:w-auto md:h-[32vh] md:max-h-[420px]"
       >
         <video
           ref={videoRef}
@@ -145,16 +146,19 @@ export function ViralViews({ videos }: ViralViewsProps): React.ReactElement {
   return (
     <section
       ref={sectionRef}
-      className="py-20 md:py-32 px-6 md:px-12 bg-background overflow-hidden"
+      className="py-10 md:py-16 px-6 md:px-12 bg-background overflow-hidden"
     >
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-10 md:gap-12 md:items-start md:justify-center">
         {/* Mobile: stats on top */}
         <div className="md:hidden w-full border-t border-b border-[#babab0]/30 py-6">
+          <span className="font-sans uppercase tracking-[0.3em] text-[9px] text-secondary mb-4 block">
+            Signature Metrics
+          </span>
           {stats}
         </div>
 
-        {/* Video stack — constrained width so offsets stay tight */}
-        <div className="w-full md:w-[440px] md:flex-none flex flex-col items-center gap-4 md:gap-6 min-w-0">
+        {/* Video row on mobile, asymmetric stack on desktop. */}
+        <div className="w-full md:w-[440px] md:flex-none flex flex-row md:flex-col items-start md:items-center gap-2 md:gap-6 min-w-0">
           {top ? (
             <Tile
               video={top}

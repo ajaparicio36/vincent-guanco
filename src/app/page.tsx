@@ -89,8 +89,8 @@ export default async function Home(): Promise<React.ReactElement> {
 
         <main>
           <Hero desktopVideos={hero.desktop} mobileVideos={hero.mobile} />
-          <ViralViews videos={viralVideos} />
           <Collections />
+          <ViralViews videos={viralVideos} />
           <About photos={aboutPhotos} />
         </main>
 

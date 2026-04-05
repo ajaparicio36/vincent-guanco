@@ -1,18 +1,38 @@
 import type { Metadata } from "next";
-import { Newsreader, Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const newsreader = Newsreader({
-  variable: "--font-newsreader",
-  subsets: ["latin"],
+// DIN Pro — upright weights only, no italics per design spec.
+const dinPro = localFont({
+  variable: "--font-dinpro",
   display: "swap",
-  style: ["normal", "italic"],
-});
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
+  src: [
+    {
+      path: "../../assets/fonts/dinpro/dinpro_light.otf",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../../assets/fonts/dinpro/dinpro.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../assets/fonts/dinpro/dinpro_medium.otf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../../assets/fonts/dinpro/dinpro_bold.otf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../../assets/fonts/dinpro/dinpro_black.otf",
+      weight: "900",
+      style: "normal",
+    },
+  ],
 });
 
 export const metadata: Metadata = {
@@ -29,7 +49,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${newsreader.variable} ${inter.variable} h-full antialiased`}
+      className={`${dinPro.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col overflow-x-hidden">
         {children}

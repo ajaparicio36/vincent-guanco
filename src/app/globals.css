@@ -6,11 +6,11 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  /* Typography — Newsreader serif for headlines, Inter sans for labels/body */
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-newsreader), ui-serif, Georgia, serif;
+  /* Typography — DIN Pro across all roles. No italics. */
+  --font-sans: var(--font-dinpro), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-dinpro), ui-sans-serif, system-ui, sans-serif;
   --font-mono: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, monospace;
-  --font-heading: var(--font-newsreader), ui-serif, Georgia, serif;
+  --font-heading: var(--font-dinpro), ui-sans-serif, system-ui, sans-serif;
 
   /* Design system surface tokens */
   --color-surface: var(--surface);
@@ -159,11 +159,20 @@
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
-/* Editorial label utility — uppercase Inter, wide-tracked */
+/* Editorial label utility — uppercase DIN Pro, wide-tracked */
 .label-editorial {
-  font-family: var(--font-inter), ui-sans-serif, sans-serif;
+  font-family: var(--font-dinpro), ui-sans-serif, sans-serif;
   font-size: 0.6875rem;
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+}
+
+/* Suppress any stray italic styling — no italics in DIN Pro */
+em,
+i,
+cite,
+address,
+.italic {
+  font-style: normal;
 }
