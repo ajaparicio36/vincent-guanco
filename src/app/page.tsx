@@ -1,38 +1,83 @@
 import { Navigation } from "@/components/layout/navigation";
 import { Hero, type HeroVideo } from "@/components/sections/hero";
+import { ViralViews, type ViralVideo } from "@/components/sections/viral-views";
 import { Collections } from "@/components/sections/collections";
+import { About, type AboutPhoto } from "@/components/sections/about";
 import { Footer } from "@/components/sections/footer";
 import { NavigationProvider } from "@/contexts/navigation-context";
 import { listMediaInFolder } from "@/lib/r2";
-import { VIDEO_CATEGORIES } from "@/data/media-map";
+import {
+  VIDEO_CATEGORIES,
+  THUMBNAILS_PREFIX,
+  MILLION_VIEWS_PREFIX,
+  ABOUT_ME_PREFIX,
+} from "@/data/media-map";
 
-async function getHeroVideos(): Promise<HeroVideo[]> {
+interface HeroSources {
+  readonly desktop: readonly HeroVideo[];
+  readonly mobile: readonly HeroVideo[];
+}
+
+function isWideKey(key: string): boolean {
+  const noExt = key.replace(/\.[^.]+$/, "");
+  return noExt.endsWith("_16_9");
+}
+
+async function getHeroSources(): Promise<HeroSources> {
   try {
-    const results = await Promise.all(
+    // Desktop: numbered THUMBNAILS videos (all 16:9).
+    const thumbnails = await listMediaInFolder(THUMBNAILS_PREFIX);
+    const desktop: HeroVideo[] = thumbnails.map((item) => ({
+      url: item.url,
+      displayName: "",
+    }));
+
+    // Mobile: 3 random non-16:9 videos from the collection.
+    const collectionLists = await Promise.all(
       VIDEO_CATEGORIES.map(async (cat) => {
         const items = await listMediaInFolder(cat.r2Prefix);
-        return items.map((item) => ({
-          url: item.url,
-          displayName: cat.displayName,
-        }));
+        return items
+          .filter((it) => !isWideKey(it.key))
+          .map((it) => ({ url: it.url, displayName: cat.displayName }));
       }),
     );
-
-    // Shuffle and pick at most 3 videos to limit loading
-    const all = results.flat();
-    for (let i = all.length - 1; i > 0; i--) {
+    const pool = collectionLists.flat();
+    for (let i = pool.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [all[i], all[j]] = [all[j], all[i]];
+      [pool[i], pool[j]] = [pool[j], pool[i]];
     }
-    return all.slice(0, 3);
+    const mobile = pool.slice(0, 3);
+
+    return { desktop, mobile };
   } catch {
-    // R2 not configured — return empty to allow site to render
+    return { desktop: [], mobile: [] };
+  }
+}
+
+async function getViralVideos(): Promise<readonly ViralVideo[]> {
+  try {
+    const items = await listMediaInFolder(MILLION_VIEWS_PREFIX);
+    return items.map((item) => ({ url: item.url, key: item.key }));
+  } catch {
+    return [];
+  }
+}
+
+async function getAboutPhotos(): Promise<readonly AboutPhoto[]> {
+  try {
+    const items = await listMediaInFolder(ABOUT_ME_PREFIX);
+    return items.map((item) => ({ url: item.url, key: item.key }));
+  } catch {
     return [];
   }
 }
 
 export default async function Home(): Promise<React.ReactElement> {
-  const heroVideos = await getHeroVideos();
+  const [hero, viralVideos, aboutPhotos] = await Promise.all([
+    getHeroSources(),
+    getViralVideos(),
+    getAboutPhotos(),
+  ]);
 
   return (
     <NavigationProvider>
@@ -43,8 +88,10 @@ export default async function Home(): Promise<React.ReactElement> {
         <Navigation />
 
         <main>
-          <Hero videos={heroVideos} />
+          <Hero desktopVideos={hero.desktop} mobileVideos={hero.mobile} />
+          <ViralViews videos={viralVideos} />
           <Collections />
+          <About photos={aboutPhotos} />
         </main>
 
         <Footer />
