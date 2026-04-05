@@ -9,7 +9,7 @@
   /* Typography — DIN Pro across all roles. No italics. */
   --font-sans: var(--font-dinpro), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-dinpro), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, monospace;
+  --font-mono: var(--font-dinpro), ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, monospace;
   --font-heading: var(--font-dinpro), ui-sans-serif, system-ui, sans-serif;
 
   /* Design system surface tokens */

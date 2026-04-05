@@ -91,12 +91,6 @@ export const PHOTO_CATEGORIES: readonly MediaCategory[] = [
     type: "photo",
   },
   {
-    slug: "sara",
-    r2Prefix: "2_PHOTOS/3_SARA",
-    displayName: "Sara",
-    type: "photo",
-  },
-  {
     slug: "loewe",
     r2Prefix: "2_PHOTOS/4_LOEWE",
     displayName: "Loewe",
@@ -110,13 +104,13 @@ export const PHOTO_CATEGORIES: readonly MediaCategory[] = [
   },
   {
     slug: "miumiu",
-    r2Prefix: "2_PHOTOS/6_MIUMIU",
+    r2Prefix: "2_PHOTOS/6_MIU_MIU",
     displayName: "Miu Miu",
     type: "photo",
   },
   {
     slug: "zuhair-murad",
-    r2Prefix: "2_PHOTOS/7_ZUHAIR_MURAD",
+    r2Prefix: "2_PHOTOS/7_ZUHAIR_MURAID",
     displayName: "Zuhair Murad",
     type: "photo",
   },

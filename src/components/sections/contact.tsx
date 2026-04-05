@@ -57,7 +57,7 @@ export function Contact(): React.ReactElement {
             <span className="font-sans uppercase tracking-[0.3em] text-[10px] text-secondary">
               AESTHETIC &amp; VISION
             </span>
-            <h2 className="font-serif text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-extralight tracking-tight leading-[1.1] text-[#0e0e0c]">
+            <h2 className="font-sans text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-extralight tracking-tight leading-[1.1] text-[#0e0e0c]">
               Captured in the streets of the 1st Arrondissement.
             </h2>
             <p className="font-sans text-lg text-on-surface-variant max-w-md leading-relaxed font-light">
@@ -81,7 +81,7 @@ export function Contact(): React.ReactElement {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="w-full md:w-1/2 mb-16 md:mb-0"
           >
-            <h2 className="font-serif text-4xl sm:text-6xl md:text-8xl font-light tracking-tight text-[#0e0e0c]">
+            <h2 className="font-sans text-4xl sm:text-6xl md:text-8xl font-light tracking-tight text-[#0e0e0c]">
               Let&apos;s Work
               <br />
               Together

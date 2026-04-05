@@ -81,7 +81,7 @@ export function Navigation(): React.ReactElement {
             <button
               type="button"
               onClick={() => handleNavClick("collections")}
-              className="py-6 font-serif text-2xl text-white hover:text-white/70 transition-colors duration-300 cursor-pointer"
+              className="py-6 font-sans text-2xl font-light text-white hover:text-white/70 transition-colors duration-300 cursor-pointer"
             >
               PHOTOS
             </button>
@@ -89,7 +89,7 @@ export function Navigation(): React.ReactElement {
             <button
               type="button"
               onClick={() => handleNavClick("collections")}
-              className="py-6 font-serif text-2xl text-white hover:text-white/70 transition-colors duration-300 cursor-pointer"
+              className="py-6 font-sans text-2xl font-light text-white hover:text-white/70 transition-colors duration-300 cursor-pointer"
             >
               VIDEOS
             </button>

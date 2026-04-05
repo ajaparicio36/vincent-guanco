@@ -172,7 +172,7 @@ function CategoryMediaGrid({
           className="mt-8 w-full flex items-center justify-center gap-3 py-4 border-t border-[#babab0]/20 font-sans text-[10px] uppercase tracking-[0.3em] text-secondary hover:text-on-surface transition-colors duration-300 cursor-pointer"
         >
           Show More
-          <span className="font-mono text-[11px]">
+          <span className="font-sans text-[11px]">
             ({visible.length}/{items.length})
           </span>
         </button>
@@ -223,7 +223,7 @@ function CategoryGroup({
         >
           {title}
         </span>
-        <span className="font-mono text-[11px] text-secondary">
+        <span className="font-sans text-[11px] text-secondary">
           ({String(categories.length).padStart(2, "0")})
         </span>
       </div>
@@ -239,7 +239,7 @@ function CategoryGroup({
           return (
             <AccordionItem key={key} value={key} data-accordion-key={key}>
               <AccordionTrigger className="h-[72px] pl-6 md:pl-12 border-b border-[#babab0]/10 hover:bg-surface-container-low transition-colors duration-300 hover:no-underline">
-                <span className="font-serif text-[22px] text-on-surface">
+                <span className="font-sans text-[22px] font-light text-on-surface">
                   {cat.displayName}
                 </span>
               </AccordionTrigger>
@@ -298,7 +298,7 @@ export function Collections(): React.ReactElement {
         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         className="mb-24 flex flex-col md:flex-row justify-between items-baseline gap-4"
       >
-        <h2 className="font-serif text-5xl sm:text-7xl md:text-8xl tracking-tighter leading-none opacity-90">
+        <h2 className="font-sans text-5xl sm:text-7xl md:text-8xl font-light tracking-tighter leading-none opacity-90">
           Archive
         </h2>
         <p
@@ -313,14 +313,14 @@ export function Collections(): React.ReactElement {
       {/* Collection categories */}
       <div className="flex flex-col gap-12">
         <CategoryGroup
-          title="PHOTOS"
-          categories={PHOTO_CATEGORIES}
+          title="VIDEOS"
+          categories={VIDEO_CATEGORIES}
           openSlugs={openSlugs}
           onValueChange={handleValueChange}
         />
         <CategoryGroup
-          title="VIDEOS"
-          categories={VIDEO_CATEGORIES}
+          title="PHOTOS"
+          categories={PHOTO_CATEGORIES}
           openSlugs={openSlugs}
           onValueChange={handleValueChange}
         />
