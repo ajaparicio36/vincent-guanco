@@ -31,7 +31,7 @@ interface TileProps {
 
 const POSITION_OFFSETS: Record<SlotPosition, string> = {
   top: "md:translate-x-[22%]",
-  middle: "md:translate-x-[28%] md:scale-[1.12] md:-translate-y-[50%] z-100",
+  middle: "md:translate-x-[15%] md:scale-[2.17] md:-translate-y-[50%] z-100",
   bottom: "md:translate-x-[22%] md:-translate-y-[100%]",
 };
 
@@ -148,7 +148,7 @@ export function ViralViews({ videos }: ViralViewsProps): React.ReactElement {
       ref={sectionRef}
       className="py-10 md:py-16 px-6 md:px-12 bg-background overflow-hidden"
     >
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-10 md:gap-12 md:items-start md:justify-center">
+      <div className="md:translate-x-[10%] max-w-6xl mx-auto flex flex-col md:flex-row gap-10 md:gap-12 md:items-start md:justify-center">
         {/* Mobile: stats on top */}
         <div className="md:hidden w-full border-t border-b border-[#babab0]/30 py-6">
           <span className="font-sans uppercase tracking-[0.3em] text-[9px] text-secondary mb-4 block">
@@ -157,8 +157,11 @@ export function ViralViews({ videos }: ViralViewsProps): React.ReactElement {
           {stats}
         </div>
 
-        {/* Video row on mobile, asymmetric stack on desktop. */}
-        <div className="w-full md:w-[440px] md:flex-none flex flex-row md:flex-col items-start md:items-center gap-2 md:gap-6 min-w-0">
+        {/* Video row on mobile, asymmetric stack on desktop.
+            The -translate-x compensates for the average rightward drift of the
+            per-tile offsets so the visual mass of the stack stays centered
+            alongside the stats sidebar. */}
+        <div className="w-full md:w-[440px] md:flex-none flex flex-row md:flex-col items-start md:items-center gap-2 md:gap-6 min-w-0 md:-translate-x-[0%]">
           {top ? (
             <Tile
               video={top}
