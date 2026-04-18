@@ -13,8 +13,8 @@ interface AboutProps {
   readonly photos: readonly AboutPhoto[];
 }
 
-const WHATSAPP_NUMBER = "33651299359"; // +33 651 29 93 59, no + or spaces for wa.me
-const WHATSAPP_DISPLAY = "+33 651 29 93 59";
+const WHATSAPP_NUMBER = "33614984173"; // +33 614 98 41 73, no + or spaces for wa.me
+const WHATSAPP_DISPLAY = "+33 614 98 41 73";
 const INSTAGRAM_URL = "https://www.instagram.com/vincentguanco/";
 const EMAIL = "vincentguancostaes@gmail.com";
 

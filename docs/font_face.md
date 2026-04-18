@@ -1,0 +1,25 @@
+FONT:
+DIN Pro
+
+faces in assets/fonts/dinpro
+
+dinpro_black.otf
+dinpro_blackitalif.otf
+dinpro_bold.otf
+dinpro_bolditalic.otf
+dinpro_condensedblack.otf
+dinpro_condensedblackitalic.otf
+dinpro_condensedbold.otf
+dinpro_condensedbolditalic.otf
+dinpro_condenseditalic.otf
+dinpro_condensedlight.otf
+dinpro_condensedlightitalic.otf
+dinpro_condensedmedium.otf
+dinpro_condensedmediumitalic.otf
+dinpro_condensedregular.otf
+dinpro_italic.otf
+dinpro_light.otf
+dinpro_lightitalic.ttf
+dinpro_medium.otf
+dinpro_mediumitalic.otf
+dinpro.otf

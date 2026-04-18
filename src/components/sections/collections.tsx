@@ -23,8 +23,8 @@ import {
 import { useCategoryMedia } from "@/hooks/use-category-media";
 import { useNavigation } from "@/contexts/navigation-context";
 
-const PAGE_SIZE_PHOTO = 4;
-const PAGE_SIZE_VIDEO = 2;
+const PAGE_SIZE_PHOTO = 6;
+const PAGE_SIZE_VIDEO = 6;
 
 function isWideVideo(key: string): boolean {
   const withoutExt = key.replace(/\.[^.]+$/, "");
@@ -49,7 +49,7 @@ function MediaItem({
   return (
     <div
       className={`relative overflow-hidden bg-surface-container-high ${
-        isWide ? "md:col-span-2 aspect-video" : "aspect-[4/5]"
+        isWide ? "col-span-2 aspect-video" : "aspect-[4/5]"
       }`}
     >
       {!loaded && type === "photo" && (
@@ -111,7 +111,7 @@ function CategoryMediaGrid({
 
   if (loading) {
     return (
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 py-6">
+      <div className="grid grid-cols-2 gap-2 md:gap-4 py-6">
         {Array.from({ length: 4 }).map((_, i) => (
           <div
             key={i}
@@ -144,10 +144,8 @@ function CategoryMediaGrid({
   return (
     <div className="py-6">
       <div
-        className={`grid gap-4 ${
-          isSingleItem
-            ? "grid-cols-1 max-w-md mx-auto"
-            : "grid-cols-1 md:grid-cols-2"
+        className={`grid gap-2 md:gap-4 ${
+          isSingleItem ? "grid-cols-1 max-w-md mx-auto" : "grid-cols-2"
         }`}
       >
         {visible.map((item) => {
@@ -239,7 +237,7 @@ function CategoryGroup({
           return (
             <AccordionItem key={key} value={key} data-accordion-key={key}>
               <AccordionTrigger className="h-[72px] pl-6 md:pl-12 border-b border-[#babab0]/10 hover:bg-surface-container-low transition-colors duration-300 hover:no-underline">
-                <span className="font-sans text-[22px] font-light text-on-surface">
+                <span className="font-sans text-[18px] md:text-[22px] font-light text-on-surface">
                   {cat.displayName}
                 </span>
               </AccordionTrigger>
@@ -298,7 +296,7 @@ export function Collections(): React.ReactElement {
         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         className="mb-24 flex flex-col md:flex-row justify-between items-baseline gap-4"
       >
-        <h2 className="font-sans text-5xl sm:text-7xl md:text-8xl font-light tracking-tighter leading-none opacity-90">
+        <h2 className="font-sans text-3xl sm:text-7xl md:text-8xl font-light tracking-tighter leading-none opacity-90">
           Archive
         </h2>
         <p
