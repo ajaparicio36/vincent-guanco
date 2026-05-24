@@ -297,7 +297,7 @@ export function Collections(): React.ReactElement {
         className="mb-24 flex flex-col md:flex-row justify-between items-baseline gap-4"
       >
         <h2 className="font-sans text-3xl sm:text-7xl md:text-8xl font-light tracking-tighter leading-none opacity-90">
-          Archive
+          FASHION&nbsp;&nbsp;|&nbsp;&nbsp;BEAUTY&nbsp;&nbsp;|&nbsp;&nbsp;COMMERCIAL
         </h2>
         <p
           className="font-sans text-[10px] uppercase text-secondary max-w-xs leading-relaxed"

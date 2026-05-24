@@ -1,5 +1,6 @@
 import { Navigation } from "@/components/layout/navigation";
 import { Hero, type HeroVideo } from "@/components/sections/hero";
+import { CategorySlideshow } from "@/components/sections/category-slideshow";
 import { ViralViews, type ViralVideo } from "@/components/sections/viral-views";
 import { Collections } from "@/components/sections/collections";
 import { About, type AboutPhoto } from "@/components/sections/about";
@@ -8,6 +9,7 @@ import { NavigationProvider } from "@/contexts/navigation-context";
 import { listMediaInFolder } from "@/lib/r2";
 import {
   VIDEO_CATEGORIES,
+  PHOTO_CATEGORIES,
   THUMBNAILS_PREFIX,
   MILLION_VIEWS_PREFIX,
   ABOUT_ME_PREFIX,
@@ -18,10 +20,7 @@ interface HeroSources {
   readonly mobile: readonly HeroVideo[];
 }
 
-function isWideKey(key: string): boolean {
-  const noExt = key.replace(/\.[^.]+$/, "");
-  return noExt.endsWith("_16_9");
-}
+const MOBILE_HERO_FILE_NUMBERS = new Set([1, 2, 4, 5, 6]);
 
 async function getHeroSources(): Promise<HeroSources> {
   try {
@@ -32,21 +31,18 @@ async function getHeroSources(): Promise<HeroSources> {
       displayName: "",
     }));
 
-    // Mobile: 3 random non-16:9 videos from the collection.
-    const collectionLists = await Promise.all(
-      VIDEO_CATEGORIES.map(async (cat) => {
-        const items = await listMediaInFolder(cat.r2Prefix);
-        return items
-          .filter((it) => !isWideKey(it.key))
-          .map((it) => ({ url: it.url, displayName: cat.displayName }));
-      }),
-    );
-    const pool = collectionLists.flat();
-    for (let i = pool.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [pool[i], pool[j]] = [pool[j], pool[i]];
-    }
-    const mobile = pool.slice(0, 3);
+    // Mobile: files 1, 2, 4, 5, 6 from 1_CANNES (3 is excluded).
+    const cannes = VIDEO_CATEGORIES.find((c) => c.slug === "cannes")!;
+    const cannesItems = await listMediaInFolder(cannes.r2Prefix);
+    const mobile: HeroVideo[] = cannesItems
+      .filter((it) => {
+        const basename = it.key.split("/").pop() ?? "";
+        const match = basename.match(/^(\d+)/);
+        return match
+          ? MOBILE_HERO_FILE_NUMBERS.has(Number.parseInt(match[1], 10))
+          : false;
+      })
+      .map((it) => ({ url: it.url, displayName: cannes.displayName }));
 
     return { desktop, mobile };
   } catch {
@@ -72,11 +68,31 @@ async function getAboutPhotos(): Promise<readonly AboutPhoto[]> {
   }
 }
 
+async function getSlideshowPhotos(): Promise<readonly HeroVideo[]> {
+  try {
+    const results = await Promise.all(
+      PHOTO_CATEGORIES.map(async (cat) => {
+        const items = await listMediaInFolder(cat.r2Prefix);
+        const first = items[0];
+        return first
+          ? { url: first.url, displayName: cat.displayName }
+          : null;
+      }),
+    );
+    return results.filter(
+      (r): r is HeroVideo => r !== null,
+    );
+  } catch {
+    return [];
+  }
+}
+
 export default async function Home(): Promise<React.ReactElement> {
-  const [hero, viralVideos, aboutPhotos] = await Promise.all([
+  const [hero, viralVideos, aboutPhotos, slideshowPhotos] = await Promise.all([
     getHeroSources(),
     getViralVideos(),
     getAboutPhotos(),
+    getSlideshowPhotos(),
   ]);
 
   return (
@@ -89,6 +105,7 @@ export default async function Home(): Promise<React.ReactElement> {
 
         <main>
           <Hero desktopVideos={hero.desktop} mobileVideos={hero.mobile} />
+          <CategorySlideshow photos={slideshowPhotos} />
           <Collections />
           <ViralViews videos={viralVideos} />
           <About photos={aboutPhotos} />

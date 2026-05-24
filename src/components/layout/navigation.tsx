@@ -33,12 +33,17 @@ export function Navigation(): React.ReactElement {
           <div className="flex-1" />
 
           {/* Centered branding */}
-          <a
-            href="#hero"
-            className="font-sans uppercase tracking-[0.2em] text-sm font-semibold text-[#0e0e0c] hover:text-secondary transition-colors duration-300"
-          >
-            VINCENT GUANCO
-          </a>
+          <div className="flex flex-col items-center">
+            <a
+              href="#hero"
+              className="font-sans uppercase tracking-[0.2em] text-sm font-semibold text-[#0e0e0c] hover:text-secondary transition-colors duration-300"
+            >
+              VINCENT GUANCO
+            </a>
+            <span className="font-sans uppercase tracking-[0.25em] text-[9px] text-secondary mt-1">
+              Photographer &nbsp;|&nbsp; Videographer
+            </span>
+          </div>
 
           {/* Right side: hamburger */}
           <div className="flex-1 flex justify-end">
