@@ -20,6 +20,8 @@ import {
   PHOTO_CATEGORIES,
   type MediaCategory,
 } from "@/data/media-map";
+import { CategorySlideshow } from "@/components/sections/category-slideshow";
+import type { HeroVideo } from "@/components/sections/hero";
 import { useCategoryMedia } from "@/hooks/use-category-media";
 import { useNavigation } from "@/contexts/navigation-context";
 
@@ -252,7 +254,11 @@ function CategoryGroup({
   );
 }
 
-export function Collections(): React.ReactElement {
+export function Collections({
+  slideshowPhotos,
+}: {
+  readonly slideshowPhotos: readonly HeroVideo[];
+}): React.ReactElement {
   const headerRef = useRef<HTMLDivElement>(null);
   const headerInView = useInView(headerRef, { once: true, margin: "-80px" });
 
@@ -260,7 +266,13 @@ export function Collections(): React.ReactElement {
   const quoteInView = useInView(quoteRef, { once: true, margin: "-80px" });
 
   const { activeCategory, setActiveCategory } = useNavigation();
-  const [openSlugs, setOpenSlugs] = useState<Set<string>>(new Set());
+  const [openSlugs, setOpenSlugs] = useState<Set<string>>(
+    () =>
+      new Set([
+        ...VIDEO_CATEGORIES.map((c) => `${c.type}-${c.slug}`),
+        ...PHOTO_CATEGORIES.map((c) => `${c.type}-${c.slug}`),
+      ]),
+  );
 
   const handleValueChange = useCallback((newValue: string[]) => {
     setOpenSlugs(new Set(newValue));
@@ -316,6 +328,7 @@ export function Collections(): React.ReactElement {
           openSlugs={openSlugs}
           onValueChange={handleValueChange}
         />
+        <CategorySlideshow photos={slideshowPhotos} />
         <CategoryGroup
           title="PHOTOS"
           categories={PHOTO_CATEGORIES}

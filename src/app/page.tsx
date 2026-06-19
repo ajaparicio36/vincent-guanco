@@ -1,6 +1,5 @@
 import { Navigation } from "@/components/layout/navigation";
 import { Hero, type HeroVideo } from "@/components/sections/hero";
-import { CategorySlideshow } from "@/components/sections/category-slideshow";
 import { ViralViews, type ViralVideo } from "@/components/sections/viral-views";
 import { Collections } from "@/components/sections/collections";
 import { About, type AboutPhoto } from "@/components/sections/about";
@@ -105,8 +104,7 @@ export default async function Home(): Promise<React.ReactElement> {
 
         <main>
           <Hero desktopVideos={hero.desktop} mobileVideos={hero.mobile} />
-          <CategorySlideshow photos={slideshowPhotos} />
-          <Collections />
+          <Collections slideshowPhotos={slideshowPhotos} />
           <ViralViews videos={viralVideos} />
           <About photos={aboutPhotos} />
         </main>
