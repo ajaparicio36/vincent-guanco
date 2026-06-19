@@ -27,12 +27,12 @@ export const VIDEO_CATEGORIES: readonly MediaCategory[] = [
   //   displayName: "MJ",
   //   type: "video",
   // },
-  // {
-  //   slug: "tods",
-  //   r2Prefix: "1_VIDEOS/3_TODS",
-  //   displayName: "Tods",
-  //   type: "video",
-  // },
+  {
+    slug: "amfar",
+    r2Prefix: "1_VIDEOS/0_AMFAR",
+    displayName: "Amfar",
+    type: "video",
+  },
   {
     slug: "cannes",
     r2Prefix: "1_VIDEOS/4_CANNES",
