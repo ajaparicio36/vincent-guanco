@@ -56,14 +56,6 @@ export function CategorySlideshow({
 
   return (
     <section className="relative w-full bg-background py-16 md:py-24">
-      {/* Section label */}
-      <div className="px-4 md:px-12 mb-8">
-        <span className="font-sans uppercase tracking-[0.3em] text-[10px] text-secondary font-semibold">
-          Featured Categories
-        </span>
-        <div className="mt-2 w-24 h-px bg-[#babab0]/30" />
-      </div>
-
       <div className="relative overflow-hidden" ref={emblaRef}>
         <div className="flex">
           {slides.map((slide, slideIndex) => (
