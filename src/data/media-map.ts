@@ -28,15 +28,9 @@ export const VIDEO_CATEGORIES: readonly MediaCategory[] = [
   //   type: "video",
   // },
   {
-    slug: "amfar",
-    r2Prefix: "1_VIDEOS/0_AMFAR",
-    displayName: "Amfar",
-    type: "video",
-  },
-  {
-    slug: "cannes",
-    r2Prefix: "1_VIDEOS/4_CANNES",
-    displayName: "Cannes",
+    slug: "vetements",
+    r2Prefix: "1_VIDEOS/12_VETEMENTS",
+    displayName: "Vetements",
     type: "video",
   },
   {
@@ -46,9 +40,27 @@ export const VIDEO_CATEGORIES: readonly MediaCategory[] = [
     type: "video",
   },
   {
+    slug: "amiri",
+    r2Prefix: "1_VIDEOS/11_AMIRI",
+    displayName: "Amiri",
+    type: "video",
+  },
+  {
     slug: "streetstyle",
     r2Prefix: "1_VIDEOS/6_STREETSTYLE",
     displayName: "Streetstyle",
+    type: "video",
+  },
+  {
+    slug: "amfar",
+    r2Prefix: "1_VIDEOS/0_AMFAR",
+    displayName: "Amfar",
+    type: "video",
+  },
+  {
+    slug: "cannes",
+    r2Prefix: "1_VIDEOS/4_CANNES",
+    displayName: "Cannes",
     type: "video",
   },
   {
