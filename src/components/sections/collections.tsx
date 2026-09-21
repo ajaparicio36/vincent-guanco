@@ -20,8 +20,6 @@ import {
   PHOTO_CATEGORIES,
   type MediaCategory,
 } from "@/data/media-map";
-import { CategorySlideshow } from "@/components/sections/category-slideshow";
-import type { HeroVideo } from "@/components/sections/hero";
 import { useCategoryMedia } from "@/hooks/use-category-media";
 import { useNavigation } from "@/contexts/navigation-context";
 
@@ -254,11 +252,7 @@ function CategoryGroup({
   );
 }
 
-export function Collections({
-  slideshowPhotos,
-}: {
-  readonly slideshowPhotos: readonly HeroVideo[];
-}): React.ReactElement {
+export function Collections(): React.ReactElement {
   const headerRef = useRef<HTMLDivElement>(null);
   const headerInView = useInView(headerRef, { once: true, margin: "-80px" });
 
@@ -328,7 +322,6 @@ export function Collections({
           openSlugs={openSlugs}
           onValueChange={handleValueChange}
         />
-        <CategorySlideshow photos={slideshowPhotos} />
         <CategoryGroup
           title="PHOTOS"
           categories={PHOTO_CATEGORIES}

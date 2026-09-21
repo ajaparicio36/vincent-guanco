@@ -8,7 +8,6 @@ import { NavigationProvider } from "@/contexts/navigation-context";
 import { listMediaInFolder } from "@/lib/r2";
 import {
   VIDEO_CATEGORIES,
-  PHOTO_CATEGORIES,
   THUMBNAILS_PREFIX,
   MILLION_VIEWS_PREFIX,
   ABOUT_ME_PREFIX,
@@ -67,31 +66,11 @@ async function getAboutPhotos(): Promise<readonly AboutPhoto[]> {
   }
 }
 
-async function getSlideshowPhotos(): Promise<readonly HeroVideo[]> {
-  try {
-    const results = await Promise.all(
-      PHOTO_CATEGORIES.map(async (cat) => {
-        const items = await listMediaInFolder(cat.r2Prefix);
-        const first = items[0];
-        return first
-          ? { url: first.url, displayName: cat.displayName }
-          : null;
-      }),
-    );
-    return results.filter(
-      (r): r is HeroVideo => r !== null,
-    );
-  } catch {
-    return [];
-  }
-}
-
 export default async function Home(): Promise<React.ReactElement> {
-  const [hero, viralVideos, aboutPhotos, slideshowPhotos] = await Promise.all([
+  const [hero, viralVideos, aboutPhotos] = await Promise.all([
     getHeroSources(),
     getViralVideos(),
     getAboutPhotos(),
-    getSlideshowPhotos(),
   ]);
 
   return (
@@ -104,7 +83,7 @@ export default async function Home(): Promise<React.ReactElement> {
 
         <main>
           <Hero desktopVideos={hero.desktop} mobileVideos={hero.mobile} />
-          <Collections slideshowPhotos={slideshowPhotos} />
+          <Collections />
           <ViralViews videos={viralVideos} />
           <About photos={aboutPhotos} />
         </main>

@@ -75,30 +75,6 @@ export const VIDEO_CATEGORIES: readonly MediaCategory[] = [
     displayName: "Balmain",
     type: "video",
   },
-  {
-    slug: "amiri",
-    r2Prefix: "1_VIDEOS/11_AMIRI",
-    displayName: "Amiri",
-    type: "video",
-  },
-  {
-    slug: "stephane-rolland",
-    r2Prefix: "1_VIDEOS/12_STEPHANNE_ROLLAND",
-    displayName: "Stephane Rolland",
-    type: "video",
-  },
-  {
-    slug: "tony-ward",
-    r2Prefix: "1_VIDEOS/13_TONY_WARD",
-    displayName: "Tony Ward",
-    type: "video",
-  },
-  {
-    slug: "events",
-    r2Prefix: "1_VIDEOS/14_EVENTS",
-    displayName: "Events",
-    type: "video",
-  },
 ] as const;
 
 export const PHOTO_CATEGORIES: readonly MediaCategory[] = [
