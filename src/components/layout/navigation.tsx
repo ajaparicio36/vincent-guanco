@@ -99,6 +99,14 @@ export function Navigation(): React.ReactElement {
               VIDEOS
             </button>
             <div className="w-48 h-px bg-[#babab0]/40" />
+            <button
+              type="button"
+              onClick={() => handleNavClick("contact")}
+              className="py-6 font-sans text-2xl font-light text-white hover:text-white/70 transition-colors duration-300 cursor-pointer"
+            >
+              CONTACT
+            </button>
+            <div className="w-48 h-px bg-[#babab0]/40" />
           </div>
         </div>
       </div>

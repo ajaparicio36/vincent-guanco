@@ -3,6 +3,7 @@ export interface MediaCategory {
   readonly r2Prefix: string;
   readonly displayName: string;
   readonly type: "video" | "photo";
+  readonly visibleFileNames?: readonly string[];
 }
 
 // Ordered per docs/categories.md. Files within each folder are numbered;
@@ -44,6 +45,7 @@ export const VIDEO_CATEGORIES: readonly MediaCategory[] = [
     r2Prefix: "1_VIDEOS/11_AMIRI",
     displayName: "Amiri",
     type: "video",
+    visibleFileNames: ["2_FULL.mp4"],
   },
   {
     slug: "streetstyle",
@@ -124,12 +126,6 @@ export const PHOTO_CATEGORIES: readonly MediaCategory[] = [
     slug: "leonardo",
     r2Prefix: "2_PHOTOS/5_LEONARDO",
     displayName: "Leonardo",
-    type: "photo",
-  },
-  {
-    slug: "sara",
-    r2Prefix: "2_PHOTOS/6_SARA",
-    displayName: "Sara",
     type: "photo",
   },
   {

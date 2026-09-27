@@ -1,13 +1,11 @@
 "use client";
 
 import {
-  useRef,
   useEffect,
   useState,
   startTransition,
   useCallback,
 } from "react";
-import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import {
   Accordion,
@@ -26,32 +24,39 @@ import { useNavigation } from "@/contexts/navigation-context";
 const PAGE_SIZE_PHOTO = 6;
 const PAGE_SIZE_VIDEO = 6;
 
-function isWideVideo(key: string): boolean {
+type MediaLayout = "portrait" | "landscape" | "full";
+
+function getMediaLayout(key: string, type: "photo" | "video"): MediaLayout {
   const withoutExt = key.replace(/\.[^.]+$/, "");
-  return withoutExt.endsWith("_16_9");
+  if (withoutExt.endsWith("_FULL")) return "full";
+  if (type === "video" && withoutExt.endsWith("_16_9")) {
+    return "landscape";
+  }
+  return "portrait";
 }
 
 interface MediaItemProps {
   readonly item: { readonly key: string; readonly url: string };
-  readonly isWide: boolean;
+  readonly layout: MediaLayout;
   readonly type: "photo" | "video";
   readonly displayName: string;
 }
 
 function MediaItem({
   item,
-  isWide,
+  layout,
   type,
   displayName,
 }: MediaItemProps): React.ReactElement {
   const [loaded, setLoaded] = useState(false);
+  const isFullRow = layout !== "portrait";
+  const aspectClass = layout === "landscape" ? "aspect-video" : "aspect-[4/5]";
+  const itemClassName = isFullRow
+    ? `col-span-2 ${aspectClass}`
+    : aspectClass;
 
   return (
-    <div
-      className={`relative overflow-hidden bg-surface-container-high ${
-        isWide ? "col-span-2 aspect-video" : "aspect-[4/5]"
-      }`}
-    >
+    <div className={`relative overflow-hidden bg-surface-container-high ${itemClassName}`}>
       {!loaded && type === "photo" && (
         <div className="absolute inset-0 animate-pulse bg-surface-container-high" />
       )}
@@ -73,7 +78,10 @@ function MediaItem({
           loop
           autoPlay
           className="w-full h-full object-cover"
-          style={{ objectPosition: isWide ? "center center" : "center 25%" }}
+          style={{
+            objectPosition:
+              layout === "landscape" ? "center center" : "center 25%",
+          }}
         />
       )}
     </div>
@@ -140,22 +148,27 @@ function CategoryMediaGrid({
     category.type === "video" ? PAGE_SIZE_VIDEO : PAGE_SIZE_PHOTO;
 
   const isSingleItem = visible.length === 1;
+  const isSingleFullRowItem =
+    isSingleItem &&
+    getMediaLayout(visible[0]?.key ?? "", category.type) !== "portrait";
 
   return (
     <div className="py-6">
       <div
         className={`grid gap-2 md:gap-4 ${
-          isSingleItem ? "grid-cols-1 max-w-md mx-auto" : "grid-cols-2"
+          isSingleItem && !isSingleFullRowItem
+            ? "grid-cols-1 max-w-md mx-auto"
+            : "grid-cols-2"
         }`}
       >
         {visible.map((item) => {
-          const isWide = category.type === "video" && isWideVideo(item.key);
+          const layout = getMediaLayout(item.key, category.type);
 
           return (
             <MediaItem
               key={item.key}
               item={item}
-              isWide={isWide}
+              layout={layout}
               type={category.type}
               displayName={category.displayName}
             />
@@ -253,12 +266,6 @@ function CategoryGroup({
 }
 
 export function Collections(): React.ReactElement {
-  const headerRef = useRef<HTMLDivElement>(null);
-  const headerInView = useInView(headerRef, { once: true, margin: "-80px" });
-
-  const quoteRef = useRef<HTMLDivElement>(null);
-  const quoteInView = useInView(quoteRef, { once: true, margin: "-80px" });
-
   const { activeCategory, setActiveCategory } = useNavigation();
   const [openSlugs, setOpenSlugs] = useState<Set<string>>(
     () =>
@@ -295,7 +302,7 @@ export function Collections(): React.ReactElement {
       className="min-h-screen pt-10 md:pt-16 pb-24 md:pb-40 px-4 md:px-12 max-w-7xl mx-auto"
     >
       {/* Archive header */}
-      <motion.div
+      {/* <motion.div
         ref={headerRef}
         initial={{ opacity: 0, y: 32 }}
         animate={headerInView ? { opacity: 1, y: 0 } : {}}
@@ -312,7 +319,7 @@ export function Collections(): React.ReactElement {
           A curation of editorial narratives and motion studies captured between
           Paris and Cannes.
         </p>
-      </motion.div>
+      </motion.div> */}
 
       {/* Collection categories */}
       <div className="flex flex-col gap-12">

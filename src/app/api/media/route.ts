@@ -38,9 +38,15 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
   }
 
   const items = await listMediaInFolder(matched.r2Prefix);
+  const visibleItems = matched.visibleFileNames
+    ? items.filter(({ key }) => {
+        const fileName = key.slice(key.lastIndexOf("/") + 1);
+        return matched.visibleFileNames?.includes(fileName) ?? false;
+      })
+    : items;
 
   return NextResponse.json(
-    { items: items.map(({ key, url }) => ({ key, url })) },
+    { items: visibleItems.map(({ key, url }) => ({ key, url })) },
     {
       headers: {
         "Cache-Control": "public, max-age=31536000, immutable",
