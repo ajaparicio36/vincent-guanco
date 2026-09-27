@@ -5,9 +5,8 @@ import { Collections } from "@/components/sections/collections";
 import { About, type AboutPhoto } from "@/components/sections/about";
 import { Footer } from "@/components/sections/footer";
 import { NavigationProvider } from "@/contexts/navigation-context";
-import { listMediaInFolder } from "@/lib/r2";
+import { getPublicUrl, listMediaInFolder } from "@/lib/r2";
 import {
-  VIDEO_CATEGORIES,
   THUMBNAILS_PREFIX,
   MILLION_VIEWS_PREFIX,
   ABOUT_ME_PREFIX,
@@ -18,33 +17,43 @@ interface HeroSources {
   readonly mobile: readonly HeroVideo[];
 }
 
-const MOBILE_HERO_FILE_NUMBERS = new Set([1, 2, 4, 5, 6]);
+const MOBILE_HERO_FILE_NUMBERS = [1, 2, 4, 5, 6] as const;
 
 async function getHeroSources(): Promise<HeroSources> {
+  // Mobile assets are static URLs and remain usable if the desktop listing fails.
+  let mobile: HeroVideo[] = [];
+  try {
+    mobile = MOBILE_HERO_FILE_NUMBERS.map((number) => {
+      const basename = String(number);
+      const prefix = `HERO_MOBILE/2026-09-28/${basename}`;
+      return {
+        url: getPublicUrl(`${prefix}.mp4`),
+        posterUrl: getPublicUrl(`${prefix}.jpg`),
+        displayName: "Cannes",
+      };
+    });
+  } catch {
+    // Keep rendering the page with no mobile hero when public URLs are unset.
+  }
+
   try {
     // Desktop: numbered THUMBNAILS videos (all 16:9).
     const thumbnails = await listMediaInFolder(THUMBNAILS_PREFIX);
-    const desktop: HeroVideo[] = thumbnails.map((item) => ({
-      url: item.url,
-      displayName: "",
-    }));
-
-    // Mobile: files 1, 2, 4, 5, 6 from 1_CANNES (3 is excluded).
-    const cannes = VIDEO_CATEGORIES.find((c) => c.slug === "cannes")!;
-    const cannesItems = await listMediaInFolder(cannes.r2Prefix);
-    const mobile: HeroVideo[] = cannesItems
-      .filter((it) => {
-        const basename = it.key.split("/").pop() ?? "";
-        const match = basename.match(/^(\d+)/);
-        return match
-          ? MOBILE_HERO_FILE_NUMBERS.has(Number.parseInt(match[1], 10))
-          : false;
-      })
-      .map((it) => ({ url: it.url, displayName: cannes.displayName }));
+    const desktop: HeroVideo[] = thumbnails.map((item) => {
+      const filename = item.key.split("/").pop() ?? item.key;
+      const basename = filename.replace(/\.[^.]+$/, "");
+      return {
+        url: item.url,
+        posterUrl: getPublicUrl(
+          `HERO_DESKTOP_POSTERS/2026-09-27/${basename}.jpg`,
+        ),
+        displayName: "",
+      };
+    });
 
     return { desktop, mobile };
   } catch {
-    return { desktop: [], mobile: [] };
+    return { desktop: [], mobile };
   }
 }
 

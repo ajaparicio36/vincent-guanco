@@ -1,15 +1,14 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
-import { useFaceCenter } from "@/hooks/use-face-center";
-import { useIsMobile } from "@/hooks/use-mobile";
 
 export interface HeroVideo {
   readonly url: string;
   readonly displayName: string;
+  readonly posterUrl?: string;
 }
 
 interface HeroProps {
@@ -21,27 +20,54 @@ export function Hero({
   desktopVideos,
   mobileVideos,
 }: HeroProps): React.ReactElement {
-  const isMobile = useIsMobile();
-  const videos = isMobile ? mobileVideos : desktopVideos;
-
-  const [currentName, setCurrentName] = useState(videos[0]?.displayName ?? "");
-
-  // Extract video URLs for face detection (mobile only — desktop thumbnails
-  // are curated 16:9 and don't benefit from face recentering).
-  const videoUrls = useMemo(
-    () => (isMobile ? videos.map((v) => v.url) : []),
-    [isMobile, videos],
+  const [sourceKind, setSourceKind] = useState<"mobile" | "desktop" | null>(null);
+  const videos = useMemo(
+    () =>
+      sourceKind === "mobile"
+        ? mobileVideos
+        : sourceKind === "desktop"
+          ? desktopVideos
+          : [],
+    [desktopVideos, mobileVideos, sourceKind],
   );
-  const { positions: facePositions } = useFaceCenter(videoUrls);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [warmedIndex, setWarmedIndex] = useState<number | null>(null);
+  const [playRejected, setPlayRejected] = useState(false);
+  const [currentName, setCurrentName] = useState("");
+  const activeVideoRef = useRef<HTMLVideoElement | null>(null);
+  const activeIndexRef = useRef<number | null>(null);
 
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 40 }, [
-    Autoplay({ delay: 6000, stopOnInteraction: false }),
-  ]);
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 767px)");
+    const updateSourceKind = (): void => {
+      activeIndexRef.current = null;
+      setActiveIndex(null);
+      setWarmedIndex(null);
+      setPlayRejected(false);
+      setSourceKind(mediaQuery.matches ? "mobile" : "desktop");
+    };
+    updateSourceKind();
+    mediaQuery.addEventListener("change", updateSourceKind);
+    return () => mediaQuery.removeEventListener("change", updateSourceKind);
+  }, []);
 
-  const onSelect = useCallback(() => {
+  const autoplayPlugin = useMemo(
+    () => Autoplay({ delay: 6000, playOnInit: false }),
+    [],
+  );
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true, duration: 40 },
+    [autoplayPlugin],
+  );
+
+  const onSelect = useCallback((): void => {
     if (!emblaApi) return;
+    emblaApi.plugins().autoplay.stop();
     const index = emblaApi.selectedScrollSnap();
+    activeIndexRef.current = index;
+    setActiveIndex(index);
     setCurrentName(videos[index]?.displayName ?? "");
+    setPlayRejected(false);
   }, [emblaApi, videos]);
 
   useEffect(() => {
@@ -51,6 +77,8 @@ export function Hero({
     // Random start position so each load feels fresh.
     const randomIndex = Math.floor(Math.random() * videos.length);
     emblaApi.scrollTo(randomIndex, true);
+    activeIndexRef.current = randomIndex;
+    setActiveIndex(randomIndex);
     setCurrentName(videos[randomIndex]?.displayName ?? "");
 
     emblaApi.on("select", onSelect);
@@ -59,35 +87,127 @@ export function Hero({
     };
   }, [emblaApi, videos, onSelect]);
 
-  const objectFitClass = isMobile ? "object-cover" : "md:object-cover";
+  useEffect(() => {
+    if (activeIndex === null || videos.length === 0) return;
+    const activeVideo = activeVideoRef.current;
+    if (!activeVideo) return;
+
+    let cancelled = false;
+    void activeVideo.play().then(
+      () => {
+        if (!cancelled) {
+          setPlayRejected(false);
+          const autoplay = emblaApi?.plugins().autoplay;
+          if (autoplay && !autoplay.isPlaying()) autoplay.play();
+        }
+      },
+      () => {
+        if (!cancelled) {
+          emblaApi?.plugins().autoplay.stop();
+          setPlayRejected(true);
+        }
+      },
+    );
+
+    return () => {
+      cancelled = true;
+      activeVideo.pause();
+    };
+  }, [activeIndex, emblaApi, videos]);
+
+  const handlePlaying = useCallback(
+    (index: number, video: HTMLVideoElement): void => {
+      if (
+        index !== activeIndex ||
+        activeIndexRef.current !== index ||
+        activeVideoRef.current !== video ||
+        playRejected
+      ) {
+        return;
+      }
+      if (videos.length <= 1) return;
+      const autoplay = emblaApi?.plugins().autoplay;
+      if (autoplay && !autoplay.isPlaying()) autoplay.play();
+      setWarmedIndex((index + 1) % videos.length);
+    },
+    [activeIndex, emblaApi, playRejected, videos.length],
+  );
+
+  const handlePlayClick = useCallback((): void => {
+    const activeVideo = activeVideoRef.current;
+    const requestedIndex = activeIndex;
+    if (!activeVideo || requestedIndex === null) return;
+    emblaApi?.plugins().autoplay.stop();
+
+    const isStillActive = (): boolean =>
+      activeVideoRef.current === activeVideo &&
+      activeIndexRef.current === requestedIndex;
+
+    void activeVideo.play().then(
+      () => {
+        if (isStillActive()) {
+          setPlayRejected(false);
+          const autoplay = emblaApi?.plugins().autoplay;
+          if (autoplay && !autoplay.isPlaying()) autoplay.play();
+        }
+      },
+      () => {
+        if (isStillActive()) {
+          emblaApi?.plugins().autoplay.stop();
+          setPlayRejected(true);
+        }
+      },
+    );
+  }, [activeIndex, emblaApi]);
 
   return (
-    <section id="hero" className="relative h-screen w-full overflow-hidden">
+    <section
+      id="hero"
+      className="relative h-screen supports-[height:100dvh]:h-[100dvh] w-full overflow-hidden"
+    >
       {/* Video carousel or fallback */}
       {videos.length > 0 ? (
-        <div className="absolute inset-0 z-0" ref={emblaRef}>
+        <div className="absolute inset-0 z-0 bg-[#d4d3c7]" ref={emblaRef}>
           <div className="flex h-full">
-            {videos.map((video) => (
-              <div
-                key={video.url}
-                className="min-w-0 shrink-0 grow-0 basis-full h-full"
-              >
-                <video
-                  src={video.url}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  className={`w-full h-full ${objectFitClass}`}
-                  style={{
-                    objectPosition: isMobile
-                      ? (facePositions.get(video.url) ?? "center 30%")
-                      : "center center",
-                  }}
-                />
-              </div>
-            ))}
+            {videos.map((video, index) => {
+              const isActive = index === activeIndex;
+              const isWarmed = index === warmedIndex && !isActive;
+              const hasSource = isActive || isWarmed;
+              return (
+                <div
+                  key={video.url}
+                  className="relative min-w-0 shrink-0 grow-0 basis-full h-full bg-[#d4d3c7]"
+                >
+                  {hasSource ? (
+                    <video
+                      ref={isActive ? activeVideoRef : undefined}
+                      src={video.url}
+                      poster={video.posterUrl}
+                      autoPlay={isActive}
+                      muted
+                      loop
+                      playsInline
+                      preload={isActive ? "auto" : "metadata"}
+                      onPlaying={(event) =>
+                        handlePlaying(index, event.currentTarget)
+                      }
+                      className="relative z-10 w-full h-full object-cover"
+                      style={{ objectPosition: "center center" }}
+                    />
+                  ) : null}
+                </div>
+              );
+            })}
           </div>
+          {playRejected && activeIndex !== null ? (
+            <button
+              type="button"
+              onClick={handlePlayClick}
+              className="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/60 bg-black/40 px-6 py-3 font-sans text-[10px] uppercase tracking-[0.25em] text-white backdrop-blur-sm"
+            >
+              Tap to play
+            </button>
+          ) : null}
         </div>
       ) : (
         <div className="absolute inset-0 z-0">

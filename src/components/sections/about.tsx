@@ -24,14 +24,39 @@ function PhotoCarousel({
   readonly photos: readonly AboutPhoto[];
 }): React.ReactElement {
   const [index, setIndex] = useState(0);
+  const [outgoingIndex, setOutgoingIndex] = useState<number | null>(null);
+  const currentIndexRef = useRef(0);
+  const transitionTimerRef = useRef<number | null>(null);
+  const loadedUrlsRef = useRef(new Set<string>());
 
   useEffect(() => {
     if (photos.length <= 1) return;
-    const timer = setInterval(() => {
-      setIndex((prev) => (prev + 1) % photos.length);
+    const timer = window.setInterval(() => {
+      const currentIndex = currentIndexRef.current;
+      const nextIndex = (currentIndex + 1) % photos.length;
+      const nextPhoto = photos[nextIndex];
+      if (!nextPhoto || !loadedUrlsRef.current.has(nextPhoto.url)) return;
+
+      setOutgoingIndex(currentIndex);
+      currentIndexRef.current = nextIndex;
+      setIndex(nextIndex);
+
+      if (transitionTimerRef.current !== null) {
+        window.clearTimeout(transitionTimerRef.current);
+      }
+      transitionTimerRef.current = window.setTimeout(() => {
+        setOutgoingIndex(null);
+        transitionTimerRef.current = null;
+      }, 1600);
     }, 5000);
-    return () => clearInterval(timer);
-  }, [photos.length]);
+    return () => {
+      window.clearInterval(timer);
+      if (transitionTimerRef.current !== null) {
+        window.clearTimeout(transitionTimerRef.current);
+        transitionTimerRef.current = null;
+      }
+    };
+  }, [photos]);
 
   if (photos.length === 0) {
     return (
@@ -47,24 +72,39 @@ function PhotoCarousel({
   }
 
   return (
-    <div className="relative w-full h-full">
-      {photos.map((photo, i) => (
-        <div
-          key={photo.url}
-          className="absolute inset-0 transition-opacity duration-[1600ms] ease-out"
-          style={{ opacity: i === index ? 1 : 0 }}
-        >
-          <Image
-            src={photo.url}
-            alt="Vincent Guanco"
-            fill
-            unoptimized
-            priority={i === 0}
-            className="object-cover"
-            style={{ filter: "contrast(1.05)" }}
-          />
-        </div>
-      ))}
+    <div className="relative w-full h-full bg-[#cac9bd]">
+      {photos.map((photo, i) => {
+        const nextIndex = (index + 1) % photos.length;
+        const shouldRender =
+          outgoingIndex === null
+            ? i === index || i === nextIndex
+            : i === outgoingIndex || i === index;
+        if (!shouldRender) return null;
+
+        return (
+          <div
+            key={photo.url}
+            className="absolute inset-0 transition-opacity duration-[1600ms] ease-out"
+            style={{
+              opacity: i === index ? 1 : 0,
+              zIndex: i === index ? 1 : 0,
+            }}
+          >
+            <Image
+              src={photo.url}
+              alt="Vincent Guanco"
+              fill
+              quality={60}
+              sizes="(max-width: 767px) 100vw, 50vw"
+              className="object-cover"
+              style={{ filter: "contrast(1.05)" }}
+              onLoad={() => {
+                loadedUrlsRef.current.add(photo.url);
+              }}
+            />
+          </div>
+        );
+      })}
     </div>
   );
 }

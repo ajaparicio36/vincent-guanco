@@ -2,6 +2,7 @@
 
 import {
   useEffect,
+  useRef,
   useState,
   startTransition,
   useCallback,
@@ -40,6 +41,7 @@ interface MediaItemProps {
   readonly layout: MediaLayout;
   readonly type: "photo" | "video";
   readonly displayName: string;
+  readonly imageSizes: string;
 }
 
 function MediaItem({
@@ -47,13 +49,82 @@ function MediaItem({
   layout,
   type,
   displayName,
+  imageSizes,
 }: MediaItemProps): React.ReactElement {
   const [loaded, setLoaded] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoVisible, setVideoVisible] = useState(false);
+  const [autoplayBlocked, setAutoplayBlocked] = useState(false);
   const isFullRow = layout !== "portrait";
   const aspectClass = layout === "landscape" ? "aspect-video" : "aspect-[4/5]";
   const itemClassName = isFullRow
     ? `col-span-2 ${aspectClass}`
     : aspectClass;
+
+  useEffect(() => {
+    if (type !== "video") return;
+
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (typeof IntersectionObserver === "undefined") {
+      const updateVisibility = (): void => {
+        const bounds = video.getBoundingClientRect();
+        setVideoVisible(
+          bounds.bottom > 0 &&
+            bounds.top < window.innerHeight &&
+            bounds.right > 0 &&
+            bounds.left < window.innerWidth,
+        );
+      };
+      const frameId = window.requestAnimationFrame(updateVisibility);
+      window.addEventListener("scroll", updateVisibility, { passive: true });
+      window.addEventListener("resize", updateVisibility, { passive: true });
+
+      return () => {
+        window.cancelAnimationFrame(frameId);
+        window.removeEventListener("scroll", updateVisibility);
+        window.removeEventListener("resize", updateVisibility);
+      };
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setVideoVisible(Boolean(entry?.isIntersecting));
+      },
+      { threshold: 0 },
+    );
+    observer.observe(video);
+
+    return () => observer.disconnect();
+  }, [type]);
+
+  useEffect(() => {
+    if (type !== "video") return;
+
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (!videoVisible) {
+      video.pause();
+      return;
+    }
+
+    let cancelled = false;
+    void video.play().then(
+      () => {
+        if (!cancelled) setAutoplayBlocked(false);
+      },
+      () => {
+        if (!cancelled) setAutoplayBlocked(true);
+      },
+    );
+
+    return () => {
+      cancelled = true;
+      video.pause();
+    };
+  }, [type, videoVisible]);
 
   return (
     <div className={`relative overflow-hidden bg-surface-container-high ${itemClassName}`}>
@@ -65,18 +136,21 @@ function MediaItem({
           src={item.url}
           alt={displayName}
           fill
-          unoptimized
+          quality={60}
+          sizes={imageSizes}
           className={`object-cover transition-opacity duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}
           onLoad={() => setLoaded(true)}
           loading="lazy"
         />
       ) : (
         <video
-          src={item.url}
+          ref={videoRef}
+          src={videoVisible ? item.url : undefined}
           muted
           playsInline
           loop
-          autoPlay
+          preload="none"
+          controls={autoplayBlocked}
           className="w-full h-full object-cover"
           style={{
             objectPosition:
@@ -95,16 +169,56 @@ function CategoryMediaGrid({
   readonly category: MediaCategory;
   readonly isOpen: boolean;
 }): React.ReactElement {
+  const gridRef = useRef<HTMLDivElement>(null);
+  const [hasEnteredViewport, setHasEnteredViewport] = useState(false);
   const { items, loading, error } = useCategoryMedia(
     category.type,
     category.slug,
-    isOpen,
+    isOpen && hasEnteredViewport,
   );
   const [visibleCount, setVisibleCount] = useState(
     category.type === "video" ? PAGE_SIZE_VIDEO : PAGE_SIZE_PHOTO,
   );
 
   // Reset visible count when accordion closes/reopens
+  useEffect(() => {
+    if (!isOpen || hasEnteredViewport) return;
+
+    const grid = gridRef.current;
+    if (!grid) return;
+
+    if (typeof IntersectionObserver === "undefined") {
+      const updateVisibility = (): void => {
+        const bounds = grid.getBoundingClientRect();
+        const isInViewport =
+          bounds.bottom > 0 &&
+          bounds.top < window.innerHeight &&
+          bounds.right > 0 &&
+          bounds.left < window.innerWidth;
+        if (isInViewport) setHasEnteredViewport(true);
+      };
+      const frameId = window.requestAnimationFrame(updateVisibility);
+      window.addEventListener("scroll", updateVisibility, { passive: true });
+      window.addEventListener("resize", updateVisibility, { passive: true });
+
+      return () => {
+        window.cancelAnimationFrame(frameId);
+        window.removeEventListener("scroll", updateVisibility);
+        window.removeEventListener("resize", updateVisibility);
+      };
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) setHasEnteredViewport(true);
+      },
+      { threshold: 0 },
+    );
+    observer.observe(grid);
+
+    return () => observer.disconnect();
+  }, [hasEnteredViewport, isOpen]);
+
   useEffect(() => {
     if (isOpen) {
       startTransition(() => {
@@ -117,9 +231,12 @@ function CategoryMediaGrid({
 
   if (!isOpen) return <></>;
 
-  if (loading) {
+  if (!hasEnteredViewport || loading) {
     return (
-      <div className="grid grid-cols-2 gap-2 md:gap-4 py-6">
+      <div
+        ref={!hasEnteredViewport ? gridRef : undefined}
+        className="grid grid-cols-2 gap-2 md:gap-4 py-6"
+      >
         {Array.from({ length: 4 }).map((_, i) => (
           <div
             key={i}
@@ -151,6 +268,7 @@ function CategoryMediaGrid({
   const isSingleFullRowItem =
     isSingleItem &&
     getMediaLayout(visible[0]?.key ?? "", category.type) !== "portrait";
+  const isSinglePortraitItem = isSingleItem && !isSingleFullRowItem;
 
   return (
     <div className="py-6">
@@ -163,6 +281,12 @@ function CategoryMediaGrid({
       >
         {visible.map((item) => {
           const layout = getMediaLayout(item.key, category.type);
+          const imageSizes =
+            layout !== "portrait"
+              ? "(max-width: 767px) calc(100vw - 4rem), calc(min(100vw, 80rem) - 12rem)"
+              : isSinglePortraitItem
+                ? "(max-width: 511px) calc(100vw - 4rem), 28rem"
+                : "(max-width: 767px) calc((100vw - 4.5rem) / 2), calc((min(100vw, 80rem) - 13rem) / 2)";
 
           return (
             <MediaItem
@@ -171,6 +295,7 @@ function CategoryMediaGrid({
               layout={layout}
               type={category.type}
               displayName={category.displayName}
+              imageSizes={imageSizes}
             />
           );
         })}
