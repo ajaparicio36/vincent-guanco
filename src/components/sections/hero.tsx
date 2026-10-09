@@ -4,6 +4,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
+import { useMediaViewport } from "@/hooks/use-media-viewport";
 
 export interface HeroVideo {
   readonly url: string;
@@ -20,6 +21,7 @@ export function Hero({
   desktopVideos,
   mobileVideos,
 }: HeroProps): React.ReactElement {
+  const { ref: heroRef, isVisible: heroVisible } = useMediaViewport<HTMLElement>();
   const [sourceKind, setSourceKind] = useState<"mobile" | "desktop" | null>(null);
   const videos = useMemo(
     () =>
@@ -91,6 +93,12 @@ export function Hero({
     if (activeIndex === null || videos.length === 0) return;
     const activeVideo = activeVideoRef.current;
     if (!activeVideo) return;
+    if (!heroVisible) {
+      activeVideo.pause();
+      emblaApi?.plugins().autoplay.stop();
+      return;
+    }
+    activeVideo.muted = true;
 
     let cancelled = false;
     void activeVideo.play().then(
@@ -113,7 +121,7 @@ export function Hero({
       cancelled = true;
       activeVideo.pause();
     };
-  }, [activeIndex, emblaApi, videos]);
+  }, [activeIndex, emblaApi, videos, heroVisible]);
 
   const handlePlaying = useCallback(
     (index: number, video: HTMLVideoElement): void => {
@@ -121,6 +129,7 @@ export function Hero({
         index !== activeIndex ||
         activeIndexRef.current !== index ||
         activeVideoRef.current !== video ||
+        !heroVisible ||
         playRejected
       ) {
         return;
@@ -130,7 +139,7 @@ export function Hero({
       if (autoplay && !autoplay.isPlaying()) autoplay.play();
       setWarmedIndex((index + 1) % videos.length);
     },
-    [activeIndex, emblaApi, playRejected, videos.length],
+    [activeIndex, emblaApi, playRejected, videos.length, heroVisible],
   );
 
   const handlePlayClick = useCallback((): void => {
@@ -138,6 +147,8 @@ export function Hero({
     const requestedIndex = activeIndex;
     if (!activeVideo || requestedIndex === null) return;
     emblaApi?.plugins().autoplay.stop();
+    if (activeVideo.error) activeVideo.load();
+    activeVideo.muted = true;
 
     const isStillActive = (): boolean =>
       activeVideoRef.current === activeVideo &&
@@ -163,6 +174,7 @@ export function Hero({
   return (
     <section
       id="hero"
+      ref={heroRef}
       className="relative h-screen supports-[height:100dvh]:h-[100dvh] w-full overflow-hidden"
     >
       {/* Video carousel or fallback */}
@@ -183,7 +195,7 @@ export function Hero({
                       ref={isActive ? activeVideoRef : undefined}
                       src={video.url}
                       poster={video.posterUrl}
-                      autoPlay={isActive}
+                      autoPlay={isActive && heroVisible}
                       muted
                       loop
                       playsInline
@@ -191,6 +203,7 @@ export function Hero({
                       onPlaying={(event) =>
                         handlePlaying(index, event.currentTarget)
                       }
+                      onError={() => { if (isActive) setPlayRejected(true); }}
                       className="relative z-10 w-full h-full object-cover"
                       style={{ objectPosition: "center center" }}
                     />

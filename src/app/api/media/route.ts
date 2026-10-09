@@ -46,10 +46,11 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     : items;
 
   return NextResponse.json(
-    { items: visibleItems.map(({ key, url }) => ({ key, url })) },
+    { items: visibleItems.map(({ key, url, mobileUrl, posterUrl }) => ({ key, url, mobileUrl, posterUrl })) },
     {
       headers: {
-        "Cache-Control": "public, max-age=31536000, immutable",
+        // Listings change as media is added; only versioned media files are immutable.
+        "Cache-Control": "public, max-age=60, s-maxage=300, stale-while-revalidate=60",
       },
     },
   );

@@ -2,12 +2,14 @@
 
 import {
   useEffect,
-  useRef,
   useState,
   startTransition,
   useCallback,
 } from "react";
 import Image from "next/image";
+import { ScrollVideo } from "@/components/scroll-video";
+import { useMediaViewport } from "@/hooks/use-media-viewport";
+import type { MediaSources } from "@/lib/video-assets";
 import {
   Accordion,
   AccordionItem,
@@ -37,126 +39,38 @@ function getMediaLayout(key: string, type: "photo" | "video"): MediaLayout {
 }
 
 interface MediaItemProps {
-  readonly item: { readonly key: string; readonly url: string };
+  readonly item: MediaSources & { readonly key: string };
   readonly layout: MediaLayout;
   readonly type: "photo" | "video";
   readonly displayName: string;
   readonly imageSizes: string;
 }
 
-function MediaItem({
-  item,
-  layout,
-  type,
-  displayName,
-  imageSizes,
-}: MediaItemProps): React.ReactElement {
+function CollectionPhoto({ item, displayName, imageSizes }: Pick<MediaItemProps, "item" | "displayName" | "imageSizes">): React.ReactElement {
+  const { ref, hasApproached } = useMediaViewport<HTMLDivElement>();
   const [loaded, setLoaded] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [videoVisible, setVideoVisible] = useState(false);
-  const [autoplayBlocked, setAutoplayBlocked] = useState(false);
-  const isFullRow = layout !== "portrait";
+  return (
+    <div ref={ref} className="relative w-full h-full">
+      {!loaded && <div className="absolute inset-0 animate-pulse bg-surface-container-high" />}
+      {hasApproached ? (
+        <Image src={item.url} alt={displayName} fill quality={60} sizes={imageSizes}
+          className={`object-cover transition-opacity duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}
+          onLoad={() => setLoaded(true)} loading="lazy" />
+      ) : null}
+    </div>
+  );
+}
+
+function MediaItem({ item, layout, type, displayName, imageSizes }: MediaItemProps): React.ReactElement {
   const aspectClass = layout === "landscape" ? "aspect-video" : "aspect-[4/5]";
-  const itemClassName = isFullRow
-    ? `col-span-2 ${aspectClass}`
-    : aspectClass;
-
-  useEffect(() => {
-    if (type !== "video") return;
-
-    const video = videoRef.current;
-    if (!video) return;
-
-    if (typeof IntersectionObserver === "undefined") {
-      const updateVisibility = (): void => {
-        const bounds = video.getBoundingClientRect();
-        setVideoVisible(
-          bounds.bottom > 0 &&
-            bounds.top < window.innerHeight &&
-            bounds.right > 0 &&
-            bounds.left < window.innerWidth,
-        );
-      };
-      const frameId = window.requestAnimationFrame(updateVisibility);
-      window.addEventListener("scroll", updateVisibility, { passive: true });
-      window.addEventListener("resize", updateVisibility, { passive: true });
-
-      return () => {
-        window.cancelAnimationFrame(frameId);
-        window.removeEventListener("scroll", updateVisibility);
-        window.removeEventListener("resize", updateVisibility);
-      };
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setVideoVisible(Boolean(entry?.isIntersecting));
-      },
-      { threshold: 0 },
-    );
-    observer.observe(video);
-
-    return () => observer.disconnect();
-  }, [type]);
-
-  useEffect(() => {
-    if (type !== "video") return;
-
-    const video = videoRef.current;
-    if (!video) return;
-
-    if (!videoVisible) {
-      video.pause();
-      return;
-    }
-
-    let cancelled = false;
-    void video.play().then(
-      () => {
-        if (!cancelled) setAutoplayBlocked(false);
-      },
-      () => {
-        if (!cancelled) setAutoplayBlocked(true);
-      },
-    );
-
-    return () => {
-      cancelled = true;
-      video.pause();
-    };
-  }, [type, videoVisible]);
-
+  const itemClassName = layout !== "portrait" ? `col-span-2 ${aspectClass}` : aspectClass;
   return (
     <div className={`relative overflow-hidden bg-surface-container-high ${itemClassName}`}>
-      {!loaded && type === "photo" && (
-        <div className="absolute inset-0 animate-pulse bg-surface-container-high" />
-      )}
       {type === "photo" ? (
-        <Image
-          src={item.url}
-          alt={displayName}
-          fill
-          quality={60}
-          sizes={imageSizes}
-          className={`object-cover transition-opacity duration-500 ${loaded ? "opacity-100" : "opacity-0"}`}
-          onLoad={() => setLoaded(true)}
-          loading="lazy"
-        />
+        <CollectionPhoto item={item} displayName={displayName} imageSizes={imageSizes} />
       ) : (
-        <video
-          ref={videoRef}
-          src={videoVisible ? item.url : undefined}
-          muted
-          playsInline
-          loop
-          preload="none"
-          controls={autoplayBlocked}
-          className="w-full h-full object-cover"
-          style={{
-            objectPosition:
-              layout === "landscape" ? "center center" : "center 25%",
-          }}
-        />
+        <ScrollVideo url={item.url} mobileUrl={item.mobileUrl} posterUrl={item.posterUrl} label={displayName} loop className="w-full h-full object-cover"
+          style={{ objectPosition: layout === "landscape" ? "center center" : "center 25%" }} />
       )}
     </div>
   );
@@ -169,55 +83,15 @@ function CategoryMediaGrid({
   readonly category: MediaCategory;
   readonly isOpen: boolean;
 }): React.ReactElement {
-  const gridRef = useRef<HTMLDivElement>(null);
-  const [hasEnteredViewport, setHasEnteredViewport] = useState(false);
+  const { ref: gridRef, hasApproached } = useMediaViewport<HTMLDivElement>(isOpen);
   const { items, loading, error } = useCategoryMedia(
     category.type,
     category.slug,
-    isOpen && hasEnteredViewport,
+    isOpen && hasApproached,
   );
   const [visibleCount, setVisibleCount] = useState(
     category.type === "video" ? PAGE_SIZE_VIDEO : PAGE_SIZE_PHOTO,
   );
-
-  // Reset visible count when accordion closes/reopens
-  useEffect(() => {
-    if (!isOpen || hasEnteredViewport) return;
-
-    const grid = gridRef.current;
-    if (!grid) return;
-
-    if (typeof IntersectionObserver === "undefined") {
-      const updateVisibility = (): void => {
-        const bounds = grid.getBoundingClientRect();
-        const isInViewport =
-          bounds.bottom > 0 &&
-          bounds.top < window.innerHeight &&
-          bounds.right > 0 &&
-          bounds.left < window.innerWidth;
-        if (isInViewport) setHasEnteredViewport(true);
-      };
-      const frameId = window.requestAnimationFrame(updateVisibility);
-      window.addEventListener("scroll", updateVisibility, { passive: true });
-      window.addEventListener("resize", updateVisibility, { passive: true });
-
-      return () => {
-        window.cancelAnimationFrame(frameId);
-        window.removeEventListener("scroll", updateVisibility);
-        window.removeEventListener("resize", updateVisibility);
-      };
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry?.isIntersecting) setHasEnteredViewport(true);
-      },
-      { threshold: 0 },
-    );
-    observer.observe(grid);
-
-    return () => observer.disconnect();
-  }, [hasEnteredViewport, isOpen]);
 
   useEffect(() => {
     if (isOpen) {
@@ -231,10 +105,10 @@ function CategoryMediaGrid({
 
   if (!isOpen) return <></>;
 
-  if (!hasEnteredViewport || loading) {
+  if (!hasApproached || loading) {
     return (
       <div
-        ref={!hasEnteredViewport ? gridRef : undefined}
+        ref={gridRef}
         className="grid grid-cols-2 gap-2 md:gap-4 py-6"
       >
         {Array.from({ length: 4 }).map((_, i) => (

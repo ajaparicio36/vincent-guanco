@@ -5,6 +5,7 @@ import {
   ListObjectsV2Command,
   type _Object,
 } from "@aws-sdk/client-s3";
+import { getMediaSources, type MediaSources } from "@/lib/video-assets";
 
 function getEnvVar(name: string): string {
   const value = process.env[name];
@@ -30,9 +31,8 @@ function getClient(): S3Client {
   return _client;
 }
 
-export interface MediaItem {
+export interface MediaItem extends MediaSources {
   readonly key: string;
-  readonly url: string;
   readonly lastModified: Date | undefined;
 }
 
@@ -69,7 +69,7 @@ export async function listMediaInFolder(
     .filter((obj: _Object) => obj.Key && obj.Key !== prefix)
     .map((obj: _Object) => ({
       key: obj.Key!,
-      url: getPublicUrl(obj.Key!),
+      ...getMediaSources(obj.Key!, getEnvVar("R2_PUBLIC_URL")),
       lastModified: obj.LastModified,
     }))
     .sort(byLeadingNumber);

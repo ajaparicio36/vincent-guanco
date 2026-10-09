@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef, startTransition } from 'react';
+import type { MediaSources } from '@/lib/video-assets';
 
-interface MediaEntry {
+interface MediaEntry extends MediaSources {
   readonly key: string;
-  readonly url: string;
 }
 
 interface UseCategoryMediaResult {
@@ -45,7 +45,8 @@ export function useCategoryMedia(
       setError(null);
     });
 
-    fetch(`/api/media?type=${type}&category=${slug}`, {
+    // A new URL avoids the previous one-year immutable browser cache on listings.
+    fetch(`/api/media?type=${type}&category=${slug}&v=2026-10-09`, {
       signal: controller.signal,
     })
       .then(async (res) => {

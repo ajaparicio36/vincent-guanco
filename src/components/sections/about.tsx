@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
+import { useMediaViewport } from "@/hooks/use-media-viewport";
 
 export interface AboutPhoto {
   readonly url: string;
@@ -20,8 +21,10 @@ const EMAIL = "vincentguancostaes@gmail.com";
 
 function PhotoCarousel({
   photos,
+  active,
 }: {
   readonly photos: readonly AboutPhoto[];
+  readonly active: boolean;
 }): React.ReactElement {
   const [index, setIndex] = useState(0);
   const [outgoingIndex, setOutgoingIndex] = useState<number | null>(null);
@@ -30,7 +33,7 @@ function PhotoCarousel({
   const loadedUrlsRef = useRef(new Set<string>());
 
   useEffect(() => {
-    if (photos.length <= 1) return;
+    if (!active || photos.length <= 1) return;
     const timer = window.setInterval(() => {
       const currentIndex = currentIndexRef.current;
       const nextIndex = (currentIndex + 1) % photos.length;
@@ -56,7 +59,7 @@ function PhotoCarousel({
         transitionTimerRef.current = null;
       }
     };
-  }, [photos]);
+  }, [photos, active]);
 
   if (photos.length === 0) {
     return (
@@ -110,7 +113,7 @@ function PhotoCarousel({
 }
 
 export function About({ photos }: AboutProps): React.ReactElement {
-  const ref = useRef<HTMLElement>(null);
+  const { ref, hasApproached, isVisible } = useMediaViewport<HTMLElement>();
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
@@ -126,7 +129,7 @@ export function About({ photos }: AboutProps): React.ReactElement {
         transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
         className="w-full md:w-1/2 h-[480px] md:h-screen md:sticky md:top-0 overflow-hidden"
       >
-        <PhotoCarousel photos={photos} />
+        {hasApproached ? <PhotoCarousel photos={photos} active={isVisible} /> : null}
       </motion.div>
 
       {/* Right: Content */}

@@ -6,6 +6,7 @@ import { About, type AboutPhoto } from "@/components/sections/about";
 import { Footer } from "@/components/sections/footer";
 import { NavigationProvider } from "@/contexts/navigation-context";
 import { getPublicUrl, listMediaInFolder } from "@/lib/r2";
+import { getMediaSources } from "@/lib/video-assets";
 import {
   THUMBNAILS_PREFIX,
   MILLION_VIEWS_PREFIX,
@@ -26,8 +27,9 @@ async function getHeroSources(): Promise<HeroSources> {
     mobile = MOBILE_HERO_FILE_NUMBERS.map((number) => {
       const basename = String(number);
       const prefix = `HERO_MOBILE/2026-09-28/${basename}`;
+      const sources = getMediaSources(`${prefix}.mp4`, getPublicUrl(""));
       return {
-        url: getPublicUrl(`${prefix}.mp4`),
+        url: sources.mobileUrl ?? sources.url,
         posterUrl: getPublicUrl(`${prefix}.jpg`),
         displayName: "Cannes",
       };
@@ -60,7 +62,7 @@ async function getHeroSources(): Promise<HeroSources> {
 async function getViralVideos(): Promise<readonly ViralVideo[]> {
   try {
     const items = await listMediaInFolder(MILLION_VIEWS_PREFIX);
-    return items.map((item) => ({ url: item.url, key: item.key }));
+    return items.map(({ key, url, mobileUrl, posterUrl }) => ({ key, url, mobileUrl, posterUrl }));
   } catch {
     return [];
   }

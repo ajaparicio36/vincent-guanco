@@ -2,16 +2,15 @@
 
 import {
   useCallback,
-  useEffect,
   useRef,
   useState,
-  type RefObject,
 } from "react";
 import { motion, useInView } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { ScrollVideo } from "@/components/scroll-video";
+import type { MediaSources } from "@/lib/video-assets";
 
-export interface ViralVideo {
-  readonly url: string;
+export interface ViralVideo extends MediaSources {
   readonly key: string;
 }
 
@@ -25,7 +24,6 @@ interface TileProps {
   readonly video: ViralVideo;
   readonly position: SlotPosition;
   readonly isActive: boolean;
-  readonly videoRef: RefObject<HTMLVideoElement | null>;
   readonly onEnded: () => void;
 }
 
@@ -39,25 +37,11 @@ function Tile({
   video,
   position,
   isActive,
-  videoRef,
   onEnded,
 }: TileProps): React.ReactElement {
   const containerRef = useRef<HTMLDivElement>(null);
   const inView = useInView(containerRef, { once: true, margin: "-80px" });
   const isMobile = useIsMobile();
-
-  useEffect(() => {
-    const el = videoRef.current;
-    if (!el) return;
-    if (isActive) {
-      el.currentTime = 0;
-      void el.play().catch(() => {
-        /* autoplay blocked — first frame will still show */
-      });
-    } else {
-      el.pause();
-    }
-  }, [isActive, videoRef]);
 
   return (
     <motion.div
@@ -70,12 +54,12 @@ function Tile({
         ref={containerRef}
         className="relative aspect-[9/16] bg-surface-container-high overflow-hidden w-full md:w-auto md:h-[32vh] md:max-h-[420px]"
       >
-        <video
-          ref={videoRef}
-          src={video.url}
-          muted
-          playsInline
-          preload="metadata"
+        <ScrollVideo
+          url={video.url}
+          mobileUrl={video.mobileUrl}
+          posterUrl={video.posterUrl}
+          label="Signature video"
+          active={isActive}
           onEnded={onEnded}
           className="w-full h-full object-cover"
         />
@@ -87,9 +71,6 @@ function Tile({
 export function ViralViews({ videos }: ViralViewsProps): React.ReactElement {
   // Play order is fixed: video[0] first (middle), then video[1] (top),
   // then video[2] (bottom). Each freezes on last frame (no loop).
-  const middleRef = useRef<HTMLVideoElement | null>(null);
-  const topRef = useRef<HTMLVideoElement | null>(null);
-  const bottomRef = useRef<HTMLVideoElement | null>(null);
 
   const sectionRef = useRef<HTMLElement>(null);
   const sectionInView = useInView(sectionRef, {
@@ -167,7 +148,6 @@ export function ViralViews({ videos }: ViralViewsProps): React.ReactElement {
               video={top}
               position="top"
               isActive={playIndex === 1}
-              videoRef={topRef}
               onEnded={() => handleEnded(1)}
             />
           ) : null}
@@ -176,7 +156,6 @@ export function ViralViews({ videos }: ViralViewsProps): React.ReactElement {
               video={middle}
               position="middle"
               isActive={playIndex === 0}
-              videoRef={middleRef}
               onEnded={() => handleEnded(0)}
             />
           ) : null}
@@ -185,7 +164,6 @@ export function ViralViews({ videos }: ViralViewsProps): React.ReactElement {
               video={bottom}
               position="bottom"
               isActive={playIndex === 2}
-              videoRef={bottomRef}
               onEnded={() => handleEnded(2)}
             />
           ) : null}

@@ -1,0 +1,514 @@
+{
+  "1_VIDEOS/12_VETEMENTS/1_16_9.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/6b37d1ee610d09e4f033/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/6b37d1ee610d09e4f033/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/6b37d1ee610d09e4f033/poster.jpg",
+    "sourceEtag": "935684d1ea528482aed1c1702b030f8c",
+    "sourceBytes": 30154206,
+    "mobileBytes": 12017826
+  },
+  "1_VIDEOS/5_FASHION_WEEK/10.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/8b7a77ef8129211fb06a/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/8b7a77ef8129211fb06a/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/8b7a77ef8129211fb06a/poster.jpg",
+    "sourceEtag": "77eb496080778ecf843ed61da74980dc",
+    "sourceBytes": 9207715,
+    "mobileBytes": 3485877
+  },
+  "1_VIDEOS/5_FASHION_WEEK/11.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/8bd92ff42ae97a238d79/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/8bd92ff42ae97a238d79/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/8bd92ff42ae97a238d79/poster.jpg",
+    "sourceEtag": "c57aa17bebc0ff2b8b23ba5493f2d877",
+    "sourceBytes": 11100354,
+    "mobileBytes": 4319582
+  },
+  "1_VIDEOS/5_FASHION_WEEK/1_16_9.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/9ca154a14990042db6d6/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/9ca154a14990042db6d6/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/9ca154a14990042db6d6/poster.jpg",
+    "sourceEtag": "55c1475b69efbb7d6e740490609f5ada",
+    "sourceBytes": 12126728,
+    "mobileBytes": 4946233
+  },
+  "1_VIDEOS/5_FASHION_WEEK/2_FULL.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/f29b5dc08c8607324985/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/f29b5dc08c8607324985/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/f29b5dc08c8607324985/poster.jpg",
+    "sourceEtag": "72b1d42632d8741451ea7abc78a6f2eb",
+    "sourceBytes": 15304657,
+    "mobileBytes": 6536483
+  },
+  "1_VIDEOS/5_FASHION_WEEK/3.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/e440ebda1ac50b9b0780/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/e440ebda1ac50b9b0780/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/e440ebda1ac50b9b0780/poster.jpg",
+    "sourceEtag": "032e77e1bd0fb1b04d51bc45a4eabfb3",
+    "sourceBytes": 12306148,
+    "mobileBytes": 4905887
+  },
+  "1_VIDEOS/5_FASHION_WEEK/4.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/8f23159eb6e0b8200157/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/8f23159eb6e0b8200157/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/8f23159eb6e0b8200157/poster.jpg",
+    "sourceEtag": "a9a8ca30ecd32c4940504f3284d1e430",
+    "sourceBytes": 19598676,
+    "mobileBytes": 5461636
+  },
+  "1_VIDEOS/5_FASHION_WEEK/5.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/da5e14fa073f92a030c8/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/da5e14fa073f92a030c8/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/da5e14fa073f92a030c8/poster.jpg",
+    "sourceEtag": "c4df557a463f39398df84c14933ef952",
+    "sourceBytes": 14299141,
+    "mobileBytes": 5570704
+  },
+  "1_VIDEOS/5_FASHION_WEEK/6.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/41523294b4d2f99768b9/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/41523294b4d2f99768b9/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/41523294b4d2f99768b9/poster.jpg",
+    "sourceEtag": "3822edff9491443fc757284eb808bba1",
+    "sourceBytes": 11493740,
+    "mobileBytes": 4582919
+  },
+  "1_VIDEOS/5_FASHION_WEEK/7.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/febc04e109958a25b142/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/febc04e109958a25b142/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/febc04e109958a25b142/poster.jpg",
+    "sourceEtag": "61cc0a0c830a6eb2ce65adcd64bfcf55",
+    "sourceBytes": 10300272,
+    "mobileBytes": 3810282
+  },
+  "1_VIDEOS/5_FASHION_WEEK/9.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/61a863875f1f426f95e5/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/61a863875f1f426f95e5/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/61a863875f1f426f95e5/poster.jpg",
+    "sourceEtag": "cce27120609c76935ae8f75932531ec1",
+    "sourceBytes": 9141400,
+    "mobileBytes": 3259508
+  },
+  "1_VIDEOS/11_AMIRI/2_FULL.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/dbabc109fe4483072014/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/dbabc109fe4483072014/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/dbabc109fe4483072014/poster.jpg",
+    "sourceEtag": "c0bc3a4d494a4eb9043ad1aca4139b19",
+    "sourceBytes": 24285885,
+    "mobileBytes": 9939405
+  },
+  "1_VIDEOS/6_STREETSTYLE/1_16_9.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/3108fd6714dece8cd5ad/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/3108fd6714dece8cd5ad/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/3108fd6714dece8cd5ad/poster.jpg",
+    "sourceEtag": "a4248c5f334c4df2c7dabc14a4ccf8bf",
+    "sourceBytes": 5869268,
+    "mobileBytes": 2253449
+  },
+  "1_VIDEOS/6_STREETSTYLE/2.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/40f4f40c7361603aeb9e/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/40f4f40c7361603aeb9e/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/40f4f40c7361603aeb9e/poster.jpg",
+    "sourceEtag": "e0982ff531bd041b231574915689c9ae",
+    "sourceBytes": 13265371,
+    "mobileBytes": 5265086
+  },
+  "1_VIDEOS/6_STREETSTYLE/3.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/d07568a3f5532715be70/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/d07568a3f5532715be70/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/d07568a3f5532715be70/poster.jpg",
+    "sourceEtag": "0db5414ebb628cc440eb22965b289cd1",
+    "sourceBytes": 13438926,
+    "mobileBytes": 4872446
+  },
+  "1_VIDEOS/6_STREETSTYLE/4_16_9.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/a29de9e42f5b2ae2825c/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/a29de9e42f5b2ae2825c/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/a29de9e42f5b2ae2825c/poster.jpg",
+    "sourceEtag": "f42bd92202b1f1a0f88c1281352d7e7d",
+    "sourceBytes": 4566889,
+    "mobileBytes": 1786661
+  },
+  "1_VIDEOS/6_STREETSTYLE/5.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/acf1db7f72a5c4e4d86e/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/acf1db7f72a5c4e4d86e/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/acf1db7f72a5c4e4d86e/poster.jpg",
+    "sourceEtag": "84a1f2a49537f10feac0be13d4bd0abc",
+    "sourceBytes": 6695139,
+    "mobileBytes": 2665653
+  },
+  "1_VIDEOS/6_STREETSTYLE/6.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/e9c2bb9edaff75fb312e/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/e9c2bb9edaff75fb312e/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/e9c2bb9edaff75fb312e/poster.jpg",
+    "sourceEtag": "ea61aa74b4d892de1b0ca4da122f67c6",
+    "sourceBytes": 13708019,
+    "mobileBytes": 5249906
+  },
+  "1_VIDEOS/6_STREETSTYLE/7_16_9.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/00c975cf138adb697b91/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/00c975cf138adb697b91/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/00c975cf138adb697b91/poster.jpg",
+    "sourceEtag": "3b36650c036614c482bfa92952d3a92f",
+    "sourceBytes": 9342895,
+    "mobileBytes": 3487723
+  },
+  "1_VIDEOS/0_AMFAR/2.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/4f9dae812af325c24a83/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/4f9dae812af325c24a83/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/4f9dae812af325c24a83/poster.jpg",
+    "sourceEtag": "1efd3043df9bea595b7269e2f13233b0",
+    "sourceBytes": 9893933,
+    "mobileBytes": 4147970
+  },
+  "1_VIDEOS/0_AMFAR/3.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/cae39eb03cefe97c265f/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/cae39eb03cefe97c265f/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/cae39eb03cefe97c265f/poster.jpg",
+    "sourceEtag": "26ab4104bd124efdf7d6420a2188913d",
+    "sourceBytes": 6676751,
+    "mobileBytes": 2655996
+  },
+  "1_VIDEOS/0_AMFAR/4.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/9ff7253e78e3d20066c9/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/9ff7253e78e3d20066c9/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/9ff7253e78e3d20066c9/poster.jpg",
+    "sourceEtag": "7c0aa5e61880b0482575f3d64745521d",
+    "sourceBytes": 9152813,
+    "mobileBytes": 3524237
+  },
+  "1_VIDEOS/4_CANNES/1.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/3bba6d8094ffe794c5fd/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/3bba6d8094ffe794c5fd/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/3bba6d8094ffe794c5fd/poster.jpg",
+    "sourceEtag": "9e0feb762294f2c68c214b308e1b4226",
+    "sourceBytes": 13870954,
+    "mobileBytes": 5534819
+  },
+  "1_VIDEOS/4_CANNES/10.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/730b7acbda4d52453187/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/730b7acbda4d52453187/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/730b7acbda4d52453187/poster.jpg",
+    "sourceEtag": "7d09baec08ce127e4d0ea3f05040ddb7",
+    "sourceBytes": 19628314,
+    "mobileBytes": 7647347
+  },
+  "1_VIDEOS/4_CANNES/11.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/977d0884f45069ce242a/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/977d0884f45069ce242a/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/977d0884f45069ce242a/poster.jpg",
+    "sourceEtag": "b06d446b8aa4642b9938d0e734244b09",
+    "sourceBytes": 17547427,
+    "mobileBytes": 6384004
+  },
+  "1_VIDEOS/4_CANNES/12.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/93b19db29ff65be5e69d/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/93b19db29ff65be5e69d/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/93b19db29ff65be5e69d/poster.jpg",
+    "sourceEtag": "86df692fe1a8d4edf740766fa1e41e67",
+    "sourceBytes": 12558039,
+    "mobileBytes": 4369190
+  },
+  "1_VIDEOS/4_CANNES/2.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/bf2c998b61a0b9fbeff9/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/bf2c998b61a0b9fbeff9/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/bf2c998b61a0b9fbeff9/poster.jpg",
+    "sourceEtag": "2b6a24d370d73f270701b48b139a6d62",
+    "sourceBytes": 18746671,
+    "mobileBytes": 7638800
+  },
+  "1_VIDEOS/4_CANNES/3.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/e84ba350eff3e0f23cc4/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/e84ba350eff3e0f23cc4/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/e84ba350eff3e0f23cc4/poster.jpg",
+    "sourceEtag": "a3729251caa555e73650ef0e11b5b45d",
+    "sourceBytes": 11322570,
+    "mobileBytes": 4179457
+  },
+  "1_VIDEOS/4_CANNES/4.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/97e7d05daeea91686e4e/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/97e7d05daeea91686e4e/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/97e7d05daeea91686e4e/poster.jpg",
+    "sourceEtag": "4509556675012d60088ebde2e3524f28",
+    "sourceBytes": 8210058,
+    "mobileBytes": 2851344
+  },
+  "1_VIDEOS/4_CANNES/5.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/4fec3b241f4382d2e54d/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/4fec3b241f4382d2e54d/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/4fec3b241f4382d2e54d/poster.jpg",
+    "sourceEtag": "bc84d28ad90f1e68a291af0cb4cd2732",
+    "sourceBytes": 13618766,
+    "mobileBytes": 5392091
+  },
+  "1_VIDEOS/4_CANNES/6.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/ec2c1df27bcba4b8c523/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/ec2c1df27bcba4b8c523/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/ec2c1df27bcba4b8c523/poster.jpg",
+    "sourceEtag": "f4427b176888b24160addc18f06211a0",
+    "sourceBytes": 9445152,
+    "mobileBytes": 3618081
+  },
+  "1_VIDEOS/4_CANNES/7.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/0cbfa65725bb7d5f53f6/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/0cbfa65725bb7d5f53f6/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/0cbfa65725bb7d5f53f6/poster.jpg",
+    "sourceEtag": "6aada9f9faccd56d75d029ff38b902a8",
+    "sourceBytes": 16812269,
+    "mobileBytes": 6150771
+  },
+  "1_VIDEOS/4_CANNES/8.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/54fb44a15c838e919e2b/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/54fb44a15c838e919e2b/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/54fb44a15c838e919e2b/poster.jpg",
+    "sourceEtag": "b99977d9e9c54021887ba6021bffb997",
+    "sourceBytes": 6616591,
+    "mobileBytes": 2721958
+  },
+  "1_VIDEOS/4_CANNES/9.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/a24b2b732acef7e0e523/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/a24b2b732acef7e0e523/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/a24b2b732acef7e0e523/poster.jpg",
+    "sourceEtag": "037538b2705d8cd4fe0e008bfab06ca0",
+    "sourceBytes": 15069827,
+    "mobileBytes": 5749487
+  },
+  "1_VIDEOS/7_BRANDS/1_THOMAS.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/6317c3fecdb1535f6da5/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/6317c3fecdb1535f6da5/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/6317c3fecdb1535f6da5/poster.jpg",
+    "sourceEtag": "bc7c2a93525c12e22d96c2454c35145e",
+    "sourceBytes": 11028867,
+    "mobileBytes": 4644351
+  },
+  "1_VIDEOS/7_BRANDS/3_PELAYO.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/d8b5fb226ad34d0e9433/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/d8b5fb226ad34d0e9433/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/d8b5fb226ad34d0e9433/poster.jpg",
+    "sourceEtag": "416efff1e58f459ed4b89a0aab8ee7b4",
+    "sourceBytes": 12557636,
+    "mobileBytes": 4751960
+  },
+  "1_VIDEOS/7_BRANDS/4_SARA_16_9.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/8a4edcbf1bf90fd5ef4c/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/8a4edcbf1bf90fd5ef4c/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/8a4edcbf1bf90fd5ef4c/poster.jpg",
+    "sourceEtag": "f21a7b86e7ece705ad3a3a7d60bb244c",
+    "sourceBytes": 22828123,
+    "mobileBytes": 7961975
+  },
+  "1_VIDEOS/8_ZUHAIR_MURAD/1.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/2a43479b1f8a0f98f4e8/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/2a43479b1f8a0f98f4e8/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/2a43479b1f8a0f98f4e8/poster.jpg",
+    "sourceEtag": "9579d6c3bf88124f52aa09a9f66f7209",
+    "sourceBytes": 23151477,
+    "mobileBytes": 9441452
+  },
+  "1_VIDEOS/8_ZUHAIR_MURAD/10.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/ae1a90b25e23bc27d0cd/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/ae1a90b25e23bc27d0cd/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/ae1a90b25e23bc27d0cd/poster.jpg",
+    "sourceEtag": "31f96f1943756967bab853fb87a4318a",
+    "sourceBytes": 28777843,
+    "mobileBytes": 11290760
+  },
+  "1_VIDEOS/8_ZUHAIR_MURAD/11.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/f8061e26c251ec1d7254/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/f8061e26c251ec1d7254/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/f8061e26c251ec1d7254/poster.jpg",
+    "sourceEtag": "26902d9c7c20c1aa0812ccd7b56665c3",
+    "sourceBytes": 52099440,
+    "mobileBytes": 17103380
+  },
+  "1_VIDEOS/8_ZUHAIR_MURAD/2.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/1985bf6da49dc158c256/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/1985bf6da49dc158c256/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/1985bf6da49dc158c256/poster.jpg",
+    "sourceEtag": "ffe16a75ac786a35c1ca582bd4fbb748",
+    "sourceBytes": 51210181,
+    "mobileBytes": 14846574
+  },
+  "1_VIDEOS/8_ZUHAIR_MURAD/3.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/b1b6e840fc44d10dade6/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/b1b6e840fc44d10dade6/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/b1b6e840fc44d10dade6/poster.jpg",
+    "sourceEtag": "41822a18ba2e76d04bd334cd0475aaee",
+    "sourceBytes": 43513598,
+    "mobileBytes": 16439271
+  },
+  "1_VIDEOS/8_ZUHAIR_MURAD/ZUHAIR_MURAD.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/a8155104895417d770d7/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/a8155104895417d770d7/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/a8155104895417d770d7/poster.jpg",
+    "sourceEtag": "6f73d9830ed80342c7e23994ebfdcc93",
+    "sourceBytes": 19435653,
+    "mobileBytes": 8067825
+  },
+  "1_VIDEOS/9_GEORGES_HOBEIKA/1.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/449e9527578ea3f12a11/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/449e9527578ea3f12a11/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/449e9527578ea3f12a11/poster.jpg",
+    "sourceEtag": "1d4bbb73badf5e03ef34781dda553f81",
+    "sourceBytes": 27245716,
+    "mobileBytes": 11553314
+  },
+  "1_VIDEOS/9_GEORGES_HOBEIKA/2.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/d94ec4458efa309df861/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/d94ec4458efa309df861/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/d94ec4458efa309df861/poster.jpg",
+    "sourceEtag": "646833d0ac1affdb8898126865c8c6ce",
+    "sourceBytes": 13601573,
+    "mobileBytes": 5697848
+  },
+  "1_VIDEOS/10_BALMAIN/1.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/d0eae8e1fcdbfbd9ad46/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/d0eae8e1fcdbfbd9ad46/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/d0eae8e1fcdbfbd9ad46/poster.jpg",
+    "sourceEtag": "cc95a08850732aecf34f1eba088153c9",
+    "sourceBytes": 2581241,
+    "mobileBytes": 1067057
+  },
+  "1_VIDEOS/10_BALMAIN/2.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/6532c8a3507267e53ea8/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/6532c8a3507267e53ea8/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/6532c8a3507267e53ea8/poster.jpg",
+    "sourceEtag": "6b658706594dd4735e3dba54a854d77b",
+    "sourceBytes": 1375483,
+    "mobileBytes": 557999
+  },
+  "THUMBNAILS/1.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/e1740e0800034f668ccf/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/e1740e0800034f668ccf/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/e1740e0800034f668ccf/poster.jpg",
+    "sourceEtag": "f42bd92202b1f1a0f88c1281352d7e7d",
+    "sourceBytes": 4566889,
+    "mobileBytes": 1786661
+  },
+  "THUMBNAILS/2.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/a43b8b673bf4d92cccbb/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/a43b8b673bf4d92cccbb/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/a43b8b673bf4d92cccbb/poster.jpg",
+    "sourceEtag": "2f56fa597b2759995085512863fc640e",
+    "sourceBytes": 7726461,
+    "mobileBytes": 2988317
+  },
+  "THUMBNAILS/3.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/2029fc98aaaf0f2506c7/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/2029fc98aaaf0f2506c7/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/2029fc98aaaf0f2506c7/poster.jpg",
+    "sourceEtag": "23880a474dd9bcc9f3321b653111c5bc",
+    "sourceBytes": 5869278,
+    "mobileBytes": 2253459
+  },
+  "THUMBNAILS/4.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/22c712ecce1b6478e407/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/22c712ecce1b6478e407/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/22c712ecce1b6478e407/poster.jpg",
+    "sourceEtag": "0eaa831116e06eea1ec0b23b97694566",
+    "sourceBytes": 1607666,
+    "mobileBytes": 617665
+  },
+  "THUMBNAILS/5.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/24758eb9d7368cbbeccb/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/24758eb9d7368cbbeccb/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/24758eb9d7368cbbeccb/poster.jpg",
+    "sourceEtag": "13e19ee186a71a01205707edec158f6d",
+    "sourceBytes": 1177652,
+    "mobileBytes": 488876
+  },
+  "THUMBNAILS/7.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/01cbe2777ccf018f31e6/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/01cbe2777ccf018f31e6/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/01cbe2777ccf018f31e6/poster.jpg",
+    "sourceEtag": "e751f9ab2d3b92be3afbabab40290537",
+    "sourceBytes": 1956732,
+    "mobileBytes": 735030
+  },
+  "THUMBNAILS/8.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/9f4fa5d3307cfcaff444/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/9f4fa5d3307cfcaff444/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/9f4fa5d3307cfcaff444/poster.jpg",
+    "sourceEtag": "ce70c08c8623956e577355d29f1792d5",
+    "sourceBytes": 1613311,
+    "mobileBytes": 570995
+  },
+  "THUMBNAILS/9.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/f02b2da017c277281aab/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/f02b2da017c277281aab/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/f02b2da017c277281aab/poster.jpg",
+    "sourceEtag": "20e64ca3fda0b1705f60646c71630414",
+    "sourceBytes": 983283,
+    "mobileBytes": 353010
+  },
+  "THUMBNAILS/MM_JIHOON.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/9e16d316b07ad81d144a/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/9e16d316b07ad81d144a/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/9e16d316b07ad81d144a/poster.jpg",
+    "sourceEtag": "f0c9f61d4528dbfa50245276bffded53",
+    "sourceBytes": 6176646,
+    "mobileBytes": 2133647
+  },
+  "MILLION_VIEWS/1.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/dd338c4d5d95dcabbbf7/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/dd338c4d5d95dcabbbf7/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/dd338c4d5d95dcabbbf7/poster.jpg",
+    "sourceEtag": "82d18c9d419a83816aa84bcd64f2cfd4",
+    "sourceBytes": 18168118,
+    "mobileBytes": 2358575
+  },
+  "MILLION_VIEWS/2.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/22b27dfa3ccfee6e606d/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/22b27dfa3ccfee6e606d/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/22b27dfa3ccfee6e606d/poster.jpg",
+    "sourceEtag": "b2bad6ef32f45bddeb8c4cff7dd68448",
+    "sourceBytes": 9470537,
+    "mobileBytes": 1061757
+  },
+  "MILLION_VIEWS/3.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/58879f1d6f24c17aa07c/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/58879f1d6f24c17aa07c/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/58879f1d6f24c17aa07c/poster.jpg",
+    "sourceEtag": "6a1a390f1cfd332186b403115d0d8a7b",
+    "sourceBytes": 11246842,
+    "mobileBytes": 1369373
+  },
+  "HERO_MOBILE/2026-09-28/1.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/02fcda32d293f9e6d3c5/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/02fcda32d293f9e6d3c5/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/02fcda32d293f9e6d3c5/poster.jpg",
+    "sourceEtag": "ed559eeb48f8ee99bc04d0be39256b13",
+    "sourceBytes": 5438585,
+    "mobileBytes": 4958341
+  },
+  "HERO_MOBILE/2026-09-28/2.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/b1a5052b008e33e9b4bd/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/b1a5052b008e33e9b4bd/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/b1a5052b008e33e9b4bd/poster.jpg",
+    "sourceEtag": "29eb48a0f033229c3aaa33731e649f07",
+    "sourceBytes": 7390732,
+    "mobileBytes": 6909008
+  },
+  "HERO_MOBILE/2026-09-28/4.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/6393ee1a43f27746ab0c/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/6393ee1a43f27746ab0c/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/6393ee1a43f27746ab0c/poster.jpg",
+    "sourceEtag": "1944e8e49cdb7b085e3e2a8cbdd307cc",
+    "sourceBytes": 2668891,
+    "mobileBytes": 2584048
+  },
+  "HERO_MOBILE/2026-09-28/5.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/d30eed83cff88f7bbac2/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/d30eed83cff88f7bbac2/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/d30eed83cff88f7bbac2/poster.jpg",
+    "sourceEtag": "77123ca8168eedf02fc6cde615760170",
+    "sourceBytes": 5243172,
+    "mobileBytes": 4930554
+  },
+  "HERO_MOBILE/2026-09-28/6.mp4": {
+    "desktopKey": "WEB_VIDEO/2026-10-09-v1/922389aed628bfdfb7ee/desktop.mp4",
+    "mobileKey": "WEB_VIDEO/2026-10-09-v1/922389aed628bfdfb7ee/mobile.mp4",
+    "posterKey": "WEB_VIDEO/2026-10-09-v1/922389aed628bfdfb7ee/poster.jpg",
+    "sourceEtag": "0fbfb56eb32006940f553d805fa396a9",
+    "sourceBytes": 3429652,
+    "mobileBytes": 3299065
+  }
+}
