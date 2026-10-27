@@ -1,0 +1,977 @@
+{
+  "schemaVersion": 1,
+  "description": "Supplied original media and verified delivery derivatives. This sidecar preserves encoded output bytes.",
+  "sourceRoot": "D:/new-vids-vincent",
+  "deliveryRoot": "public/portfolio/2026-10",
+  "externalPackage": "C:/Users/ajapa/.codex/visualizations/2026/10/21/01a15c79-03d6-7870-bba7-62a4061b4d8f/portfolio-reinvention/derived-media",
+  "settings": {
+    "version": 1,
+    "photos": {
+      "longEdge": 1600,
+      "thumbnailLongEdge": 900,
+      "quality": 84,
+      "thumbnailQuality": 82,
+      "format": "webp",
+      "effort": 5,
+      "autoOrient": true,
+      "colorSpace": "srgb"
+    },
+    "posters": {
+      "longEdge": 1200,
+      "quality": 84,
+      "compressionLevel": 5,
+      "format": "webp",
+      "selection": {
+        "FILM-01": {
+          "seconds": 1.404,
+          "reason": "Clear waist-up fashion portrait and contextual street setting."
+        },
+        "FILM-02": {
+          "seconds": 16.418,
+          "reason": "Clear face and dress silhouette in warm hallway light."
+        },
+        "FILM-03": {
+          "seconds": 11.885,
+          "reason": "Clear portrait showing lace and feather garment detail."
+        },
+        "FILM-04": {
+          "seconds": 13.311,
+          "reason": "Clean side profile and gown silhouette on the event backdrop."
+        },
+        "FILM-05": {
+          "seconds": 9.12,
+          "reason": "Full outfit with a clear face, avoiding the earlier sun flare."
+        },
+        "FILM-06": {
+          "seconds": 7.91,
+          "reason": "Clear frontal portrait with full suit and accessory detail."
+        },
+        "FILM-07": {
+          "seconds": 14.373,
+          "reason": "Clear three-quarter portrait and outfit in warm evening light."
+        },
+        "FILM-08": {
+          "seconds": 14.342,
+          "reason": "Clear fashion portrait against the Amiri presentation setting."
+        },
+        "FILM-09": {
+          "seconds": 1.862,
+          "reason": "Readable couture mannequin and atelier interior."
+        },
+        "FILM-10": {
+          "seconds": 1.92,
+          "reason": "Clear frontal street-style portrait and handbag."
+        },
+        "FILM-11": {
+          "seconds": 30.907,
+          "reason": "Clear two-person event portrait, avoiding the middle-frame flash."
+        }
+      }
+    },
+    "videos": {
+      "landscapeBounds": [
+        1280,
+        720
+      ],
+      "portraitBounds": [
+        720,
+        1280
+      ],
+      "codec": "libx264",
+      "profile": "high",
+      "level": "3.1",
+      "pixelFormat": "yuv420p",
+      "preset": "medium",
+      "crf": 22,
+      "maxrate": "4M",
+      "bufsize": "8M",
+      "maxFps": 30,
+      "audioCodec": "aac",
+      "audioBitrate": "96k",
+      "faststart": true
+    },
+    "resources": {
+      "concurrentMediaJobs": 1,
+      "ffmpegDecoderThreads": 2,
+      "ffmpegEncoderThreads": 3,
+      "ffmpegFilterThreads": 1,
+      "sharpConcurrency": 2
+    }
+  },
+  "entries": [
+    {
+      "id": "film-01",
+      "source": "NEW PORTFOLIO/1.mp4",
+      "sourceBytes": 129718485,
+      "sourceMtime": "2026-04-03T00:02:44Z",
+      "posterSelection": {
+        "seconds": 1.404,
+        "reason": "Clear waist-up fashion portrait and contextual street setting."
+      },
+      "outputs": [
+        {
+          "role": "poster",
+          "path": "public/portfolio/2026-10/film-01-poster.webp",
+          "bytes": 54302,
+          "width": 1200,
+          "height": 675,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "35ce9f1162b0a19efe81f3be5a6866e90375f6a1ff3180879ec29cda17f2b3e1"
+        },
+        {
+          "role": "video",
+          "path": "public/portfolio/2026-10/film-01.mp4",
+          "bytes": 2149836,
+          "width": 1280,
+          "height": 720,
+          "codec": "h264",
+          "durationSeconds": 13.993,
+          "sha256": "9637f46815395a4696933cef382bd7928f8241dcd5a4ac53bb6cbf51d92eafd7"
+        }
+      ]
+    },
+    {
+      "id": "film-02",
+      "source": "NEW PORTFOLIO/1(1).mp4",
+      "sourceBytes": 176922100,
+      "sourceMtime": "2026-04-02T23:31:28Z",
+      "posterSelection": {
+        "seconds": 16.418,
+        "reason": "Clear face and dress silhouette in warm hallway light."
+      },
+      "outputs": [
+        {
+          "role": "poster",
+          "path": "public/portfolio/2026-10/film-02-poster.webp",
+          "bytes": 33802,
+          "width": 675,
+          "height": 1200,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "c5af47b918ec3de8a631abfb106e1e2654fd4470dfcbb1b6790566ceed98da9a"
+        },
+        {
+          "role": "video",
+          "path": "public/portfolio/2026-10/film-02.mp4",
+          "bytes": 4024704,
+          "width": 720,
+          "height": 1280,
+          "codec": "h264",
+          "durationSeconds": 20.478,
+          "sha256": "8cbdea0a11859d162c91db0298b3617749b962ac5bb9d64a3389994cc6203331"
+        }
+      ]
+    },
+    {
+      "id": "film-03",
+      "source": "NEW PORTFOLIO/1(2).mp4",
+      "sourceBytes": 607252176,
+      "sourceMtime": "2026-04-02T23:28:12Z",
+      "posterSelection": {
+        "seconds": 11.885,
+        "reason": "Clear portrait showing lace and feather garment detail."
+      },
+      "outputs": [
+        {
+          "role": "poster",
+          "path": "public/portfolio/2026-10/film-03-poster.webp",
+          "bytes": 51730,
+          "width": 675,
+          "height": 1200,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "1a408093430d00ef8b9516c34c413d368d8d78aed7534486fa908d64cc0c59f6"
+        },
+        {
+          "role": "video",
+          "path": "public/portfolio/2026-10/film-03.mp4",
+          "bytes": 7182353,
+          "width": 720,
+          "height": 1280,
+          "codec": "h264",
+          "durationSeconds": 26.366,
+          "sha256": "37d8fd248a3ea3e8b04f8d80442a5519bcd2bb0344f7af8abd76565fe7a746e6"
+        }
+      ]
+    },
+    {
+      "id": "photo-01",
+      "source": "NEW PORTFOLIO/2.JPG",
+      "sourceBytes": 23482336,
+      "sourceMtime": "2026-04-02T23:23:22Z",
+      "posterSelection": null,
+      "outputs": [
+        {
+          "role": "detail",
+          "path": "public/portfolio/2026-10/photo-01.webp",
+          "bytes": 217612,
+          "width": 1067,
+          "height": 1600,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "117bc0860c47fb0464bcbc56d939bc9d7cf537233924b0b0928e2183099c5d75"
+        },
+        {
+          "role": "thumbnail",
+          "path": "public/portfolio/2026-10/photo-01-thumb.webp",
+          "bytes": 82166,
+          "width": 600,
+          "height": 900,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "6d5f7cad12898a708302a633e7b16247f5534c09462b1ff6de17e014280cf76a"
+        }
+      ]
+    },
+    {
+      "id": "photo-02",
+      "source": "NEW PORTFOLIO/3.jpg",
+      "sourceBytes": 8176614,
+      "sourceMtime": "2026-04-02T23:18:40Z",
+      "posterSelection": null,
+      "outputs": [
+        {
+          "role": "detail",
+          "path": "public/portfolio/2026-10/photo-02.webp",
+          "bytes": 192362,
+          "width": 1067,
+          "height": 1600,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "db4afacd926604cbabb3d9db984f091734abd8ed755f29e20871d1c3f1fe6914"
+        },
+        {
+          "role": "thumbnail",
+          "path": "public/portfolio/2026-10/photo-02-thumb.webp",
+          "bytes": 77804,
+          "width": 600,
+          "height": 900,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "f0704ed9541e1de9645afaf2159a0866c7c181e06b26a6b87be2266181922078"
+        }
+      ]
+    },
+    {
+      "id": "film-04",
+      "source": "NEW PORTFOLIO/3.mp4",
+      "sourceBytes": 54204634,
+      "sourceMtime": "2026-09-07T19:51:04Z",
+      "posterSelection": {
+        "seconds": 13.311,
+        "reason": "Clean side profile and gown silhouette on the event backdrop."
+      },
+      "outputs": [
+        {
+          "role": "poster",
+          "path": "public/portfolio/2026-10/film-04-poster.webp",
+          "bytes": 36466,
+          "width": 675,
+          "height": 1200,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "dc8ab41fbb7abce0e53f143e1395f398c680c2a7335451a0dc1a8e2b3f70b121"
+        },
+        {
+          "role": "video",
+          "path": "public/portfolio/2026-10/film-04.mp4",
+          "bytes": 3195225,
+          "width": 720,
+          "height": 1280,
+          "codec": "h264",
+          "durationSeconds": 16.638,
+          "sha256": "f98ef3385cc27fbb282952fee859f92986f0773b417af4adf21fca6f044ebbfa"
+        }
+      ]
+    },
+    {
+      "id": "film-05",
+      "source": "NEW PORTFOLIO/3(1).mp4",
+      "sourceBytes": 202345293,
+      "sourceMtime": "2026-04-02T23:32:22Z",
+      "posterSelection": {
+        "seconds": 9.12,
+        "reason": "Full outfit with a clear face, avoiding the earlier sun flare."
+      },
+      "outputs": [
+        {
+          "role": "poster",
+          "path": "public/portfolio/2026-10/film-05-poster.webp",
+          "bytes": 71672,
+          "width": 675,
+          "height": 1200,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "f1cf0e6eb6b6ee2044de041ec05410956924aad6fd25c160e2a727f333f264e8"
+        },
+        {
+          "role": "video",
+          "path": "public/portfolio/2026-10/film-05.mp4",
+          "bytes": 6260993,
+          "width": 720,
+          "height": 1280,
+          "codec": "h264",
+          "durationSeconds": 20.222,
+          "sha256": "ad18daf07dd0f9dce14baff3825f57c922468a937f3185ebaa983e8f21eeffc4"
+        }
+      ]
+    },
+    {
+      "id": "film-06",
+      "source": "NEW PORTFOLIO/5.mp4",
+      "sourceBytes": 151404193,
+      "sourceMtime": "2026-04-02T23:32:32Z",
+      "posterSelection": {
+        "seconds": 7.91,
+        "reason": "Clear frontal portrait with full suit and accessory detail."
+      },
+      "outputs": [
+        {
+          "role": "poster",
+          "path": "public/portfolio/2026-10/film-06-poster.webp",
+          "bytes": 30126,
+          "width": 675,
+          "height": 1200,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "538e37b5ceee521410c5cf9506fedd2a0e1cd318ed874b4de5dac0728e8cf279"
+        },
+        {
+          "role": "video",
+          "path": "public/portfolio/2026-10/film-06.mp4",
+          "bytes": 3166439,
+          "width": 720,
+          "height": 1280,
+          "codec": "h264",
+          "durationSeconds": 17.534,
+          "sha256": "e4ffcfa52fa833cd2a0fb07b80b3c4eb6296175ee4e6afbe2a81a54db42581fe"
+        }
+      ]
+    },
+    {
+      "id": "film-07",
+      "source": "NEW PORTFOLIO/6.mp4",
+      "sourceBytes": 182161605,
+      "sourceMtime": "2026-04-02T23:31:48Z",
+      "posterSelection": {
+        "seconds": 14.373,
+        "reason": "Clear three-quarter portrait and outfit in warm evening light."
+      },
+      "outputs": [
+        {
+          "role": "poster",
+          "path": "public/portfolio/2026-10/film-07-poster.webp",
+          "bytes": 48750,
+          "width": 675,
+          "height": 1200,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "4602b311b766dccce3cfa7b49769a7263549614ee53846f402f922642916e12b"
+        },
+        {
+          "role": "video",
+          "path": "public/portfolio/2026-10/film-07.mp4",
+          "bytes": 5706612,
+          "width": 720,
+          "height": 1280,
+          "codec": "h264",
+          "durationSeconds": 17.970998,
+          "sha256": "2832ca24976811e113153b6d3caa8b073c3d5c37141673a8ce73eb084c474021"
+        }
+      ]
+    },
+    {
+      "id": "film-08",
+      "source": "NEW PORTFOLIO/AMIRI.mp4",
+      "sourceBytes": 163603887,
+      "sourceMtime": "2026-07-28T00:11:42Z",
+      "posterSelection": {
+        "seconds": 14.342,
+        "reason": "Clear fashion portrait against the Amiri presentation setting."
+      },
+      "outputs": [
+        {
+          "role": "poster",
+          "path": "public/portfolio/2026-10/film-08-poster.webp",
+          "bytes": 88050,
+          "width": 675,
+          "height": 1200,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "99895bddd7918094b81a69ab4f4c8bcf2c2b17fa527a520b3f7d2bf49c7de99b"
+        },
+        {
+          "role": "video",
+          "path": "public/portfolio/2026-10/film-08.mp4",
+          "bytes": 12545825,
+          "width": 720,
+          "height": 1280,
+          "codec": "h264",
+          "durationSeconds": 31.87,
+          "sha256": "4b21b7b995486aa59fa0d4303bfc4866167a2b43380fc4c6bdf670ff7148f0b5"
+        }
+      ]
+    },
+    {
+      "id": "photo-03",
+      "source": "NEW PORTFOLIO/DSCF7995.JPG",
+      "sourceBytes": 14479574,
+      "sourceMtime": "2026-10-10T03:23:56Z",
+      "posterSelection": null,
+      "outputs": [
+        {
+          "role": "detail",
+          "path": "public/portfolio/2026-10/photo-03.webp",
+          "bytes": 171650,
+          "width": 1067,
+          "height": 1600,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "6c79dfbfefd5f235e75f9eb11ba103b2ce0673b69341bca97ce5251a57637c0d"
+        },
+        {
+          "role": "thumbnail",
+          "path": "public/portfolio/2026-10/photo-03-thumb.webp",
+          "bytes": 53578,
+          "width": 600,
+          "height": 900,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "66ad6d565bafab96289efa2eb40cf7c559c05b59a2dc6888a79e7cc9c8d31ceb"
+        }
+      ]
+    },
+    {
+      "id": "photo-04",
+      "source": "NEW PORTFOLIO/DSCF8000.JPG",
+      "sourceBytes": 13796920,
+      "sourceMtime": "2026-10-10T03:23:50Z",
+      "posterSelection": null,
+      "outputs": [
+        {
+          "role": "detail",
+          "path": "public/portfolio/2026-10/photo-04.webp",
+          "bytes": 164090,
+          "width": 1067,
+          "height": 1600,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "0b093a307fa457b21762af837233c63a74bdce81e584d06ae8291b578be38815"
+        },
+        {
+          "role": "thumbnail",
+          "path": "public/portfolio/2026-10/photo-04-thumb.webp",
+          "bytes": 54410,
+          "width": 600,
+          "height": 900,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "43cc11c4c4238073b57afa8d3253b084ecbd4c1ce3a203efdb430213df0b2f17"
+        }
+      ]
+    },
+    {
+      "id": "photo-05",
+      "source": "NEW PORTFOLIO/DSCF8019.JPG",
+      "sourceBytes": 13903542,
+      "sourceMtime": "2026-10-10T03:23:34Z",
+      "posterSelection": null,
+      "outputs": [
+        {
+          "role": "detail",
+          "path": "public/portfolio/2026-10/photo-05.webp",
+          "bytes": 142106,
+          "width": 1067,
+          "height": 1600,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "b0bab4e760a88bea89c9b088dcdff6b2f5a69445845fe6f6948c9462d72e89a8"
+        },
+        {
+          "role": "thumbnail",
+          "path": "public/portfolio/2026-10/photo-05-thumb.webp",
+          "bytes": 46572,
+          "width": 600,
+          "height": 900,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "eef9460828237a6cc888e0b83c9ea6b58fa7fba762682a354b019c3fe00ed978"
+        }
+      ]
+    },
+    {
+      "id": "photo-06",
+      "source": "NEW PORTFOLIO/DSCF8054.JPG",
+      "sourceBytes": 15653030,
+      "sourceMtime": "2026-10-10T03:24:28Z",
+      "posterSelection": null,
+      "outputs": [
+        {
+          "role": "detail",
+          "path": "public/portfolio/2026-10/photo-06.webp",
+          "bytes": 129616,
+          "width": 1067,
+          "height": 1600,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "0ee2cfc7b71b01c335f8a8d7fc9aafb39327de1a2602a018a9c3cdca73e3e151"
+        },
+        {
+          "role": "thumbnail",
+          "path": "public/portfolio/2026-10/photo-06-thumb.webp",
+          "bytes": 41810,
+          "width": 600,
+          "height": 900,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "798dfb8085e38c4320c62c50d5ce6eb1febe41a5f61214e7ff2cb39dfbb8bf6a"
+        }
+      ]
+    },
+    {
+      "id": "photo-07",
+      "source": "NEW PORTFOLIO/DSCF8074.JPG",
+      "sourceBytes": 11655307,
+      "sourceMtime": "2026-10-10T03:24:08Z",
+      "posterSelection": null,
+      "outputs": [
+        {
+          "role": "detail",
+          "path": "public/portfolio/2026-10/photo-07.webp",
+          "bytes": 164146,
+          "width": 1067,
+          "height": 1600,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "61d36a88b2426a24372ce323d1debd647a7b8b136e04b31eb7db11b31cd160b0"
+        },
+        {
+          "role": "thumbnail",
+          "path": "public/portfolio/2026-10/photo-07-thumb.webp",
+          "bytes": 48064,
+          "width": 600,
+          "height": 900,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "317d1535cd851199422b331c36c4b680030033144b6cf14dc6f8f367f739ce23"
+        }
+      ]
+    },
+    {
+      "id": "photo-08",
+      "source": "NEW PORTFOLIO/DSCF8080.JPG",
+      "sourceBytes": 12045904,
+      "sourceMtime": "2026-10-10T03:23:46Z",
+      "posterSelection": null,
+      "outputs": [
+        {
+          "role": "detail",
+          "path": "public/portfolio/2026-10/photo-08.webp",
+          "bytes": 157854,
+          "width": 1067,
+          "height": 1600,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "77ed011cb320e75d4755a772122105186f780c161cb2873fbc641048a540a49f"
+        },
+        {
+          "role": "thumbnail",
+          "path": "public/portfolio/2026-10/photo-08-thumb.webp",
+          "bytes": 50570,
+          "width": 600,
+          "height": 900,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "16c2aa37fc49abe9bdec48203d876fdd8082b852f43f2a4c994c60e79782536c"
+        }
+      ]
+    },
+    {
+      "id": "photo-09",
+      "source": "NEW PORTFOLIO/DSCF8083.JPG",
+      "sourceBytes": 6265504,
+      "sourceMtime": "2026-10-10T03:24:00Z",
+      "posterSelection": null,
+      "outputs": [
+        {
+          "role": "detail",
+          "path": "public/portfolio/2026-10/photo-09.webp",
+          "bytes": 191684,
+          "width": 1067,
+          "height": 1600,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "acb6a776abc20cc2f7285f15d9e7313bb37431f687dcc1585df7ef5f242b447b"
+        },
+        {
+          "role": "thumbnail",
+          "path": "public/portfolio/2026-10/photo-09-thumb.webp",
+          "bytes": 57058,
+          "width": 600,
+          "height": 900,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "d154f82a0a72abbbcab1f862f09f2afc0ce7cfc4d6239c78a18c306415696a57"
+        }
+      ]
+    },
+    {
+      "id": "photo-10",
+      "source": "NEW PORTFOLIO/DSCF8089.JPG",
+      "sourceBytes": 8123373,
+      "sourceMtime": "2026-10-10T03:24:24Z",
+      "posterSelection": null,
+      "outputs": [
+        {
+          "role": "detail",
+          "path": "public/portfolio/2026-10/photo-10.webp",
+          "bytes": 177028,
+          "width": 1066,
+          "height": 1600,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "e30635a6f01b2b996383d810b8ee44089f63584ea451c4c1c0c94d8dcee555b0"
+        },
+        {
+          "role": "thumbnail",
+          "path": "public/portfolio/2026-10/photo-10-thumb.webp",
+          "bytes": 43376,
+          "width": 600,
+          "height": 900,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "3117d7f14e7bd4d242af59c89b5440e11af487a1ddb51f276b183ab69c89a157"
+        }
+      ]
+    },
+    {
+      "id": "photo-11",
+      "source": "NEW PORTFOLIO/DSCF8104.JPG",
+      "sourceBytes": 11876387,
+      "sourceMtime": "2026-10-10T03:24:32Z",
+      "posterSelection": null,
+      "outputs": [
+        {
+          "role": "detail",
+          "path": "public/portfolio/2026-10/photo-11.webp",
+          "bytes": 191170,
+          "width": 1067,
+          "height": 1600,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "c7ec844df1216bcdd0d44d5d62fa11333927dc210877d88a5cc8394828d5a50b"
+        },
+        {
+          "role": "thumbnail",
+          "path": "public/portfolio/2026-10/photo-11-thumb.webp",
+          "bytes": 56230,
+          "width": 600,
+          "height": 900,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "155a8be11caa6dda1c3cad13cef63e33d1bbeac72dd6fd4e7b8f6d8a38b6287f"
+        }
+      ]
+    },
+    {
+      "id": "photo-12",
+      "source": "NEW PORTFOLIO/DSCF8108.JPG",
+      "sourceBytes": 26387078,
+      "sourceMtime": "2026-10-10T03:24:40Z",
+      "posterSelection": null,
+      "outputs": [
+        {
+          "role": "detail",
+          "path": "public/portfolio/2026-10/photo-12.webp",
+          "bytes": 257252,
+          "width": 1067,
+          "height": 1600,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "3c1db1d95a2f9fe412971e3a757ac759e2496a409678aa733231aa71cb9a4b2e"
+        },
+        {
+          "role": "thumbnail",
+          "path": "public/portfolio/2026-10/photo-12-thumb.webp",
+          "bytes": 92070,
+          "width": 600,
+          "height": 900,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "62ad1104ce4b042fae19c072b0fedeb991d39d7220448fd9c3f466c385131584"
+        }
+      ]
+    },
+    {
+      "id": "photo-13",
+      "source": "NEW PORTFOLIO/image 1.jpg",
+      "sourceBytes": 29216106,
+      "sourceMtime": "2026-10-10T03:24:56Z",
+      "posterSelection": null,
+      "outputs": [
+        {
+          "role": "detail",
+          "path": "public/portfolio/2026-10/photo-13.webp",
+          "bytes": 162058,
+          "width": 1067,
+          "height": 1600,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "2445b1919e942d0ec54603312ce42000e1c92aa0d1560a9e279bd5e288c32028"
+        },
+        {
+          "role": "thumbnail",
+          "path": "public/portfolio/2026-10/photo-13-thumb.webp",
+          "bytes": 53512,
+          "width": 600,
+          "height": 900,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "44d73b0fedd1756cb6d1175dba36ca85e7543aeb41cd8525656d28e1304b89ed"
+        }
+      ]
+    },
+    {
+      "id": "photo-14",
+      "source": "NEW PORTFOLIO/image 17.jpg",
+      "sourceBytes": 21070077,
+      "sourceMtime": "2026-09-29T08:00:02Z",
+      "posterSelection": null,
+      "outputs": [
+        {
+          "role": "detail",
+          "path": "public/portfolio/2026-10/photo-14.webp",
+          "bytes": 303370,
+          "width": 1600,
+          "height": 1323,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "ed0e987b71e83e0a1efc47cc8925f39dfe6a498f2df55dad797ab0b9e386ee68"
+        },
+        {
+          "role": "thumbnail",
+          "path": "public/portfolio/2026-10/photo-14-thumb.webp",
+          "bytes": 107952,
+          "width": 900,
+          "height": 744,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "e3cfcf41b8fb5420c4724cc6cd1831512ff2c1cc631128aa142d460988379c13"
+        }
+      ]
+    },
+    {
+      "id": "photo-15",
+      "source": "NEW PORTFOLIO/image 52.jpg",
+      "sourceBytes": 26121738,
+      "sourceMtime": "2026-10-10T03:34:04Z",
+      "posterSelection": null,
+      "outputs": [
+        {
+          "role": "detail",
+          "path": "public/portfolio/2026-10/photo-15.webp",
+          "bytes": 128486,
+          "width": 1067,
+          "height": 1600,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "4036d79dc92197977f1ef180d837a5a96c44fd41b0677297a0bbde0093046061"
+        },
+        {
+          "role": "thumbnail",
+          "path": "public/portfolio/2026-10/photo-15-thumb.webp",
+          "bytes": 52670,
+          "width": 600,
+          "height": 900,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "1e456576ffbf79477ec9c21ec61b3bbc9c8f3fdbf79a51ed3178de4a08f8772f"
+        }
+      ]
+    },
+    {
+      "id": "photo-16",
+      "source": "NEW PORTFOLIO/image 55.JPG",
+      "sourceBytes": 20013583,
+      "sourceMtime": "2026-10-10T03:33:58Z",
+      "posterSelection": null,
+      "outputs": [
+        {
+          "role": "detail",
+          "path": "public/portfolio/2026-10/photo-16.webp",
+          "bytes": 94242,
+          "width": 1067,
+          "height": 1600,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "dd4713f106b47d022abe003df6c6dd6f2877d82e5987aa7d38131a521ad8853f"
+        },
+        {
+          "role": "thumbnail",
+          "path": "public/portfolio/2026-10/photo-16-thumb.webp",
+          "bytes": 36194,
+          "width": 600,
+          "height": 900,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "b6b7ec973340c1c72224afd457e0653e464d8efb8d49ccd83bd01dd1fd86a8d8"
+        }
+      ]
+    },
+    {
+      "id": "photo-17",
+      "source": "NEW PORTFOLIO/image 85.jpeg",
+      "sourceBytes": 27042033,
+      "sourceMtime": "2026-10-10T03:34:12Z",
+      "posterSelection": null,
+      "outputs": [
+        {
+          "role": "detail",
+          "path": "public/portfolio/2026-10/photo-17.webp",
+          "bytes": 255832,
+          "width": 1067,
+          "height": 1600,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "4ff5c056c5d9dee4e7a922b676080eae46eb96c7a87f431a8e88ef0b828430aa"
+        },
+        {
+          "role": "thumbnail",
+          "path": "public/portfolio/2026-10/photo-17-thumb.webp",
+          "bytes": 107360,
+          "width": 600,
+          "height": 900,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "b60ed17161ef617298d02d6b11888bb10284b3019241d6bf6571e68db0f0bc63"
+        }
+      ]
+    },
+    {
+      "id": "photo-18",
+      "source": "NEW PORTFOLIO/IMG_1585.JPG",
+      "sourceBytes": 3034321,
+      "sourceMtime": "2026-10-10T03:33:52Z",
+      "posterSelection": null,
+      "outputs": [
+        {
+          "role": "detail",
+          "path": "public/portfolio/2026-10/photo-18.webp",
+          "bytes": 201974,
+          "width": 1067,
+          "height": 1600,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "95159bff678b03b1ba36175375df8ce2f189e9f1ed810be4e643f823cd474fad"
+        },
+        {
+          "role": "thumbnail",
+          "path": "public/portfolio/2026-10/photo-18-thumb.webp",
+          "bytes": 77740,
+          "width": 600,
+          "height": 900,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "2fc455152c437897a75b9bf79661f7b909244a039b2f9e39827aadc9877a2b94"
+        }
+      ]
+    },
+    {
+      "id": "film-09",
+      "source": "NEW PORTFOLIO/SCHIAPARELLI FIITINGS_nyx3.mp4",
+      "sourceBytes": 72326611,
+      "sourceMtime": "2026-09-05T02:27:08Z",
+      "posterSelection": {
+        "seconds": 1.862,
+        "reason": "Readable couture mannequin and atelier interior."
+      },
+      "outputs": [
+        {
+          "role": "poster",
+          "path": "public/portfolio/2026-10/film-09-poster.webp",
+          "bytes": 39940,
+          "width": 1200,
+          "height": 675,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "63ff92fef882f9d02e41fd0c555419a4887d601001de6690d53bf939dbb397eb"
+        },
+        {
+          "role": "video",
+          "path": "public/portfolio/2026-10/film-09.mp4",
+          "bytes": 4991711,
+          "width": 1280,
+          "height": 720,
+          "codec": "h264",
+          "durationSeconds": 18.622,
+          "sha256": "40d1f8e9160503decc8552cf056cd2f6239e04d82362b6b2fb5722c982f5aa8d"
+        }
+      ]
+    },
+    {
+      "id": "film-10",
+      "source": "NEW PORTFOLIO/Tamara.mp4",
+      "sourceBytes": 21237912,
+      "sourceMtime": "2026-10-01T09:25:42Z",
+      "posterSelection": {
+        "seconds": 1.92,
+        "reason": "Clear frontal street-style portrait and handbag."
+      },
+      "outputs": [
+        {
+          "role": "poster",
+          "path": "public/portfolio/2026-10/film-10-poster.webp",
+          "bytes": 51592,
+          "width": 1200,
+          "height": 900,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "741f8a0ccac4590a11240c6e05beee7e4471b978393665ee3f572dc9bc6bf2d8"
+        },
+        {
+          "role": "video",
+          "path": "public/portfolio/2026-10/film-10.mp4",
+          "bytes": 2605810,
+          "width": 960,
+          "height": 720,
+          "codec": "h264",
+          "durationSeconds": 19.156,
+          "sha256": "fdcfe6f201f9752abbaf33b998b98f723ddef26a18c1a8dee01d66039d93d696"
+        }
+      ]
+    },
+    {
+      "id": "film-11",
+      "source": "NEW PORTFOLIO/VETEMENTS.mp4",
+      "sourceBytes": 141598803,
+      "sourceMtime": "2026-09-07T19:44:22Z",
+      "posterSelection": {
+        "seconds": 30.907,
+        "reason": "Clear two-person event portrait, avoiding the middle-frame flash."
+      },
+      "outputs": [
+        {
+          "role": "poster",
+          "path": "public/portfolio/2026-10/film-11-poster.webp",
+          "bytes": 33936,
+          "width": 1200,
+          "height": 675,
+          "codec": "webp",
+          "durationSeconds": null,
+          "sha256": "1f55fdc35ac347191861b1820e079383c780fbcab29137611f0a2a5fa60dfff3"
+        },
+        {
+          "role": "video",
+          "path": "public/portfolio/2026-10/film-11.mp4",
+          "bytes": 11593408,
+          "width": 1280,
+          "height": 720,
+          "codec": "h264",
+          "durationSeconds": 38.633,
+          "sha256": "7d877269d2a8041f6de86db96272527ca1edd7b394e796d0eafc115e1b82c8e3"
+        }
+      ]
+    }
+  ]
+}

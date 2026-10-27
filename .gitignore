@@ -17,6 +17,10 @@
 /test-results/
 /playwright-report/
 
+# Reproducible local gallery QA and decoded reference-frame caches
+/.impeccable/review/
+/docs/sample/analysis-*/frames/
+
 # next.js
 /.next/
 /out/

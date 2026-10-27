@@ -1,106 +1,38 @@
+import { Suspense } from "react";
 import { Navigation } from "@/components/layout/navigation";
-import { Hero, type HeroVideo } from "@/components/sections/hero";
-import { ViralViews, type ViralVideo } from "@/components/sections/viral-views";
-import { Collections } from "@/components/sections/collections";
+import { Archive } from "@/components/portfolio/archive";
+import { Statistics } from "@/components/portfolio/statistics";
 import { About, type AboutPhoto } from "@/components/sections/about";
 import { Footer } from "@/components/sections/footer";
-import { NavigationProvider } from "@/contexts/navigation-context";
-import { getPublicUrl, listMediaInFolder } from "@/lib/r2";
-import { getMediaSources } from "@/lib/video-assets";
-import {
-  THUMBNAILS_PREFIX,
-  MILLION_VIEWS_PREFIX,
-  ABOUT_ME_PREFIX,
-} from "@/data/media-map";
-
-interface HeroSources {
-  readonly desktop: readonly HeroVideo[];
-  readonly mobile: readonly HeroVideo[];
-}
-
-const MOBILE_HERO_FILE_NUMBERS = [1, 2, 4, 5, 6] as const;
-
-async function getHeroSources(): Promise<HeroSources> {
-  // Mobile assets are static URLs and remain usable if the desktop listing fails.
-  let mobile: HeroVideo[] = [];
-  try {
-    mobile = MOBILE_HERO_FILE_NUMBERS.map((number) => {
-      const basename = String(number);
-      const prefix = `HERO_MOBILE/2026-09-28/${basename}`;
-      const sources = getMediaSources(`${prefix}.mp4`, getPublicUrl(""));
-      return {
-        url: sources.mobileUrl ?? sources.url,
-        posterUrl: getPublicUrl(`${prefix}.jpg`),
-        displayName: "Cannes",
-      };
-    });
-  } catch {
-    // Keep rendering the page with no mobile hero when public URLs are unset.
-  }
-
-  try {
-    // Desktop: numbered THUMBNAILS videos (all 16:9).
-    const thumbnails = await listMediaInFolder(THUMBNAILS_PREFIX);
-    const desktop: HeroVideo[] = thumbnails.map((item) => {
-      const filename = item.key.split("/").pop() ?? item.key;
-      const basename = filename.replace(/\.[^.]+$/, "");
-      return {
-        url: item.url,
-        posterUrl: getPublicUrl(
-          `HERO_DESKTOP_POSTERS/2026-09-27/${basename}.jpg`,
-        ),
-        displayName: "",
-      };
-    });
-
-    return { desktop, mobile };
-  } catch {
-    return { desktop: [], mobile };
-  }
-}
-
-async function getViralVideos(): Promise<readonly ViralVideo[]> {
-  try {
-    const items = await listMediaInFolder(MILLION_VIEWS_PREFIX);
-    return items.map(({ key, url, mobileUrl, posterUrl }) => ({ key, url, mobileUrl, posterUrl }));
-  } catch {
-    return [];
-  }
-}
+import { listMediaInFolder } from "@/lib/r2";
+import { ABOUT_ME_PREFIX } from "@/data/media-map";
 
 async function getAboutPhotos(): Promise<readonly AboutPhoto[]> {
   try {
     const items = await listMediaInFolder(ABOUT_ME_PREFIX);
-    return items.map((item) => ({ url: item.url, key: item.key }));
-  } catch {
+    return items.map(({ url, key }) => ({ url, key }));
+  } catch (error: unknown) {
+    console.error("The portfolio portrait listing could not be loaded.", error instanceof Error ? error.message : "Unknown media error");
     return [];
   }
 }
 
-export default async function Home(): Promise<React.ReactElement> {
-  const [hero, viralVideos, aboutPhotos] = await Promise.all([
-    getHeroSources(),
-    getViralVideos(),
-    getAboutPhotos(),
-  ]);
+async function AboutWithPhotos(): Promise<React.ReactElement> {
+  return <About photos={await getAboutPhotos()} />;
+}
 
+export default function Home(): React.ReactElement {
   return (
-    <NavigationProvider>
-      <div className="w-full max-w-full overflow-x-hidden">
-        {/* Film grain overlay — fixed to viewport at 3% opacity */}
-        <div className="film-grain" aria-hidden="true" />
-
-        <Navigation />
-
-        <main>
-          <Hero desktopVideos={hero.desktop} mobileVideos={hero.mobile} />
-          <Collections />
-          <ViralViews videos={viralVideos} />
-          <About photos={aboutPhotos} />
-        </main>
-
-        <Footer />
-      </div>
-    </NavigationProvider>
+    <>
+      <Navigation />
+      <main>
+        <Archive />
+        <Statistics />
+        <Suspense fallback={<About photos={[]} loading />}>
+          <AboutWithPhotos />
+        </Suspense>
+      </main>
+      <Footer />
+    </>
   );
 }
