@@ -1,4 +1,5 @@
 import { expect, test, type Page } from "@playwright/test";
+import { PORTFOLIO_WORK } from "../src/data/portfolio";
 
 interface Silhouette {
   readonly center: number;
@@ -71,15 +72,16 @@ for (const viewport of viewports) {
     await page.waitForTimeout(4800);
     await page.getByRole("button", { name: "Pause motion", exact: true }).click();
     expectCentered(await silhouette(page), "positive idle yaw");
-    for (const progress of [1.25, 13.5, 27.75]) {
-      await page.evaluate(progress => {
+    const lastIndex = PORTFOLIO_WORK.length - 1;
+    for (const progress of [1.25, lastIndex / 2 - 0.5, lastIndex - 0.25]) {
+      await page.evaluate(({ progress, lastIndex }) => {
         const track = document.querySelector<HTMLElement>(".spatial-scroll-track");
         const pin = document.querySelector<HTMLElement>(".gallery-pin");
         const header = document.querySelector<HTMLElement>(".site-header");
         if (!track || !pin || !header) throw new Error("The gallery scroll layout is unavailable.");
         const start = track.getBoundingClientRect().top + scrollY - header.offsetHeight;
-        scrollTo({ top: start + progress / 28 * (track.offsetHeight - pin.offsetHeight), behavior: "instant" });
-      }, progress);
+        scrollTo({ top: start + progress / lastIndex * (track.offsetHeight - pin.offsetHeight), behavior: "instant" });
+      }, { progress, lastIndex });
       await page.waitForTimeout(500);
       expectCentered(await silhouette(page), "selection transition " + progress);
     }
@@ -87,7 +89,7 @@ for (const viewport of viewports) {
     await page.getByRole("region", { name: "Spatial archive" }).press("Home");
     await page.locator(".current-work h2").click();
     expectCentered(await silhouette(page), "reduced-motion landscape");
-    for (const index of [1, 7, 14, 28]) {
+    for (const index of [1, Math.round(lastIndex / 4), Math.round(lastIndex / 2), lastIndex]) {
       const region = page.getByRole("region", { name: "Spatial archive" });
       await region.press("Home");
       for (let step = 0; step < index; step += 1) await region.press("ArrowRight");

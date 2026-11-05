@@ -1,0 +1,210 @@
+{
+  "schemaVersion": 1,
+  "sourceRoot": "D:/new-vids-vincent/final-list",
+  "previousSourceRoot": "D:/new-vids-vincent",
+  "deliveryRoot": "public/portfolio/2026-11-final",
+  "entries": [
+    {
+      "id": "amfar-gala",
+      "type": "video",
+      "filename": "AMFAR GALA.mp4",
+      "title": "AMFAR GALA",
+      "description": "A black lace evening look and green jewellery at an event backdrop.",
+      "sourceSha256": "0f0e4806820dc681e91d0725c87bcf15cb2e5c0531ff8f87b859700c442e7193",
+      "previousId": "film-04",
+      "posterSelection": null
+    },
+    {
+      "id": "amiri",
+      "type": "video",
+      "filename": "AMIRI.mp4",
+      "title": "AMIRI",
+      "description": "Street-style portraits, fashion details and runway moments.",
+      "sourceSha256": "6ea9e8261efdd9b959f8f97a27c4c5078aeeea45f76b85819c5c392c1f434775",
+      "previousId": "film-08",
+      "posterSelection": null
+    },
+    {
+      "id": "balmain",
+      "type": "video",
+      "filename": "BALMAIN.mp4",
+      "title": "BALMAIN",
+      "description": "A fashion portrait in a black outfit against a pale event backdrop.",
+      "sourceSha256": "0c014485f236b2d2543e318c8bcbb236e8c60eba2aa4ca49d868509cd80d3d0b",
+      "previousId": null,
+      "posterSelection": {
+        "seconds": 6.123,
+        "reason": "Clear portrait with the outfit and event backdrop visible."
+      }
+    },
+    {
+      "id": "carolines-couture",
+      "type": "photo",
+      "filename": "CAROLINE`S COUTURE.jpg",
+      "title": "CAROLINE'S COUTURE",
+      "description": "A model in a dark evening dress walking a runway beneath warm lights.",
+      "sourceSha256": "6807cb81e0e55684bca92d77310188ebf9678b5215ab7604e5b4145a74e853ba",
+      "previousId": "photo-15",
+      "posterSelection": null
+    },
+    {
+      "id": "editorial",
+      "type": "photo",
+      "filename": "EDITORIAL.JPG",
+      "title": "EDITORIAL",
+      "description": "A close portrait in pale fabric against sculptural architecture.",
+      "sourceSha256": "585bffa0c9f65b6d99b6f8bd74b88682c76b61b16ef2f00cc4ccef4de23c101a",
+      "previousId": "photo-16",
+      "posterSelection": null
+    },
+    {
+      "id": "georges-hobeika",
+      "type": "video",
+      "filename": "GEORGES HOBEIKA.MP4",
+      "title": "GEORGES HOBEIKA",
+      "description": "Evening gowns and models on a warmly lit runway.",
+      "sourceSha256": "f763708a6c315efbcd92627ce580d6c86a816c0d9eef3e2daadfe1a7be6251cd",
+      "previousId": null,
+      "posterSelection": {
+        "seconds": 24.64,
+        "reason": "Clear portrait of a model in a pink gown."
+      }
+    },
+    {
+      "id": "hermes",
+      "type": "video",
+      "filename": "HERMES.mp4",
+      "title": "HERMES",
+      "description": "A street-style portrait in a red leather jacket and sunglasses.",
+      "sourceSha256": "a259fab233ea0d57c72dcdd2353982cd0aed0be7eee51f2dc25877bae8645b41",
+      "previousId": "film-01",
+      "posterSelection": null
+    },
+    {
+      "id": "karl-lagerfeld",
+      "type": "video",
+      "filename": "KARL LAGERFELD.mp4",
+      "title": "KARL LAGERFELD",
+      "description": "A portrait in a dark suit and sunglasses at night.",
+      "sourceSha256": "35935f49080013d7d6d41bb170a94eff095a65639441ac9056b494cdbf2638d2",
+      "previousId": "film-06",
+      "posterSelection": null
+    },
+    {
+      "id": "kristel-x-chopard",
+      "type": "photo",
+      "filename": "KRISTEL X CHOPARD.JPG",
+      "title": "KRISTEL X CHOPARD",
+      "description": "A portrait in a silver dress beside the water.",
+      "sourceSha256": "6997e03e2ff627fc8a8a234c05db5b2b8a8f445b9e1a61116d9903d382a5b3d2",
+      "previousId": "photo-18",
+      "posterSelection": null
+    },
+    {
+      "id": "le-grand-diner-du-louvre",
+      "type": "video",
+      "filename": "LE GRAND DINER DU LOUVRE.mp4",
+      "title": "LE GRAND DINER DU LOUVRE",
+      "description": "A black evening gown moving through a warmly lit corridor.",
+      "sourceSha256": "dbe3951f712212bb6266126503f654530ebe4007ea85c43934d8dcdda7a325e6",
+      "previousId": "film-02",
+      "posterSelection": null
+    },
+    {
+      "id": "miumiu",
+      "type": "photo",
+      "filename": "MIUMIU.JPG",
+      "title": "MIUMIU",
+      "description": "Two street-style portraits together beside a city crossing.",
+      "sourceSha256": "8ad94824beb6dff7e6d0ee183cd03445136ff380ac1f540304c0c0718769eff0",
+      "previousId": "photo-01",
+      "posterSelection": null
+    },
+    {
+      "id": "sandro-paris",
+      "type": "photo",
+      "filename": "SANDRO PARIS.jpg",
+      "title": "SANDRO PARIS",
+      "description": "A fashion portrait on a Paris rooftop overlooking the Eiffel Tower.",
+      "sourceSha256": "b8c3070f6d1129389b10465b6c4dc3caacc00dd806afdb12ce1b36fae00b4ded",
+      "previousId": "photo-14",
+      "posterSelection": null
+    },
+    {
+      "id": "schiaparelli",
+      "type": "video",
+      "filename": "SCHIAPARELLI.mp4",
+      "title": "SCHIAPARELLI",
+      "description": "Garments, fittings and accessories in an atelier.",
+      "sourceSha256": "aa782b001591503a7aa36b0f7df64c11f9c9dd964a4d0bb0f0d322f4b366a192",
+      "previousId": "film-09",
+      "posterSelection": null
+    },
+    {
+      "id": "simon-x-songmont",
+      "type": "video",
+      "filename": "SIMON X SONGMONT.mp4",
+      "title": "SIMON X SONGMONT",
+      "description": "A street-style portrait followed by accessories and an exhibition.",
+      "sourceSha256": "96843327ab1ea0fc11ccd30543d31bbe98ffef058b8e0911a69cf6c86b626399",
+      "previousId": null,
+      "posterSelection": {
+        "seconds": 3,
+        "reason": "Clear street portrait with the outfit and bag visible."
+      }
+    },
+    {
+      "id": "stella-maxwell",
+      "type": "video",
+      "filename": "STELLA MAXWELL.mp4",
+      "title": "STELLA MAXWELL",
+      "description": "A portrait sequence in a black lace and feather dress.",
+      "sourceSha256": "d720bf6d1826a8863ce43630995c88f88aa7449b5652a9df52a7eab158072c61",
+      "previousId": "film-03",
+      "posterSelection": null
+    },
+    {
+      "id": "vetements",
+      "type": "video",
+      "filename": "VETEMENTS.mp4",
+      "title": "VETEMENTS",
+      "description": "Arrival portraits, fashion details and event moments.",
+      "sourceSha256": "7bf1043d490e906f6ffa7c3aa7bbf53f1f91cf70578a5ef1d8fa9d5376ed494a",
+      "previousId": "film-11",
+      "posterSelection": null
+    },
+    {
+      "id": "vincent-x-tommy-hilfiger",
+      "type": "photo",
+      "filename": "VINCENT X TOMMY HILFIGER.jpeg",
+      "title": "VINCENT X TOMMY HILFIGER",
+      "description": "A portrait in a colour-block jacket, lying beneath trees.",
+      "sourceSha256": "d3eceba571028625f18cff89dfe0be8a99b1ed3d3fdcedecb1f46b732f164d8f",
+      "previousId": "photo-17",
+      "posterSelection": null
+    },
+    {
+      "id": "weinsanto",
+      "type": "photo",
+      "filename": "WEINSANTO.jpg",
+      "title": "WEINSANTO",
+      "description": "A runway model in a black dress beneath a line of show lights.",
+      "sourceSha256": "051e20e013be1e295d07db53c8fcba8770e50f51fa1c13b96b3c8dfebba2a532",
+      "previousId": "photo-06",
+      "posterSelection": null
+    },
+    {
+      "id": "zuhair-murad",
+      "type": "video",
+      "filename": "ZUHAIR MURAD_.mp4",
+      "title": "ZUHAIR MURAD",
+      "description": "A sequence of evening looks on a dark runway.",
+      "sourceSha256": "c36f5b29c5a7c2301c8771014b9f4257897673b6106a7dfd42404c46ed7303dc",
+      "previousId": null,
+      "posterSelection": {
+        "seconds": 26.077,
+        "reason": "A clear close view of a floral runway look."
+      }
+    }
+  ]
+}

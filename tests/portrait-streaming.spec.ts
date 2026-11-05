@@ -8,7 +8,6 @@ import { createRequire } from "node:module";
 import { runInNewContext } from "node:vm";
 import { JsxEmit, ModuleKind, transpileModule } from "typescript";
 import { Navigation } from "../src/components/layout/navigation";
-import { Statistics } from "../src/components/portfolio/statistics";
 import { About } from "../src/components/sections/about";
 import { Footer } from "../src/components/sections/footer";
 
@@ -24,7 +23,6 @@ function pageWithListing(listMediaInFolder: () => Promise<readonly Portrait[]>):
   const aliases: Readonly<Record<string, unknown>> = {
     "@/components/layout/navigation": { Navigation },
     "@/components/portfolio/archive": { Archive: () => createElement("section", { id: "work" }, "Local archive") },
-    "@/components/portfolio/statistics": { Statistics },
     "@/components/sections/about": { About },
     "@/components/sections/footer": { Footer },
     "@/lib/r2": { listMediaInFolder },
@@ -58,15 +56,18 @@ function render(Home: ComponentType): { shell: Promise<void>; finished: Promise<
 }
 
 function expectEssentialContent(html: string): void {
-  for (const text of ["Local archive", "28M+", "33K+", "1M+", "Total Views", "Followers", "Likes", "Based in Paris"]) {
+  for (const text of ["Local archive", "Based in Paris"]) {
     expect(html).toContain(text);
+  }
+  for (const text of ["portfolio-statistics", "28M+", "33K+", "1M+", "Total Views", "Followers", "Likes"]) {
+    expect(html).not.toContain(text);
   }
   expect(html).toContain('href="mailto:vincentguancostaes@gmail.com"');
   expect(html).toContain('href="https://wa.me/33614984173"');
   expect(html).toContain('href="https://www.instagram.com/vincentguanco/"');
 }
 
-test("pending portrait listing streams the archive, statistics and full contact first", async () => {
+test("pending portrait listing streams the archive and full contact first", async () => {
   let finish: ((photos: readonly Portrait[]) => void) | undefined;
   const listing = new Promise<readonly Portrait[]>(resolveListing => { finish = resolveListing; });
   const output = render(pageWithListing(() => listing));

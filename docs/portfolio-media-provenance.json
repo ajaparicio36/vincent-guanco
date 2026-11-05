@@ -1,9 +1,21 @@
 {
-  "schemaVersion": 1,
-  "description": "Supplied original media and verified delivery derivatives. This sidecar preserves encoded output bytes.",
-  "sourceRoot": "D:/new-vids-vincent",
-  "deliveryRoot": "public/portfolio/2026-10",
-  "externalPackage": "C:/Users/ajapa/.codex/visualizations/2026/10/21/01a15c79-03d6-7870-bba7-62a4061b4d8f/portfolio-reinvention/derived-media",
+  "schemaVersion": 2,
+  "createdAt": "2026-11-05T12:42:08.549Z",
+  "sourceManifest": "docs/portfolio-media-sources-2026-11-final.json",
+  "sourceRoot": "D:\\new-vids-vincent\\final-list",
+  "deliveryRoot": "public/portfolio/2026-11-final",
+  "preparationScript": "scripts/prepare-final-portfolio.mjs",
+  "previousProvenance": "docs/portfolio-media-provenance-2026-10.json",
+  "counts": {
+    "sourceMedia": 19,
+    "photos": 7,
+    "thumbnails": 7,
+    "videos": 12,
+    "posters": 12,
+    "outputFiles": 38
+  },
+  "sourceBytes": 2570938346,
+  "totalOutputBytes": 89313847,
   "settings": {
     "version": 1,
     "photos": {
@@ -22,49 +34,53 @@
       "compressionLevel": 5,
       "format": "webp",
       "selection": {
-        "FILM-01": {
-          "seconds": 1.404,
-          "reason": "Clear waist-up fashion portrait and contextual street setting."
-        },
-        "FILM-02": {
-          "seconds": 16.418,
-          "reason": "Clear face and dress silhouette in warm hallway light."
-        },
-        "FILM-03": {
-          "seconds": 11.885,
-          "reason": "Clear portrait showing lace and feather garment detail."
-        },
-        "FILM-04": {
+        "amfar-gala": {
           "seconds": 13.311,
           "reason": "Clean side profile and gown silhouette on the event backdrop."
         },
-        "FILM-05": {
-          "seconds": 9.12,
-          "reason": "Full outfit with a clear face, avoiding the earlier sun flare."
-        },
-        "FILM-06": {
-          "seconds": 7.91,
-          "reason": "Clear frontal portrait with full suit and accessory detail."
-        },
-        "FILM-07": {
-          "seconds": 14.373,
-          "reason": "Clear three-quarter portrait and outfit in warm evening light."
-        },
-        "FILM-08": {
+        "amiri": {
           "seconds": 14.342,
           "reason": "Clear fashion portrait against the Amiri presentation setting."
         },
-        "FILM-09": {
+        "balmain": {
+          "seconds": 6.123,
+          "reason": "Clear portrait with the outfit and event backdrop visible."
+        },
+        "georges-hobeika": {
+          "seconds": 24.64,
+          "reason": "Clear portrait of a model in a pink gown."
+        },
+        "hermes": {
+          "seconds": 1.404,
+          "reason": "Clear waist-up fashion portrait and contextual street setting."
+        },
+        "karl-lagerfeld": {
+          "seconds": 7.91,
+          "reason": "Clear frontal portrait with full suit and accessory detail."
+        },
+        "le-grand-diner-du-louvre": {
+          "seconds": 16.418,
+          "reason": "Clear face and dress silhouette in warm hallway light."
+        },
+        "schiaparelli": {
           "seconds": 1.862,
           "reason": "Readable couture mannequin and atelier interior."
         },
-        "FILM-10": {
-          "seconds": 1.92,
-          "reason": "Clear frontal street-style portrait and handbag."
+        "simon-x-songmont": {
+          "seconds": 3,
+          "reason": "Clear street portrait with the outfit and bag visible."
         },
-        "FILM-11": {
+        "stella-maxwell": {
+          "seconds": 11.885,
+          "reason": "Clear portrait showing lace and feather garment detail."
+        },
+        "vetements": {
           "seconds": 30.907,
           "reason": "Clear two-person event portrait, avoiding the middle-frame flash."
+        },
+        "zuhair-murad": {
+          "seconds": 26.077,
+          "reason": "A clear close view of a floral runway look."
         }
       }
     },
@@ -98,166 +114,79 @@
       "sharpConcurrency": 2
     }
   },
+  "toolVersions": {
+    "node": "v24.13.0",
+    "sharp": {
+      "aom": "3.13.1",
+      "archive": "3.8.2",
+      "cairo": "1.18.4",
+      "cgif": "0.5.0",
+      "exif": "0.6.25",
+      "expat": "2.7.3",
+      "ffi": "3.5.2",
+      "fontconfig": "2.17.1",
+      "freetype": "2.14.1",
+      "fribidi": "1.0.16",
+      "glib": "2.86.1",
+      "harfbuzz": "12.1.0",
+      "heif": "1.20.2",
+      "highway": "1.3.0",
+      "imagequant": "2.4.1",
+      "lcms": "2.17",
+      "mozjpeg": "0826579",
+      "pango": "1.57.0",
+      "pixman": "0.46.4",
+      "png": "1.6.50",
+      "proxy-libintl": "0.5",
+      "rsvg": "2.61.2",
+      "spng": "0.7.4",
+      "tiff": "4.7.1",
+      "vips": "8.17.3",
+      "webp": "1.6.0",
+      "xml2": "2.15.1",
+      "zlib-ng": "2.2.5",
+      "sharp": "0.34.5"
+    },
+    "ffmpeg": "ffmpeg version 8.0.1-full_build-www.gyan.dev Copyright (c) 2000-2025 the FFmpeg developers\r",
+    "ffprobe": "ffprobe version 8.0.1-full_build-www.gyan.dev Copyright (c) 2007-2025 the FFmpeg developers\r"
+  },
   "entries": [
     {
-      "id": "film-01",
-      "source": "NEW PORTFOLIO/1.mp4",
-      "sourceBytes": 129718485,
-      "sourceMtime": "2026-04-03T00:02:44Z",
-      "posterSelection": {
-        "seconds": 1.404,
-        "reason": "Clear waist-up fashion portrait and contextual street setting."
+      "id": "amfar-gala",
+      "title": "AMFAR GALA",
+      "type": "video",
+      "source": "AMFAR GALA.mp4",
+      "sourceSha256": "0f0e4806820dc681e91d0725c87bcf15cb2e5c0531ff8f87b859700c442e7193",
+      "sourceStat": {
+        "id": "amfar-gala",
+        "source": "D:\\new-vids-vincent\\final-list\\AMFAR GALA.mp4",
+        "bytes": 54204634,
+        "mtimeMs": 1793726498000,
+        "mtimeISO": "2026-11-03T17:21:38.000Z"
       },
-      "outputs": [
-        {
-          "role": "poster",
-          "path": "public/portfolio/2026-10/film-01-poster.webp",
-          "bytes": 54302,
-          "width": 1200,
-          "height": 675,
-          "codec": "webp",
-          "durationSeconds": null,
-          "sha256": "35ce9f1162b0a19efe81f3be5a6866e90375f6a1ff3180879ec29cda17f2b3e1"
-        },
-        {
-          "role": "video",
-          "path": "public/portfolio/2026-10/film-01.mp4",
-          "bytes": 2149836,
-          "width": 1280,
-          "height": 720,
-          "codec": "h264",
-          "durationSeconds": 13.993,
-          "sha256": "9637f46815395a4696933cef382bd7928f8241dcd5a4ac53bb6cbf51d92eafd7"
-        }
-      ]
-    },
-    {
-      "id": "film-02",
-      "source": "NEW PORTFOLIO/1(1).mp4",
-      "sourceBytes": 176922100,
-      "sourceMtime": "2026-04-02T23:31:28Z",
-      "posterSelection": {
-        "seconds": 16.418,
-        "reason": "Clear face and dress silhouette in warm hallway light."
+      "sourceMedia": {
+        "rawWidth": 2160,
+        "rawHeight": 3840,
+        "rotation": 0,
+        "displayWidth": 2160,
+        "displayHeight": 3840,
+        "durationSeconds": 16.639,
+        "videoDurationSeconds": 16.6,
+        "frameRate": "25/1",
+        "colorSpace": "bt709",
+        "colorTransfer": "bt709",
+        "colorPrimaries": "bt709",
+        "audio": [
+          {
+            "codec": "aac",
+            "channels": 2,
+            "sampleRate": 48000,
+            "durationSeconds": 16.639,
+            "bitrate": 319967
+          }
+        ]
       },
-      "outputs": [
-        {
-          "role": "poster",
-          "path": "public/portfolio/2026-10/film-02-poster.webp",
-          "bytes": 33802,
-          "width": 675,
-          "height": 1200,
-          "codec": "webp",
-          "durationSeconds": null,
-          "sha256": "c5af47b918ec3de8a631abfb106e1e2654fd4470dfcbb1b6790566ceed98da9a"
-        },
-        {
-          "role": "video",
-          "path": "public/portfolio/2026-10/film-02.mp4",
-          "bytes": 4024704,
-          "width": 720,
-          "height": 1280,
-          "codec": "h264",
-          "durationSeconds": 20.478,
-          "sha256": "8cbdea0a11859d162c91db0298b3617749b962ac5bb9d64a3389994cc6203331"
-        }
-      ]
-    },
-    {
-      "id": "film-03",
-      "source": "NEW PORTFOLIO/1(2).mp4",
-      "sourceBytes": 607252176,
-      "sourceMtime": "2026-04-02T23:28:12Z",
-      "posterSelection": {
-        "seconds": 11.885,
-        "reason": "Clear portrait showing lace and feather garment detail."
-      },
-      "outputs": [
-        {
-          "role": "poster",
-          "path": "public/portfolio/2026-10/film-03-poster.webp",
-          "bytes": 51730,
-          "width": 675,
-          "height": 1200,
-          "codec": "webp",
-          "durationSeconds": null,
-          "sha256": "1a408093430d00ef8b9516c34c413d368d8d78aed7534486fa908d64cc0c59f6"
-        },
-        {
-          "role": "video",
-          "path": "public/portfolio/2026-10/film-03.mp4",
-          "bytes": 7182353,
-          "width": 720,
-          "height": 1280,
-          "codec": "h264",
-          "durationSeconds": 26.366,
-          "sha256": "37d8fd248a3ea3e8b04f8d80442a5519bcd2bb0344f7af8abd76565fe7a746e6"
-        }
-      ]
-    },
-    {
-      "id": "photo-01",
-      "source": "NEW PORTFOLIO/2.JPG",
-      "sourceBytes": 23482336,
-      "sourceMtime": "2026-04-02T23:23:22Z",
-      "posterSelection": null,
-      "outputs": [
-        {
-          "role": "detail",
-          "path": "public/portfolio/2026-10/photo-01.webp",
-          "bytes": 217612,
-          "width": 1067,
-          "height": 1600,
-          "codec": "webp",
-          "durationSeconds": null,
-          "sha256": "117bc0860c47fb0464bcbc56d939bc9d7cf537233924b0b0928e2183099c5d75"
-        },
-        {
-          "role": "thumbnail",
-          "path": "public/portfolio/2026-10/photo-01-thumb.webp",
-          "bytes": 82166,
-          "width": 600,
-          "height": 900,
-          "codec": "webp",
-          "durationSeconds": null,
-          "sha256": "6d5f7cad12898a708302a633e7b16247f5534c09462b1ff6de17e014280cf76a"
-        }
-      ]
-    },
-    {
-      "id": "photo-02",
-      "source": "NEW PORTFOLIO/3.jpg",
-      "sourceBytes": 8176614,
-      "sourceMtime": "2026-04-02T23:18:40Z",
-      "posterSelection": null,
-      "outputs": [
-        {
-          "role": "detail",
-          "path": "public/portfolio/2026-10/photo-02.webp",
-          "bytes": 192362,
-          "width": 1067,
-          "height": 1600,
-          "codec": "webp",
-          "durationSeconds": null,
-          "sha256": "db4afacd926604cbabb3d9db984f091734abd8ed755f29e20871d1c3f1fe6914"
-        },
-        {
-          "role": "thumbnail",
-          "path": "public/portfolio/2026-10/photo-02-thumb.webp",
-          "bytes": 77804,
-          "width": 600,
-          "height": 900,
-          "codec": "webp",
-          "durationSeconds": null,
-          "sha256": "f0704ed9541e1de9645afaf2159a0866c7c181e06b26a6b87be2266181922078"
-        }
-      ]
-    },
-    {
-      "id": "film-04",
-      "source": "NEW PORTFOLIO/3.mp4",
-      "sourceBytes": 54204634,
-      "sourceMtime": "2026-09-07T19:51:04Z",
+      "previousId": "film-04",
       "posterSelection": {
         "seconds": 13.311,
         "reason": "Clean side profile and gown silhouette on the event backdrop."
@@ -265,127 +194,115 @@
       "outputs": [
         {
           "role": "poster",
-          "path": "public/portfolio/2026-10/film-04-poster.webp",
+          "filename": "amfar-gala-poster.webp",
+          "path": "public/portfolio/2026-11-final/amfar-gala-poster.webp",
           "bytes": 36466,
           "width": 675,
           "height": 1200,
           "codec": "webp",
+          "profile": null,
+          "level": -99,
+          "pixelFormat": "yuv420p",
+          "rotation": 0,
+          "colorSpace": "bt470bg",
+          "colorTransfer": null,
+          "colorPrimaries": null,
           "durationSeconds": null,
-          "sha256": "dc8ab41fbb7abce0e53f143e1395f398c680c2a7335451a0dc1a8e2b3f70b121"
+          "videoDurationSeconds": null,
+          "frameRate": null,
+          "audio": [],
+          "sha256": "dc8ab41fbb7abce0e53f143e1395f398c680c2a7335451a0dc1a8e2b3f70b121",
+          "validation": {
+            "ffprobe": true,
+            "fullDecode": true,
+            "dimensionsMatch": true,
+            "dimensionTolerancePixels": 1,
+            "orientationNormalized": true
+          },
+          "origin": "2026-10/film-04"
         },
         {
           "role": "video",
-          "path": "public/portfolio/2026-10/film-04.mp4",
+          "filename": "amfar-gala.mp4",
+          "path": "public/portfolio/2026-11-final/amfar-gala.mp4",
           "bytes": 3195225,
           "width": 720,
           "height": 1280,
           "codec": "h264",
+          "profile": "High",
+          "level": 31,
+          "pixelFormat": "yuv420p",
+          "rotation": 0,
+          "colorSpace": "bt709",
+          "colorTransfer": "bt709",
+          "colorPrimaries": "bt709",
           "durationSeconds": 16.638,
-          "sha256": "f98ef3385cc27fbb282952fee859f92986f0773b417af4adf21fca6f044ebbfa"
+          "videoDurationSeconds": 16.6,
+          "frameRate": "25/1",
+          "audio": [
+            {
+              "codec": "aac",
+              "channels": 2,
+              "sampleRate": 48000,
+              "durationSeconds": 16.638,
+              "bitrate": 97016
+            }
+          ],
+          "sha256": "f98ef3385cc27fbb282952fee859f92986f0773b417af4adf21fca6f044ebbfa",
+          "validation": {
+            "ffprobe": true,
+            "fullDecode": true,
+            "dimensionsMatch": true,
+            "dimensionTolerancePixels": 0,
+            "orientationNormalized": true,
+            "browserCodec": true,
+            "audioPreserved": true,
+            "durationDeltaSeconds": 0.0009999999999976694,
+            "videoDurationDeltaSeconds": 0,
+            "faststart": true,
+            "moovOffset": 32,
+            "mdatOffset": 13985
+          },
+          "origin": "2026-10/film-04"
         }
       ]
     },
     {
-      "id": "film-05",
-      "source": "NEW PORTFOLIO/3(1).mp4",
-      "sourceBytes": 202345293,
-      "sourceMtime": "2026-04-02T23:32:22Z",
-      "posterSelection": {
-        "seconds": 9.12,
-        "reason": "Full outfit with a clear face, avoiding the earlier sun flare."
+      "id": "amiri",
+      "title": "AMIRI",
+      "type": "video",
+      "source": "AMIRI.mp4",
+      "sourceSha256": "6ea9e8261efdd9b959f8f97a27c4c5078aeeea45f76b85819c5c392c1f434775",
+      "sourceStat": {
+        "id": "amiri",
+        "source": "D:\\new-vids-vincent\\final-list\\AMIRI.mp4",
+        "bytes": 163603887,
+        "mtimeMs": 1785197502000,
+        "mtimeISO": "2026-07-28T00:11:42.000Z"
       },
-      "outputs": [
-        {
-          "role": "poster",
-          "path": "public/portfolio/2026-10/film-05-poster.webp",
-          "bytes": 71672,
-          "width": 675,
-          "height": 1200,
-          "codec": "webp",
-          "durationSeconds": null,
-          "sha256": "f1cf0e6eb6b6ee2044de041ec05410956924aad6fd25c160e2a727f333f264e8"
-        },
-        {
-          "role": "video",
-          "path": "public/portfolio/2026-10/film-05.mp4",
-          "bytes": 6260993,
-          "width": 720,
-          "height": 1280,
-          "codec": "h264",
-          "durationSeconds": 20.222,
-          "sha256": "ad18daf07dd0f9dce14baff3825f57c922468a937f3185ebaa983e8f21eeffc4"
-        }
-      ]
-    },
-    {
-      "id": "film-06",
-      "source": "NEW PORTFOLIO/5.mp4",
-      "sourceBytes": 151404193,
-      "sourceMtime": "2026-04-02T23:32:32Z",
-      "posterSelection": {
-        "seconds": 7.91,
-        "reason": "Clear frontal portrait with full suit and accessory detail."
+      "sourceMedia": {
+        "rawWidth": 2160,
+        "rawHeight": 3840,
+        "rotation": 0,
+        "displayWidth": 2160,
+        "displayHeight": 3840,
+        "durationSeconds": 31.871,
+        "videoDurationSeconds": 31.84,
+        "frameRate": "25/1",
+        "colorSpace": "bt709",
+        "colorTransfer": "bt709",
+        "colorPrimaries": "bt709",
+        "audio": [
+          {
+            "codec": "aac",
+            "channels": 2,
+            "sampleRate": 48000,
+            "durationSeconds": 31.871,
+            "bitrate": 319982
+          }
+        ]
       },
-      "outputs": [
-        {
-          "role": "poster",
-          "path": "public/portfolio/2026-10/film-06-poster.webp",
-          "bytes": 30126,
-          "width": 675,
-          "height": 1200,
-          "codec": "webp",
-          "durationSeconds": null,
-          "sha256": "538e37b5ceee521410c5cf9506fedd2a0e1cd318ed874b4de5dac0728e8cf279"
-        },
-        {
-          "role": "video",
-          "path": "public/portfolio/2026-10/film-06.mp4",
-          "bytes": 3166439,
-          "width": 720,
-          "height": 1280,
-          "codec": "h264",
-          "durationSeconds": 17.534,
-          "sha256": "e4ffcfa52fa833cd2a0fb07b80b3c4eb6296175ee4e6afbe2a81a54db42581fe"
-        }
-      ]
-    },
-    {
-      "id": "film-07",
-      "source": "NEW PORTFOLIO/6.mp4",
-      "sourceBytes": 182161605,
-      "sourceMtime": "2026-04-02T23:31:48Z",
-      "posterSelection": {
-        "seconds": 14.373,
-        "reason": "Clear three-quarter portrait and outfit in warm evening light."
-      },
-      "outputs": [
-        {
-          "role": "poster",
-          "path": "public/portfolio/2026-10/film-07-poster.webp",
-          "bytes": 48750,
-          "width": 675,
-          "height": 1200,
-          "codec": "webp",
-          "durationSeconds": null,
-          "sha256": "4602b311b766dccce3cfa7b49769a7263549614ee53846f402f922642916e12b"
-        },
-        {
-          "role": "video",
-          "path": "public/portfolio/2026-10/film-07.mp4",
-          "bytes": 5706612,
-          "width": 720,
-          "height": 1280,
-          "codec": "h264",
-          "durationSeconds": 17.970998,
-          "sha256": "2832ca24976811e113153b6d3caa8b073c3d5c37141673a8ce73eb084c474021"
-        }
-      ]
-    },
-    {
-      "id": "film-08",
-      "source": "NEW PORTFOLIO/AMIRI.mp4",
-      "sourceBytes": 163603887,
-      "sourceMtime": "2026-07-28T00:11:42Z",
+      "previousId": "film-08",
       "posterSelection": {
         "seconds": 14.342,
         "reason": "Clear fashion portrait against the Amiri presentation setting."
@@ -393,495 +310,1120 @@
       "outputs": [
         {
           "role": "poster",
-          "path": "public/portfolio/2026-10/film-08-poster.webp",
+          "filename": "amiri-poster.webp",
+          "path": "public/portfolio/2026-11-final/amiri-poster.webp",
           "bytes": 88050,
           "width": 675,
           "height": 1200,
           "codec": "webp",
+          "profile": null,
+          "level": -99,
+          "pixelFormat": "yuv420p",
+          "rotation": 0,
+          "colorSpace": "bt470bg",
+          "colorTransfer": null,
+          "colorPrimaries": null,
           "durationSeconds": null,
-          "sha256": "99895bddd7918094b81a69ab4f4c8bcf2c2b17fa527a520b3f7d2bf49c7de99b"
+          "videoDurationSeconds": null,
+          "frameRate": null,
+          "audio": [],
+          "sha256": "99895bddd7918094b81a69ab4f4c8bcf2c2b17fa527a520b3f7d2bf49c7de99b",
+          "validation": {
+            "ffprobe": true,
+            "fullDecode": true,
+            "dimensionsMatch": true,
+            "dimensionTolerancePixels": 1,
+            "orientationNormalized": true
+          },
+          "origin": "2026-10/film-08"
         },
         {
           "role": "video",
-          "path": "public/portfolio/2026-10/film-08.mp4",
+          "filename": "amiri.mp4",
+          "path": "public/portfolio/2026-11-final/amiri.mp4",
           "bytes": 12545825,
           "width": 720,
           "height": 1280,
           "codec": "h264",
+          "profile": "High",
+          "level": 31,
+          "pixelFormat": "yuv420p",
+          "rotation": 0,
+          "colorSpace": "bt709",
+          "colorTransfer": "bt709",
+          "colorPrimaries": "bt709",
           "durationSeconds": 31.87,
-          "sha256": "4b21b7b995486aa59fa0d4303bfc4866167a2b43380fc4c6bdf670ff7148f0b5"
+          "videoDurationSeconds": 31.84,
+          "frameRate": "25/1",
+          "audio": [
+            {
+              "codec": "aac",
+              "channels": 2,
+              "sampleRate": 48000,
+              "durationSeconds": 31.87,
+              "bitrate": 98596
+            }
+          ],
+          "sha256": "4b21b7b995486aa59fa0d4303bfc4866167a2b43380fc4c6bdf670ff7148f0b5",
+          "validation": {
+            "ffprobe": true,
+            "fullDecode": true,
+            "dimensionsMatch": true,
+            "dimensionTolerancePixels": 0,
+            "orientationNormalized": true,
+            "browserCodec": true,
+            "audioPreserved": true,
+            "durationDeltaSeconds": 0.0009999999999976694,
+            "videoDurationDeltaSeconds": 0,
+            "faststart": true,
+            "moovOffset": 32,
+            "mdatOffset": 25061
+          },
+          "origin": "2026-10/film-08"
         }
       ]
     },
     {
-      "id": "photo-03",
-      "source": "NEW PORTFOLIO/DSCF7995.JPG",
-      "sourceBytes": 14479574,
-      "sourceMtime": "2026-10-10T03:23:56Z",
-      "posterSelection": null,
+      "id": "balmain",
+      "title": "BALMAIN",
+      "type": "video",
+      "source": "BALMAIN.mp4",
+      "sourceSha256": "0c014485f236b2d2543e318c8bcbb236e8c60eba2aa4ca49d868509cd80d3d0b",
+      "sourceStat": {
+        "id": "balmain",
+        "source": "D:\\new-vids-vincent\\final-list\\BALMAIN.mp4",
+        "bytes": 112205893,
+        "mtimeMs": 1793727054000,
+        "mtimeISO": "2026-11-03T17:30:54.000Z"
+      },
+      "sourceMedia": {
+        "rawWidth": 2160,
+        "rawHeight": 3840,
+        "rotation": 0,
+        "displayWidth": 2160,
+        "displayHeight": 3840,
+        "durationSeconds": 12.245333,
+        "videoDurationSeconds": 12.166667,
+        "frameRate": "60/1",
+        "colorSpace": "bt709",
+        "colorTransfer": "bt709",
+        "colorPrimaries": "bt709",
+        "audio": [
+          {
+            "codec": "aac",
+            "channels": 2,
+            "sampleRate": 48000,
+            "durationSeconds": 12.245333,
+            "bitrate": 319954
+          }
+        ]
+      },
+      "previousId": null,
+      "posterSelection": {
+        "seconds": 6.123,
+        "reason": "Clear portrait with the outfit and event backdrop visible."
+      },
       "outputs": [
         {
-          "role": "detail",
-          "path": "public/portfolio/2026-10/photo-03.webp",
-          "bytes": 171650,
-          "width": 1067,
-          "height": 1600,
+          "role": "poster",
+          "filename": "balmain-poster.webp",
+          "path": "public/portfolio/2026-11-final/balmain-poster.webp",
+          "bytes": 35210,
+          "width": 675,
+          "height": 1200,
           "codec": "webp",
+          "profile": null,
+          "level": -99,
+          "pixelFormat": "yuv420p",
+          "rotation": 0,
+          "colorSpace": "bt470bg",
+          "colorTransfer": null,
+          "colorPrimaries": null,
           "durationSeconds": null,
-          "sha256": "6c79dfbfefd5f235e75f9eb11ba103b2ce0673b69341bca97ce5251a57637c0d"
+          "videoDurationSeconds": null,
+          "frameRate": null,
+          "audio": [],
+          "sha256": "aba42171d6440da0bbf6b99f5c3ee499ccdfdf4535580b8fe2e514d385585ae8",
+          "validation": {
+            "ffprobe": true,
+            "fullDecode": true,
+            "dimensionsMatch": true,
+            "dimensionTolerancePixels": 1,
+            "orientationNormalized": true
+          },
+          "origin": "generated"
         },
         {
-          "role": "thumbnail",
-          "path": "public/portfolio/2026-10/photo-03-thumb.webp",
-          "bytes": 53578,
-          "width": 600,
-          "height": 900,
-          "codec": "webp",
-          "durationSeconds": null,
-          "sha256": "66ad6d565bafab96289efa2eb40cf7c559c05b59a2dc6888a79e7cc9c8d31ceb"
+          "role": "video",
+          "filename": "balmain.mp4",
+          "path": "public/portfolio/2026-11-final/balmain.mp4",
+          "bytes": 1315545,
+          "width": 720,
+          "height": 1280,
+          "codec": "h264",
+          "profile": "High",
+          "level": 31,
+          "pixelFormat": "yuv420p",
+          "rotation": 0,
+          "colorSpace": "bt709",
+          "colorTransfer": "bt709",
+          "colorPrimaries": "bt709",
+          "durationSeconds": 12.201,
+          "videoDurationSeconds": 12.166667,
+          "frameRate": "30/1",
+          "audio": [
+            {
+              "codec": "aac",
+              "channels": 2,
+              "sampleRate": 48000,
+              "durationSeconds": 12.201,
+              "bitrate": 2283
+            }
+          ],
+          "sha256": "82a08a69523cc69617c1b84a9b97e929ec0ade6a72a77117433eae549a80c647",
+          "validation": {
+            "ffprobe": true,
+            "fullDecode": true,
+            "dimensionsMatch": true,
+            "dimensionTolerancePixels": 0,
+            "orientationNormalized": true,
+            "browserCodec": true,
+            "audioPreserved": true,
+            "durationDeltaSeconds": 0.044332999999999956,
+            "videoDurationDeltaSeconds": 0,
+            "faststart": true,
+            "moovOffset": 32,
+            "mdatOffset": 14825
+          },
+          "origin": "matching staged encode"
         }
       ]
     },
     {
-      "id": "photo-04",
-      "source": "NEW PORTFOLIO/DSCF8000.JPG",
-      "sourceBytes": 13796920,
-      "sourceMtime": "2026-10-10T03:23:50Z",
+      "id": "carolines-couture",
+      "title": "CAROLINE'S COUTURE",
+      "type": "photo",
+      "source": "CAROLINE`S COUTURE.jpg",
+      "sourceSha256": "6807cb81e0e55684bca92d77310188ebf9678b5215ab7604e5b4145a74e853ba",
+      "sourceStat": {
+        "id": "carolines-couture",
+        "source": "D:\\new-vids-vincent\\final-list\\CAROLINE`S COUTURE.jpg",
+        "bytes": 26121738,
+        "mtimeMs": 1793726544000,
+        "mtimeISO": "2026-11-03T17:22:24.000Z"
+      },
+      "sourceMedia": {
+        "rawWidth": 5152,
+        "rawHeight": 7728,
+        "exifOrientation": 1,
+        "displayWidth": 5152,
+        "displayHeight": 7728,
+        "colorSpace": "srgb",
+        "hadIccProfile": true
+      },
+      "previousId": "photo-15",
       "posterSelection": null,
       "outputs": [
         {
           "role": "detail",
-          "path": "public/portfolio/2026-10/photo-04.webp",
-          "bytes": 164090,
-          "width": 1067,
-          "height": 1600,
-          "codec": "webp",
-          "durationSeconds": null,
-          "sha256": "0b093a307fa457b21762af837233c63a74bdce81e584d06ae8291b578be38815"
-        },
-        {
-          "role": "thumbnail",
-          "path": "public/portfolio/2026-10/photo-04-thumb.webp",
-          "bytes": 54410,
-          "width": 600,
-          "height": 900,
-          "codec": "webp",
-          "durationSeconds": null,
-          "sha256": "43cc11c4c4238073b57afa8d3253b084ecbd4c1ce3a203efdb430213df0b2f17"
-        }
-      ]
-    },
-    {
-      "id": "photo-05",
-      "source": "NEW PORTFOLIO/DSCF8019.JPG",
-      "sourceBytes": 13903542,
-      "sourceMtime": "2026-10-10T03:23:34Z",
-      "posterSelection": null,
-      "outputs": [
-        {
-          "role": "detail",
-          "path": "public/portfolio/2026-10/photo-05.webp",
-          "bytes": 142106,
-          "width": 1067,
-          "height": 1600,
-          "codec": "webp",
-          "durationSeconds": null,
-          "sha256": "b0bab4e760a88bea89c9b088dcdff6b2f5a69445845fe6f6948c9462d72e89a8"
-        },
-        {
-          "role": "thumbnail",
-          "path": "public/portfolio/2026-10/photo-05-thumb.webp",
-          "bytes": 46572,
-          "width": 600,
-          "height": 900,
-          "codec": "webp",
-          "durationSeconds": null,
-          "sha256": "eef9460828237a6cc888e0b83c9ea6b58fa7fba762682a354b019c3fe00ed978"
-        }
-      ]
-    },
-    {
-      "id": "photo-06",
-      "source": "NEW PORTFOLIO/DSCF8054.JPG",
-      "sourceBytes": 15653030,
-      "sourceMtime": "2026-10-10T03:24:28Z",
-      "posterSelection": null,
-      "outputs": [
-        {
-          "role": "detail",
-          "path": "public/portfolio/2026-10/photo-06.webp",
-          "bytes": 129616,
-          "width": 1067,
-          "height": 1600,
-          "codec": "webp",
-          "durationSeconds": null,
-          "sha256": "0ee2cfc7b71b01c335f8a8d7fc9aafb39327de1a2602a018a9c3cdca73e3e151"
-        },
-        {
-          "role": "thumbnail",
-          "path": "public/portfolio/2026-10/photo-06-thumb.webp",
-          "bytes": 41810,
-          "width": 600,
-          "height": 900,
-          "codec": "webp",
-          "durationSeconds": null,
-          "sha256": "798dfb8085e38c4320c62c50d5ce6eb1febe41a5f61214e7ff2cb39dfbb8bf6a"
-        }
-      ]
-    },
-    {
-      "id": "photo-07",
-      "source": "NEW PORTFOLIO/DSCF8074.JPG",
-      "sourceBytes": 11655307,
-      "sourceMtime": "2026-10-10T03:24:08Z",
-      "posterSelection": null,
-      "outputs": [
-        {
-          "role": "detail",
-          "path": "public/portfolio/2026-10/photo-07.webp",
-          "bytes": 164146,
-          "width": 1067,
-          "height": 1600,
-          "codec": "webp",
-          "durationSeconds": null,
-          "sha256": "61d36a88b2426a24372ce323d1debd647a7b8b136e04b31eb7db11b31cd160b0"
-        },
-        {
-          "role": "thumbnail",
-          "path": "public/portfolio/2026-10/photo-07-thumb.webp",
-          "bytes": 48064,
-          "width": 600,
-          "height": 900,
-          "codec": "webp",
-          "durationSeconds": null,
-          "sha256": "317d1535cd851199422b331c36c4b680030033144b6cf14dc6f8f367f739ce23"
-        }
-      ]
-    },
-    {
-      "id": "photo-08",
-      "source": "NEW PORTFOLIO/DSCF8080.JPG",
-      "sourceBytes": 12045904,
-      "sourceMtime": "2026-10-10T03:23:46Z",
-      "posterSelection": null,
-      "outputs": [
-        {
-          "role": "detail",
-          "path": "public/portfolio/2026-10/photo-08.webp",
-          "bytes": 157854,
-          "width": 1067,
-          "height": 1600,
-          "codec": "webp",
-          "durationSeconds": null,
-          "sha256": "77ed011cb320e75d4755a772122105186f780c161cb2873fbc641048a540a49f"
-        },
-        {
-          "role": "thumbnail",
-          "path": "public/portfolio/2026-10/photo-08-thumb.webp",
-          "bytes": 50570,
-          "width": 600,
-          "height": 900,
-          "codec": "webp",
-          "durationSeconds": null,
-          "sha256": "16c2aa37fc49abe9bdec48203d876fdd8082b852f43f2a4c994c60e79782536c"
-        }
-      ]
-    },
-    {
-      "id": "photo-09",
-      "source": "NEW PORTFOLIO/DSCF8083.JPG",
-      "sourceBytes": 6265504,
-      "sourceMtime": "2026-10-10T03:24:00Z",
-      "posterSelection": null,
-      "outputs": [
-        {
-          "role": "detail",
-          "path": "public/portfolio/2026-10/photo-09.webp",
-          "bytes": 191684,
-          "width": 1067,
-          "height": 1600,
-          "codec": "webp",
-          "durationSeconds": null,
-          "sha256": "acb6a776abc20cc2f7285f15d9e7313bb37431f687dcc1585df7ef5f242b447b"
-        },
-        {
-          "role": "thumbnail",
-          "path": "public/portfolio/2026-10/photo-09-thumb.webp",
-          "bytes": 57058,
-          "width": 600,
-          "height": 900,
-          "codec": "webp",
-          "durationSeconds": null,
-          "sha256": "d154f82a0a72abbbcab1f862f09f2afc0ce7cfc4d6239c78a18c306415696a57"
-        }
-      ]
-    },
-    {
-      "id": "photo-10",
-      "source": "NEW PORTFOLIO/DSCF8089.JPG",
-      "sourceBytes": 8123373,
-      "sourceMtime": "2026-10-10T03:24:24Z",
-      "posterSelection": null,
-      "outputs": [
-        {
-          "role": "detail",
-          "path": "public/portfolio/2026-10/photo-10.webp",
-          "bytes": 177028,
-          "width": 1066,
-          "height": 1600,
-          "codec": "webp",
-          "durationSeconds": null,
-          "sha256": "e30635a6f01b2b996383d810b8ee44089f63584ea451c4c1c0c94d8dcee555b0"
-        },
-        {
-          "role": "thumbnail",
-          "path": "public/portfolio/2026-10/photo-10-thumb.webp",
-          "bytes": 43376,
-          "width": 600,
-          "height": 900,
-          "codec": "webp",
-          "durationSeconds": null,
-          "sha256": "3117d7f14e7bd4d242af59c89b5440e11af487a1ddb51f276b183ab69c89a157"
-        }
-      ]
-    },
-    {
-      "id": "photo-11",
-      "source": "NEW PORTFOLIO/DSCF8104.JPG",
-      "sourceBytes": 11876387,
-      "sourceMtime": "2026-10-10T03:24:32Z",
-      "posterSelection": null,
-      "outputs": [
-        {
-          "role": "detail",
-          "path": "public/portfolio/2026-10/photo-11.webp",
-          "bytes": 191170,
-          "width": 1067,
-          "height": 1600,
-          "codec": "webp",
-          "durationSeconds": null,
-          "sha256": "c7ec844df1216bcdd0d44d5d62fa11333927dc210877d88a5cc8394828d5a50b"
-        },
-        {
-          "role": "thumbnail",
-          "path": "public/portfolio/2026-10/photo-11-thumb.webp",
-          "bytes": 56230,
-          "width": 600,
-          "height": 900,
-          "codec": "webp",
-          "durationSeconds": null,
-          "sha256": "155a8be11caa6dda1c3cad13cef63e33d1bbeac72dd6fd4e7b8f6d8a38b6287f"
-        }
-      ]
-    },
-    {
-      "id": "photo-12",
-      "source": "NEW PORTFOLIO/DSCF8108.JPG",
-      "sourceBytes": 26387078,
-      "sourceMtime": "2026-10-10T03:24:40Z",
-      "posterSelection": null,
-      "outputs": [
-        {
-          "role": "detail",
-          "path": "public/portfolio/2026-10/photo-12.webp",
-          "bytes": 257252,
-          "width": 1067,
-          "height": 1600,
-          "codec": "webp",
-          "durationSeconds": null,
-          "sha256": "3c1db1d95a2f9fe412971e3a757ac759e2496a409678aa733231aa71cb9a4b2e"
-        },
-        {
-          "role": "thumbnail",
-          "path": "public/portfolio/2026-10/photo-12-thumb.webp",
-          "bytes": 92070,
-          "width": 600,
-          "height": 900,
-          "codec": "webp",
-          "durationSeconds": null,
-          "sha256": "62ad1104ce4b042fae19c072b0fedeb991d39d7220448fd9c3f466c385131584"
-        }
-      ]
-    },
-    {
-      "id": "photo-13",
-      "source": "NEW PORTFOLIO/image 1.jpg",
-      "sourceBytes": 29216106,
-      "sourceMtime": "2026-10-10T03:24:56Z",
-      "posterSelection": null,
-      "outputs": [
-        {
-          "role": "detail",
-          "path": "public/portfolio/2026-10/photo-13.webp",
-          "bytes": 162058,
-          "width": 1067,
-          "height": 1600,
-          "codec": "webp",
-          "durationSeconds": null,
-          "sha256": "2445b1919e942d0ec54603312ce42000e1c92aa0d1560a9e279bd5e288c32028"
-        },
-        {
-          "role": "thumbnail",
-          "path": "public/portfolio/2026-10/photo-13-thumb.webp",
-          "bytes": 53512,
-          "width": 600,
-          "height": 900,
-          "codec": "webp",
-          "durationSeconds": null,
-          "sha256": "44d73b0fedd1756cb6d1175dba36ca85e7543aeb41cd8525656d28e1304b89ed"
-        }
-      ]
-    },
-    {
-      "id": "photo-14",
-      "source": "NEW PORTFOLIO/image 17.jpg",
-      "sourceBytes": 21070077,
-      "sourceMtime": "2026-09-29T08:00:02Z",
-      "posterSelection": null,
-      "outputs": [
-        {
-          "role": "detail",
-          "path": "public/portfolio/2026-10/photo-14.webp",
-          "bytes": 303370,
-          "width": 1600,
-          "height": 1323,
-          "codec": "webp",
-          "durationSeconds": null,
-          "sha256": "ed0e987b71e83e0a1efc47cc8925f39dfe6a498f2df55dad797ab0b9e386ee68"
-        },
-        {
-          "role": "thumbnail",
-          "path": "public/portfolio/2026-10/photo-14-thumb.webp",
-          "bytes": 107952,
-          "width": 900,
-          "height": 744,
-          "codec": "webp",
-          "durationSeconds": null,
-          "sha256": "e3cfcf41b8fb5420c4724cc6cd1831512ff2c1cc631128aa142d460988379c13"
-        }
-      ]
-    },
-    {
-      "id": "photo-15",
-      "source": "NEW PORTFOLIO/image 52.jpg",
-      "sourceBytes": 26121738,
-      "sourceMtime": "2026-10-10T03:34:04Z",
-      "posterSelection": null,
-      "outputs": [
-        {
-          "role": "detail",
-          "path": "public/portfolio/2026-10/photo-15.webp",
+          "filename": "carolines-couture.webp",
+          "path": "public/portfolio/2026-11-final/carolines-couture.webp",
           "bytes": 128486,
           "width": 1067,
           "height": 1600,
           "codec": "webp",
+          "profile": null,
+          "level": -99,
+          "pixelFormat": "yuv420p",
+          "rotation": 0,
+          "colorSpace": "bt470bg",
+          "colorTransfer": null,
+          "colorPrimaries": null,
           "durationSeconds": null,
-          "sha256": "4036d79dc92197977f1ef180d837a5a96c44fd41b0677297a0bbde0093046061"
+          "videoDurationSeconds": null,
+          "frameRate": null,
+          "audio": [],
+          "sha256": "4036d79dc92197977f1ef180d837a5a96c44fd41b0677297a0bbde0093046061",
+          "validation": {
+            "ffprobe": true,
+            "fullDecode": true,
+            "dimensionsMatch": true,
+            "dimensionTolerancePixels": 1,
+            "orientationNormalized": true
+          },
+          "origin": "2026-10/photo-15"
         },
         {
           "role": "thumbnail",
-          "path": "public/portfolio/2026-10/photo-15-thumb.webp",
+          "filename": "carolines-couture-thumb.webp",
+          "path": "public/portfolio/2026-11-final/carolines-couture-thumb.webp",
           "bytes": 52670,
           "width": 600,
           "height": 900,
           "codec": "webp",
+          "profile": null,
+          "level": -99,
+          "pixelFormat": "yuv420p",
+          "rotation": 0,
+          "colorSpace": "bt470bg",
+          "colorTransfer": null,
+          "colorPrimaries": null,
           "durationSeconds": null,
-          "sha256": "1e456576ffbf79477ec9c21ec61b3bbc9c8f3fdbf79a51ed3178de4a08f8772f"
+          "videoDurationSeconds": null,
+          "frameRate": null,
+          "audio": [],
+          "sha256": "1e456576ffbf79477ec9c21ec61b3bbc9c8f3fdbf79a51ed3178de4a08f8772f",
+          "validation": {
+            "ffprobe": true,
+            "fullDecode": true,
+            "dimensionsMatch": true,
+            "dimensionTolerancePixels": 1,
+            "orientationNormalized": true
+          },
+          "origin": "2026-10/photo-15"
         }
       ]
     },
     {
-      "id": "photo-16",
-      "source": "NEW PORTFOLIO/image 55.JPG",
-      "sourceBytes": 20013583,
-      "sourceMtime": "2026-10-10T03:33:58Z",
+      "id": "editorial",
+      "title": "EDITORIAL",
+      "type": "photo",
+      "source": "EDITORIAL.JPG",
+      "sourceSha256": "585bffa0c9f65b6d99b6f8bd74b88682c76b61b16ef2f00cc4ccef4de23c101a",
+      "sourceStat": {
+        "id": "editorial",
+        "source": "D:\\new-vids-vincent\\final-list\\EDITORIAL.JPG",
+        "bytes": 20013583,
+        "mtimeMs": 1793726636000,
+        "mtimeISO": "2026-11-03T17:23:56.000Z"
+      },
+      "sourceMedia": {
+        "rawWidth": 5152,
+        "rawHeight": 7728,
+        "exifOrientation": 1,
+        "displayWidth": 5152,
+        "displayHeight": 7728,
+        "colorSpace": "srgb",
+        "hadIccProfile": true
+      },
+      "previousId": "photo-16",
       "posterSelection": null,
       "outputs": [
         {
           "role": "detail",
-          "path": "public/portfolio/2026-10/photo-16.webp",
+          "filename": "editorial.webp",
+          "path": "public/portfolio/2026-11-final/editorial.webp",
           "bytes": 94242,
           "width": 1067,
           "height": 1600,
           "codec": "webp",
+          "profile": null,
+          "level": -99,
+          "pixelFormat": "yuv420p",
+          "rotation": 0,
+          "colorSpace": "bt470bg",
+          "colorTransfer": null,
+          "colorPrimaries": null,
           "durationSeconds": null,
-          "sha256": "dd4713f106b47d022abe003df6c6dd6f2877d82e5987aa7d38131a521ad8853f"
+          "videoDurationSeconds": null,
+          "frameRate": null,
+          "audio": [],
+          "sha256": "dd4713f106b47d022abe003df6c6dd6f2877d82e5987aa7d38131a521ad8853f",
+          "validation": {
+            "ffprobe": true,
+            "fullDecode": true,
+            "dimensionsMatch": true,
+            "dimensionTolerancePixels": 1,
+            "orientationNormalized": true
+          },
+          "origin": "2026-10/photo-16"
         },
         {
           "role": "thumbnail",
-          "path": "public/portfolio/2026-10/photo-16-thumb.webp",
+          "filename": "editorial-thumb.webp",
+          "path": "public/portfolio/2026-11-final/editorial-thumb.webp",
           "bytes": 36194,
           "width": 600,
           "height": 900,
           "codec": "webp",
+          "profile": null,
+          "level": -99,
+          "pixelFormat": "yuv420p",
+          "rotation": 0,
+          "colorSpace": "bt470bg",
+          "colorTransfer": null,
+          "colorPrimaries": null,
           "durationSeconds": null,
-          "sha256": "b6b7ec973340c1c72224afd457e0653e464d8efb8d49ccd83bd01dd1fd86a8d8"
+          "videoDurationSeconds": null,
+          "frameRate": null,
+          "audio": [],
+          "sha256": "b6b7ec973340c1c72224afd457e0653e464d8efb8d49ccd83bd01dd1fd86a8d8",
+          "validation": {
+            "ffprobe": true,
+            "fullDecode": true,
+            "dimensionsMatch": true,
+            "dimensionTolerancePixels": 1,
+            "orientationNormalized": true
+          },
+          "origin": "2026-10/photo-16"
         }
       ]
     },
     {
-      "id": "photo-17",
-      "source": "NEW PORTFOLIO/image 85.jpeg",
-      "sourceBytes": 27042033,
-      "sourceMtime": "2026-10-10T03:34:12Z",
-      "posterSelection": null,
+      "id": "georges-hobeika",
+      "title": "GEORGES HOBEIKA",
+      "type": "video",
+      "source": "GEORGES HOBEIKA.MP4",
+      "sourceSha256": "f763708a6c315efbcd92627ce580d6c86a816c0d9eef3e2daadfe1a7be6251cd",
+      "sourceStat": {
+        "id": "georges-hobeika",
+        "source": "D:\\new-vids-vincent\\final-list\\GEORGES HOBEIKA.MP4",
+        "bytes": 473412468,
+        "mtimeMs": 1793727044000,
+        "mtimeISO": "2026-11-03T17:30:44.000Z"
+      },
+      "sourceMedia": {
+        "rawWidth": 2160,
+        "rawHeight": 3840,
+        "rotation": 0,
+        "displayWidth": 2160,
+        "displayHeight": 3840,
+        "durationSeconds": 49.28,
+        "videoDurationSeconds": 49.2,
+        "frameRate": "25/1",
+        "colorSpace": "bt709",
+        "colorTransfer": "bt709",
+        "colorPrimaries": "bt709",
+        "audio": [
+          {
+            "codec": "aac",
+            "channels": 2,
+            "sampleRate": 48000,
+            "durationSeconds": 49.28,
+            "bitrate": 319988
+          }
+        ]
+      },
+      "previousId": null,
+      "posterSelection": {
+        "seconds": 24.64,
+        "reason": "Clear portrait of a model in a pink gown."
+      },
       "outputs": [
         {
-          "role": "detail",
-          "path": "public/portfolio/2026-10/photo-17.webp",
-          "bytes": 255832,
-          "width": 1067,
-          "height": 1600,
+          "role": "poster",
+          "filename": "georges-hobeika-poster.webp",
+          "path": "public/portfolio/2026-11-final/georges-hobeika-poster.webp",
+          "bytes": 49532,
+          "width": 675,
+          "height": 1200,
           "codec": "webp",
+          "profile": null,
+          "level": -99,
+          "pixelFormat": "yuv420p",
+          "rotation": 0,
+          "colorSpace": "bt470bg",
+          "colorTransfer": null,
+          "colorPrimaries": null,
           "durationSeconds": null,
-          "sha256": "4ff5c056c5d9dee4e7a922b676080eae46eb96c7a87f431a8e88ef0b828430aa"
+          "videoDurationSeconds": null,
+          "frameRate": null,
+          "audio": [],
+          "sha256": "14febf35399c43b807290c6d926a8786f561b5c46daa8f3bd7cf09db13ee9c8a",
+          "validation": {
+            "ffprobe": true,
+            "fullDecode": true,
+            "dimensionsMatch": true,
+            "dimensionTolerancePixels": 1,
+            "orientationNormalized": true
+          },
+          "origin": "generated"
         },
         {
-          "role": "thumbnail",
-          "path": "public/portfolio/2026-10/photo-17-thumb.webp",
-          "bytes": 107360,
-          "width": 600,
-          "height": 900,
-          "codec": "webp",
-          "durationSeconds": null,
-          "sha256": "b60ed17161ef617298d02d6b11888bb10284b3019241d6bf6571e68db0f0bc63"
+          "role": "video",
+          "filename": "georges-hobeika.mp4",
+          "path": "public/portfolio/2026-11-final/georges-hobeika.mp4",
+          "bytes": 14517886,
+          "width": 720,
+          "height": 1280,
+          "codec": "h264",
+          "profile": "High",
+          "level": 31,
+          "pixelFormat": "yuv420p",
+          "rotation": 0,
+          "colorSpace": "bt709",
+          "colorTransfer": "bt709",
+          "colorPrimaries": "bt709",
+          "durationSeconds": 49.236,
+          "videoDurationSeconds": 49.2,
+          "frameRate": "25/1",
+          "audio": [
+            {
+              "codec": "aac",
+              "channels": 2,
+              "sampleRate": 48000,
+              "durationSeconds": 49.236,
+              "bitrate": 96780
+            }
+          ],
+          "sha256": "1c0524b4cb0d8ebd118ce7b1fcaeeb035df3f65ddf26cb2ad28fd1c7686ef450",
+          "validation": {
+            "ffprobe": true,
+            "fullDecode": true,
+            "dimensionsMatch": true,
+            "dimensionTolerancePixels": 0,
+            "orientationNormalized": true,
+            "browserCodec": true,
+            "audioPreserved": true,
+            "durationDeltaSeconds": 0.044000000000004036,
+            "videoDurationDeltaSeconds": 0,
+            "faststart": true,
+            "moovOffset": 32,
+            "mdatOffset": 38817
+          },
+          "origin": "matching staged encode"
         }
       ]
     },
     {
-      "id": "photo-18",
-      "source": "NEW PORTFOLIO/IMG_1585.JPG",
-      "sourceBytes": 3034321,
-      "sourceMtime": "2026-10-10T03:33:52Z",
+      "id": "hermes",
+      "title": "HERMES",
+      "type": "video",
+      "source": "HERMES.mp4",
+      "sourceSha256": "a259fab233ea0d57c72dcdd2353982cd0aed0be7eee51f2dc25877bae8645b41",
+      "sourceStat": {
+        "id": "hermes",
+        "source": "D:\\new-vids-vincent\\final-list\\HERMES.mp4",
+        "bytes": 129718485,
+        "mtimeMs": 1793726646000,
+        "mtimeISO": "2026-11-03T17:24:06.000Z"
+      },
+      "sourceMedia": {
+        "rawWidth": 3840,
+        "rawHeight": 2160,
+        "rotation": 0,
+        "displayWidth": 3840,
+        "displayHeight": 2160,
+        "durationSeconds": 14.037333,
+        "videoDurationSeconds": 13.966667,
+        "frameRate": "60/1",
+        "colorSpace": "bt709",
+        "colorTransfer": "bt709",
+        "colorPrimaries": "bt709",
+        "audio": [
+          {
+            "codec": "aac",
+            "channels": 2,
+            "sampleRate": 48000,
+            "durationSeconds": 14.037333,
+            "bitrate": 319960
+          }
+        ]
+      },
+      "previousId": "film-01",
+      "posterSelection": {
+        "seconds": 1.404,
+        "reason": "Clear waist-up fashion portrait and contextual street setting."
+      },
+      "outputs": [
+        {
+          "role": "poster",
+          "filename": "hermes-poster.webp",
+          "path": "public/portfolio/2026-11-final/hermes-poster.webp",
+          "bytes": 54302,
+          "width": 1200,
+          "height": 675,
+          "codec": "webp",
+          "profile": null,
+          "level": -99,
+          "pixelFormat": "yuv420p",
+          "rotation": 0,
+          "colorSpace": "bt470bg",
+          "colorTransfer": null,
+          "colorPrimaries": null,
+          "durationSeconds": null,
+          "videoDurationSeconds": null,
+          "frameRate": null,
+          "audio": [],
+          "sha256": "35ce9f1162b0a19efe81f3be5a6866e90375f6a1ff3180879ec29cda17f2b3e1",
+          "validation": {
+            "ffprobe": true,
+            "fullDecode": true,
+            "dimensionsMatch": true,
+            "dimensionTolerancePixels": 1,
+            "orientationNormalized": true
+          },
+          "origin": "2026-10/film-01"
+        },
+        {
+          "role": "video",
+          "filename": "hermes.mp4",
+          "path": "public/portfolio/2026-11-final/hermes.mp4",
+          "bytes": 2149836,
+          "width": 1280,
+          "height": 720,
+          "codec": "h264",
+          "profile": "High",
+          "level": 31,
+          "pixelFormat": "yuv420p",
+          "rotation": 0,
+          "colorSpace": "bt709",
+          "colorTransfer": "bt709",
+          "colorPrimaries": "bt709",
+          "durationSeconds": 13.993,
+          "videoDurationSeconds": 13.966667,
+          "frameRate": "30/1",
+          "audio": [
+            {
+              "codec": "aac",
+              "channels": 2,
+              "sampleRate": 48000,
+              "durationSeconds": 13.993,
+              "bitrate": 2279
+            }
+          ],
+          "sha256": "9637f46815395a4696933cef382bd7928f8241dcd5a4ac53bb6cbf51d92eafd7",
+          "validation": {
+            "ffprobe": true,
+            "fullDecode": true,
+            "dimensionsMatch": true,
+            "dimensionTolerancePixels": 0,
+            "orientationNormalized": true,
+            "browserCodec": true,
+            "audioPreserved": true,
+            "durationDeltaSeconds": 0.044332999999999956,
+            "videoDurationDeltaSeconds": 0,
+            "faststart": true,
+            "moovOffset": 32,
+            "mdatOffset": 16845
+          },
+          "origin": "2026-10/film-01"
+        }
+      ]
+    },
+    {
+      "id": "karl-lagerfeld",
+      "title": "KARL LAGERFELD",
+      "type": "video",
+      "source": "KARL LAGERFELD.mp4",
+      "sourceSha256": "35935f49080013d7d6d41bb170a94eff095a65639441ac9056b494cdbf2638d2",
+      "sourceStat": {
+        "id": "karl-lagerfeld",
+        "source": "D:\\new-vids-vincent\\final-list\\KARL LAGERFELD.mp4",
+        "bytes": 151404193,
+        "mtimeMs": 1793726488000,
+        "mtimeISO": "2026-11-03T17:21:28.000Z"
+      },
+      "sourceMedia": {
+        "rawWidth": 2160,
+        "rawHeight": 3840,
+        "rotation": 0,
+        "displayWidth": 2160,
+        "displayHeight": 3840,
+        "durationSeconds": 17.578667,
+        "videoDurationSeconds": 17.5,
+        "frameRate": "50/1",
+        "colorSpace": "bt709",
+        "colorTransfer": "bt709",
+        "colorPrimaries": "bt709",
+        "audio": [
+          {
+            "codec": "aac",
+            "channels": 2,
+            "sampleRate": 48000,
+            "durationSeconds": 17.578667,
+            "bitrate": 319968
+          }
+        ]
+      },
+      "previousId": "film-06",
+      "posterSelection": {
+        "seconds": 7.91,
+        "reason": "Clear frontal portrait with full suit and accessory detail."
+      },
+      "outputs": [
+        {
+          "role": "poster",
+          "filename": "karl-lagerfeld-poster.webp",
+          "path": "public/portfolio/2026-11-final/karl-lagerfeld-poster.webp",
+          "bytes": 30126,
+          "width": 675,
+          "height": 1200,
+          "codec": "webp",
+          "profile": null,
+          "level": -99,
+          "pixelFormat": "yuv420p",
+          "rotation": 0,
+          "colorSpace": "bt470bg",
+          "colorTransfer": null,
+          "colorPrimaries": null,
+          "durationSeconds": null,
+          "videoDurationSeconds": null,
+          "frameRate": null,
+          "audio": [],
+          "sha256": "538e37b5ceee521410c5cf9506fedd2a0e1cd318ed874b4de5dac0728e8cf279",
+          "validation": {
+            "ffprobe": true,
+            "fullDecode": true,
+            "dimensionsMatch": true,
+            "dimensionTolerancePixels": 1,
+            "orientationNormalized": true
+          },
+          "origin": "2026-10/film-06"
+        },
+        {
+          "role": "video",
+          "filename": "karl-lagerfeld.mp4",
+          "path": "public/portfolio/2026-11-final/karl-lagerfeld.mp4",
+          "bytes": 3166439,
+          "width": 720,
+          "height": 1280,
+          "codec": "h264",
+          "profile": "High",
+          "level": 31,
+          "pixelFormat": "yuv420p",
+          "rotation": 0,
+          "colorSpace": "bt709",
+          "colorTransfer": "bt709",
+          "colorPrimaries": "bt709",
+          "durationSeconds": 17.534,
+          "videoDurationSeconds": 17.52,
+          "frameRate": "25/1",
+          "audio": [
+            {
+              "codec": "aac",
+              "channels": 2,
+              "sampleRate": 48000,
+              "durationSeconds": 17.534,
+              "bitrate": 95203
+            }
+          ],
+          "sha256": "e4ffcfa52fa833cd2a0fb07b80b3c4eb6296175ee4e6afbe2a81a54db42581fe",
+          "validation": {
+            "ffprobe": true,
+            "fullDecode": true,
+            "dimensionsMatch": true,
+            "dimensionTolerancePixels": 0,
+            "orientationNormalized": true,
+            "browserCodec": true,
+            "audioPreserved": true,
+            "durationDeltaSeconds": 0.044667000000000456,
+            "videoDurationDeltaSeconds": 0.019999999999999574,
+            "faststart": true,
+            "moovOffset": 32,
+            "mdatOffset": 14761
+          },
+          "origin": "2026-10/film-06"
+        }
+      ]
+    },
+    {
+      "id": "kristel-x-chopard",
+      "title": "KRISTEL X CHOPARD",
+      "type": "photo",
+      "source": "KRISTEL X CHOPARD.JPG",
+      "sourceSha256": "6997e03e2ff627fc8a8a234c05db5b2b8a8f445b9e1a61116d9903d382a5b3d2",
+      "sourceStat": {
+        "id": "kristel-x-chopard",
+        "source": "D:\\new-vids-vincent\\final-list\\KRISTEL X CHOPARD.JPG",
+        "bytes": 3034321,
+        "mtimeMs": 1793727066000,
+        "mtimeISO": "2026-11-03T17:31:06.000Z"
+      },
+      "sourceMedia": {
+        "rawWidth": 3455,
+        "rawHeight": 5181,
+        "exifOrientation": 1,
+        "displayWidth": 3455,
+        "displayHeight": 5181,
+        "colorSpace": "srgb",
+        "hadIccProfile": true
+      },
+      "previousId": "photo-18",
       "posterSelection": null,
       "outputs": [
         {
           "role": "detail",
-          "path": "public/portfolio/2026-10/photo-18.webp",
+          "filename": "kristel-x-chopard.webp",
+          "path": "public/portfolio/2026-11-final/kristel-x-chopard.webp",
           "bytes": 201974,
           "width": 1067,
           "height": 1600,
           "codec": "webp",
+          "profile": null,
+          "level": -99,
+          "pixelFormat": "yuv420p",
+          "rotation": 0,
+          "colorSpace": "bt470bg",
+          "colorTransfer": null,
+          "colorPrimaries": null,
           "durationSeconds": null,
-          "sha256": "95159bff678b03b1ba36175375df8ce2f189e9f1ed810be4e643f823cd474fad"
+          "videoDurationSeconds": null,
+          "frameRate": null,
+          "audio": [],
+          "sha256": "95159bff678b03b1ba36175375df8ce2f189e9f1ed810be4e643f823cd474fad",
+          "validation": {
+            "ffprobe": true,
+            "fullDecode": true,
+            "dimensionsMatch": true,
+            "dimensionTolerancePixels": 1,
+            "orientationNormalized": true
+          },
+          "origin": "2026-10/photo-18"
         },
         {
           "role": "thumbnail",
-          "path": "public/portfolio/2026-10/photo-18-thumb.webp",
+          "filename": "kristel-x-chopard-thumb.webp",
+          "path": "public/portfolio/2026-11-final/kristel-x-chopard-thumb.webp",
           "bytes": 77740,
           "width": 600,
           "height": 900,
           "codec": "webp",
+          "profile": null,
+          "level": -99,
+          "pixelFormat": "yuv420p",
+          "rotation": 0,
+          "colorSpace": "bt470bg",
+          "colorTransfer": null,
+          "colorPrimaries": null,
           "durationSeconds": null,
-          "sha256": "2fc455152c437897a75b9bf79661f7b909244a039b2f9e39827aadc9877a2b94"
+          "videoDurationSeconds": null,
+          "frameRate": null,
+          "audio": [],
+          "sha256": "2fc455152c437897a75b9bf79661f7b909244a039b2f9e39827aadc9877a2b94",
+          "validation": {
+            "ffprobe": true,
+            "fullDecode": true,
+            "dimensionsMatch": true,
+            "dimensionTolerancePixels": 1,
+            "orientationNormalized": true
+          },
+          "origin": "2026-10/photo-18"
         }
       ]
     },
     {
-      "id": "film-09",
-      "source": "NEW PORTFOLIO/SCHIAPARELLI FIITINGS_nyx3.mp4",
-      "sourceBytes": 72326611,
-      "sourceMtime": "2026-09-05T02:27:08Z",
+      "id": "le-grand-diner-du-louvre",
+      "title": "LE GRAND DINER DU LOUVRE",
+      "type": "video",
+      "source": "LE GRAND DINER DU LOUVRE.mp4",
+      "sourceSha256": "dbe3951f712212bb6266126503f654530ebe4007ea85c43934d8dcdda7a325e6",
+      "sourceStat": {
+        "id": "le-grand-diner-du-louvre",
+        "source": "D:\\new-vids-vincent\\final-list\\LE GRAND DINER DU LOUVRE.mp4",
+        "bytes": 176922100,
+        "mtimeMs": 1793727298000,
+        "mtimeISO": "2026-11-03T17:34:58.000Z"
+      },
+      "sourceMedia": {
+        "rawWidth": 2160,
+        "rawHeight": 3840,
+        "rotation": 0,
+        "displayWidth": 2160,
+        "displayHeight": 3840,
+        "durationSeconds": 20.523,
+        "videoDurationSeconds": 20.44,
+        "frameRate": "50/1",
+        "colorSpace": "bt709",
+        "colorTransfer": "bt709",
+        "colorPrimaries": "bt709",
+        "audio": [
+          {
+            "codec": "aac",
+            "channels": 2,
+            "sampleRate": 48000,
+            "durationSeconds": 20.523,
+            "bitrate": 319288
+          }
+        ]
+      },
+      "previousId": "film-02",
+      "posterSelection": {
+        "seconds": 16.418,
+        "reason": "Clear face and dress silhouette in warm hallway light."
+      },
+      "outputs": [
+        {
+          "role": "poster",
+          "filename": "le-grand-diner-du-louvre-poster.webp",
+          "path": "public/portfolio/2026-11-final/le-grand-diner-du-louvre-poster.webp",
+          "bytes": 33802,
+          "width": 675,
+          "height": 1200,
+          "codec": "webp",
+          "profile": null,
+          "level": -99,
+          "pixelFormat": "yuv420p",
+          "rotation": 0,
+          "colorSpace": "bt470bg",
+          "colorTransfer": null,
+          "colorPrimaries": null,
+          "durationSeconds": null,
+          "videoDurationSeconds": null,
+          "frameRate": null,
+          "audio": [],
+          "sha256": "c5af47b918ec3de8a631abfb106e1e2654fd4470dfcbb1b6790566ceed98da9a",
+          "validation": {
+            "ffprobe": true,
+            "fullDecode": true,
+            "dimensionsMatch": true,
+            "dimensionTolerancePixels": 1,
+            "orientationNormalized": true
+          },
+          "origin": "2026-10/film-02"
+        },
+        {
+          "role": "video",
+          "filename": "le-grand-diner-du-louvre.mp4",
+          "path": "public/portfolio/2026-11-final/le-grand-diner-du-louvre.mp4",
+          "bytes": 4024704,
+          "width": 720,
+          "height": 1280,
+          "codec": "h264",
+          "profile": "High",
+          "level": 31,
+          "pixelFormat": "yuv420p",
+          "rotation": 0,
+          "colorSpace": "bt709",
+          "colorTransfer": "bt709",
+          "colorPrimaries": "bt709",
+          "durationSeconds": 20.478,
+          "videoDurationSeconds": 20.44,
+          "frameRate": "25/1",
+          "audio": [
+            {
+              "codec": "aac",
+              "channels": 2,
+              "sampleRate": 48000,
+              "durationSeconds": 20.478,
+              "bitrate": 96370
+            }
+          ],
+          "sha256": "8cbdea0a11859d162c91db0298b3617749b962ac5bb9d64a3389994cc6203331",
+          "validation": {
+            "ffprobe": true,
+            "fullDecode": true,
+            "dimensionsMatch": true,
+            "dimensionTolerancePixels": 0,
+            "orientationNormalized": true,
+            "browserCodec": true,
+            "audioPreserved": true,
+            "durationDeltaSeconds": 0.04499999999999815,
+            "videoDurationDeltaSeconds": 0,
+            "faststart": true,
+            "moovOffset": 32,
+            "mdatOffset": 16973
+          },
+          "origin": "2026-10/film-02"
+        }
+      ]
+    },
+    {
+      "id": "miumiu",
+      "title": "MIUMIU",
+      "type": "photo",
+      "source": "MIUMIU.JPG",
+      "sourceSha256": "8ad94824beb6dff7e6d0ee183cd03445136ff380ac1f540304c0c0718769eff0",
+      "sourceStat": {
+        "id": "miumiu",
+        "source": "D:\\new-vids-vincent\\final-list\\MIUMIU.JPG",
+        "bytes": 23482336,
+        "mtimeMs": 1793726552000,
+        "mtimeISO": "2026-11-03T17:22:32.000Z"
+      },
+      "sourceMedia": {
+        "rawWidth": 7728,
+        "rawHeight": 5152,
+        "exifOrientation": 8,
+        "displayWidth": 5152,
+        "displayHeight": 7728,
+        "colorSpace": "srgb",
+        "hadIccProfile": false
+      },
+      "previousId": "photo-01",
+      "posterSelection": null,
+      "outputs": [
+        {
+          "role": "detail",
+          "filename": "miumiu.webp",
+          "path": "public/portfolio/2026-11-final/miumiu.webp",
+          "bytes": 217612,
+          "width": 1067,
+          "height": 1600,
+          "codec": "webp",
+          "profile": null,
+          "level": -99,
+          "pixelFormat": "yuv420p",
+          "rotation": 0,
+          "colorSpace": "bt470bg",
+          "colorTransfer": null,
+          "colorPrimaries": null,
+          "durationSeconds": null,
+          "videoDurationSeconds": null,
+          "frameRate": null,
+          "audio": [],
+          "sha256": "117bc0860c47fb0464bcbc56d939bc9d7cf537233924b0b0928e2183099c5d75",
+          "validation": {
+            "ffprobe": true,
+            "fullDecode": true,
+            "dimensionsMatch": true,
+            "dimensionTolerancePixels": 1,
+            "orientationNormalized": true
+          },
+          "origin": "2026-10/photo-01"
+        },
+        {
+          "role": "thumbnail",
+          "filename": "miumiu-thumb.webp",
+          "path": "public/portfolio/2026-11-final/miumiu-thumb.webp",
+          "bytes": 82166,
+          "width": 600,
+          "height": 900,
+          "codec": "webp",
+          "profile": null,
+          "level": -99,
+          "pixelFormat": "yuv420p",
+          "rotation": 0,
+          "colorSpace": "bt470bg",
+          "colorTransfer": null,
+          "colorPrimaries": null,
+          "durationSeconds": null,
+          "videoDurationSeconds": null,
+          "frameRate": null,
+          "audio": [],
+          "sha256": "6d5f7cad12898a708302a633e7b16247f5534c09462b1ff6de17e014280cf76a",
+          "validation": {
+            "ffprobe": true,
+            "fullDecode": true,
+            "dimensionsMatch": true,
+            "dimensionTolerancePixels": 1,
+            "orientationNormalized": true
+          },
+          "origin": "2026-10/photo-01"
+        }
+      ]
+    },
+    {
+      "id": "sandro-paris",
+      "title": "SANDRO PARIS",
+      "type": "photo",
+      "source": "SANDRO PARIS.jpg",
+      "sourceSha256": "b8c3070f6d1129389b10465b6c4dc3caacc00dd806afdb12ce1b36fae00b4ded",
+      "sourceStat": {
+        "id": "sandro-paris",
+        "source": "D:\\new-vids-vincent\\final-list\\SANDRO PARIS.jpg",
+        "bytes": 21070077,
+        "mtimeMs": 1793726610000,
+        "mtimeISO": "2026-11-03T17:23:30.000Z"
+      },
+      "sourceMedia": {
+        "rawWidth": 5305,
+        "rawHeight": 4386,
+        "exifOrientation": 1,
+        "displayWidth": 5305,
+        "displayHeight": 4386,
+        "colorSpace": "srgb",
+        "hadIccProfile": true
+      },
+      "previousId": "photo-14",
+      "posterSelection": null,
+      "outputs": [
+        {
+          "role": "detail",
+          "filename": "sandro-paris.webp",
+          "path": "public/portfolio/2026-11-final/sandro-paris.webp",
+          "bytes": 303370,
+          "width": 1600,
+          "height": 1323,
+          "codec": "webp",
+          "profile": null,
+          "level": -99,
+          "pixelFormat": "yuv420p",
+          "rotation": 0,
+          "colorSpace": "bt470bg",
+          "colorTransfer": null,
+          "colorPrimaries": null,
+          "durationSeconds": null,
+          "videoDurationSeconds": null,
+          "frameRate": null,
+          "audio": [],
+          "sha256": "ed0e987b71e83e0a1efc47cc8925f39dfe6a498f2df55dad797ab0b9e386ee68",
+          "validation": {
+            "ffprobe": true,
+            "fullDecode": true,
+            "dimensionsMatch": true,
+            "dimensionTolerancePixels": 1,
+            "orientationNormalized": true
+          },
+          "origin": "2026-10/photo-14"
+        },
+        {
+          "role": "thumbnail",
+          "filename": "sandro-paris-thumb.webp",
+          "path": "public/portfolio/2026-11-final/sandro-paris-thumb.webp",
+          "bytes": 107952,
+          "width": 900,
+          "height": 744,
+          "codec": "webp",
+          "profile": null,
+          "level": -99,
+          "pixelFormat": "yuv420p",
+          "rotation": 0,
+          "colorSpace": "bt470bg",
+          "colorTransfer": null,
+          "colorPrimaries": null,
+          "durationSeconds": null,
+          "videoDurationSeconds": null,
+          "frameRate": null,
+          "audio": [],
+          "sha256": "e3cfcf41b8fb5420c4724cc6cd1831512ff2c1cc631128aa142d460988379c13",
+          "validation": {
+            "ffprobe": true,
+            "fullDecode": true,
+            "dimensionsMatch": true,
+            "dimensionTolerancePixels": 1,
+            "orientationNormalized": true
+          },
+          "origin": "2026-10/photo-14"
+        }
+      ]
+    },
+    {
+      "id": "schiaparelli",
+      "title": "SCHIAPARELLI",
+      "type": "video",
+      "source": "SCHIAPARELLI.mp4",
+      "sourceSha256": "aa782b001591503a7aa36b0f7df64c11f9c9dd964a4d0bb0f0d322f4b366a192",
+      "sourceStat": {
+        "id": "schiaparelli",
+        "source": "D:\\new-vids-vincent\\final-list\\SCHIAPARELLI.mp4",
+        "bytes": 72326611,
+        "mtimeMs": 1793726576000,
+        "mtimeISO": "2026-11-03T17:22:56.000Z"
+      },
+      "sourceMedia": {
+        "rawWidth": 3840,
+        "rawHeight": 2160,
+        "rotation": 0,
+        "displayWidth": 3840,
+        "displayHeight": 2160,
+        "durationSeconds": 18.623,
+        "videoDurationSeconds": 18.6,
+        "frameRate": "25/1",
+        "colorSpace": "bt709",
+        "colorTransfer": "bt709",
+        "colorPrimaries": "bt709",
+        "audio": [
+          {
+            "codec": "aac",
+            "channels": 2,
+            "sampleRate": 48000,
+            "durationSeconds": 18.623,
+            "bitrate": 319970
+          }
+        ]
+      },
+      "previousId": "film-09",
       "posterSelection": {
         "seconds": 1.862,
         "reason": "Readable couture mannequin and atelier interior."
@@ -889,63 +1431,347 @@
       "outputs": [
         {
           "role": "poster",
-          "path": "public/portfolio/2026-10/film-09-poster.webp",
+          "filename": "schiaparelli-poster.webp",
+          "path": "public/portfolio/2026-11-final/schiaparelli-poster.webp",
           "bytes": 39940,
           "width": 1200,
           "height": 675,
           "codec": "webp",
+          "profile": null,
+          "level": -99,
+          "pixelFormat": "yuv420p",
+          "rotation": 0,
+          "colorSpace": "bt470bg",
+          "colorTransfer": null,
+          "colorPrimaries": null,
           "durationSeconds": null,
-          "sha256": "63ff92fef882f9d02e41fd0c555419a4887d601001de6690d53bf939dbb397eb"
+          "videoDurationSeconds": null,
+          "frameRate": null,
+          "audio": [],
+          "sha256": "63ff92fef882f9d02e41fd0c555419a4887d601001de6690d53bf939dbb397eb",
+          "validation": {
+            "ffprobe": true,
+            "fullDecode": true,
+            "dimensionsMatch": true,
+            "dimensionTolerancePixels": 1,
+            "orientationNormalized": true
+          },
+          "origin": "2026-10/film-09"
         },
         {
           "role": "video",
-          "path": "public/portfolio/2026-10/film-09.mp4",
+          "filename": "schiaparelli.mp4",
+          "path": "public/portfolio/2026-11-final/schiaparelli.mp4",
           "bytes": 4991711,
           "width": 1280,
           "height": 720,
           "codec": "h264",
+          "profile": "High",
+          "level": 31,
+          "pixelFormat": "yuv420p",
+          "rotation": 0,
+          "colorSpace": "bt709",
+          "colorTransfer": "bt709",
+          "colorPrimaries": "bt709",
           "durationSeconds": 18.622,
-          "sha256": "40d1f8e9160503decc8552cf056cd2f6239e04d82362b6b2fb5722c982f5aa8d"
+          "videoDurationSeconds": 18.6,
+          "frameRate": "25/1",
+          "audio": [
+            {
+              "codec": "aac",
+              "channels": 2,
+              "sampleRate": 48000,
+              "durationSeconds": 18.622,
+              "bitrate": 94214
+            }
+          ],
+          "sha256": "40d1f8e9160503decc8552cf056cd2f6239e04d82362b6b2fb5722c982f5aa8d",
+          "validation": {
+            "ffprobe": true,
+            "fullDecode": true,
+            "dimensionsMatch": true,
+            "dimensionTolerancePixels": 0,
+            "orientationNormalized": true,
+            "browserCodec": true,
+            "audioPreserved": true,
+            "durationDeltaSeconds": 0.0010000000000012221,
+            "videoDurationDeltaSeconds": 0,
+            "faststart": true,
+            "moovOffset": 32,
+            "mdatOffset": 15373
+          },
+          "origin": "2026-10/film-09"
         }
       ]
     },
     {
-      "id": "film-10",
-      "source": "NEW PORTFOLIO/Tamara.mp4",
-      "sourceBytes": 21237912,
-      "sourceMtime": "2026-10-01T09:25:42Z",
+      "id": "simon-x-songmont",
+      "title": "SIMON X SONGMONT",
+      "type": "video",
+      "source": "SIMON X SONGMONT.mp4",
+      "sourceSha256": "96843327ab1ea0fc11ccd30543d31bbe98ffef058b8e0911a69cf6c86b626399",
+      "sourceStat": {
+        "id": "simon-x-songmont",
+        "source": "D:\\new-vids-vincent\\final-list\\SIMON X SONGMONT.mp4",
+        "bytes": 187507186,
+        "mtimeMs": 1793727026000,
+        "mtimeISO": "2026-11-03T17:30:26.000Z"
+      },
+      "sourceMedia": {
+        "rawWidth": 2160,
+        "rawHeight": 3840,
+        "rotation": 0,
+        "displayWidth": 2160,
+        "displayHeight": 3840,
+        "durationSeconds": 18.794667,
+        "videoDurationSeconds": 18.72,
+        "frameRate": "25/1",
+        "colorSpace": "bt709",
+        "colorTransfer": "bt709",
+        "colorPrimaries": "bt709",
+        "audio": [
+          {
+            "codec": "aac",
+            "channels": 2,
+            "sampleRate": 48000,
+            "durationSeconds": 18.794667,
+            "bitrate": 319970
+          }
+        ]
+      },
+      "previousId": null,
       "posterSelection": {
-        "seconds": 1.92,
-        "reason": "Clear frontal street-style portrait and handbag."
+        "seconds": 3,
+        "reason": "Clear street portrait with the outfit and bag visible."
       },
       "outputs": [
         {
           "role": "poster",
-          "path": "public/portfolio/2026-10/film-10-poster.webp",
-          "bytes": 51592,
-          "width": 1200,
-          "height": 900,
+          "filename": "simon-x-songmont-poster.webp",
+          "path": "public/portfolio/2026-11-final/simon-x-songmont-poster.webp",
+          "bytes": 160078,
+          "width": 675,
+          "height": 1200,
           "codec": "webp",
+          "profile": null,
+          "level": -99,
+          "pixelFormat": "yuv420p",
+          "rotation": 0,
+          "colorSpace": "bt470bg",
+          "colorTransfer": null,
+          "colorPrimaries": null,
           "durationSeconds": null,
-          "sha256": "741f8a0ccac4590a11240c6e05beee7e4471b978393665ee3f572dc9bc6bf2d8"
+          "videoDurationSeconds": null,
+          "frameRate": null,
+          "audio": [],
+          "sha256": "f26bd409ea659fe7ef28536e0795e17648d3c2f9560302c21b293f700b9a14e9",
+          "validation": {
+            "ffprobe": true,
+            "fullDecode": true,
+            "dimensionsMatch": true,
+            "dimensionTolerancePixels": 1,
+            "orientationNormalized": true
+          },
+          "origin": "generated"
         },
         {
           "role": "video",
-          "path": "public/portfolio/2026-10/film-10.mp4",
-          "bytes": 2605810,
-          "width": 960,
-          "height": 720,
+          "filename": "simon-x-songmont.mp4",
+          "path": "public/portfolio/2026-11-final/simon-x-songmont.mp4",
+          "bytes": 9999480,
+          "width": 720,
+          "height": 1280,
           "codec": "h264",
-          "durationSeconds": 19.156,
-          "sha256": "fdcfe6f201f9752abbaf33b998b98f723ddef26a18c1a8dee01d66039d93d696"
+          "profile": "High",
+          "level": 31,
+          "pixelFormat": "yuv420p",
+          "rotation": 0,
+          "colorSpace": "bt709",
+          "colorTransfer": "bt709",
+          "colorPrimaries": "bt709",
+          "durationSeconds": 18.75,
+          "videoDurationSeconds": 18.72,
+          "frameRate": "25/1",
+          "audio": [
+            {
+              "codec": "aac",
+              "channels": 2,
+              "sampleRate": 48000,
+              "durationSeconds": 18.75,
+              "bitrate": 97962
+            }
+          ],
+          "sha256": "0b77a2431a485bbfe4c99260b05c2910512fb0d9f50962c6a529c4b8058de5a8",
+          "validation": {
+            "ffprobe": true,
+            "fullDecode": true,
+            "dimensionsMatch": true,
+            "dimensionTolerancePixels": 0,
+            "orientationNormalized": true,
+            "browserCodec": true,
+            "audioPreserved": true,
+            "durationDeltaSeconds": 0.044667000000000456,
+            "videoDurationDeltaSeconds": 0,
+            "faststart": true,
+            "moovOffset": 32,
+            "mdatOffset": 15553
+          },
+          "origin": "matching staged encode"
         }
       ]
     },
     {
-      "id": "film-11",
-      "source": "NEW PORTFOLIO/VETEMENTS.mp4",
-      "sourceBytes": 141598803,
-      "sourceMtime": "2026-09-07T19:44:22Z",
+      "id": "stella-maxwell",
+      "title": "STELLA MAXWELL",
+      "type": "video",
+      "source": "STELLA MAXWELL.mp4",
+      "sourceSha256": "d720bf6d1826a8863ce43630995c88f88aa7449b5652a9df52a7eab158072c61",
+      "sourceStat": {
+        "id": "stella-maxwell",
+        "source": "D:\\new-vids-vincent\\final-list\\STELLA MAXWELL.mp4",
+        "bytes": 607252176,
+        "mtimeMs": 1793726564000,
+        "mtimeISO": "2026-11-03T17:22:44.000Z"
+      },
+      "sourceMedia": {
+        "rawWidth": 2160,
+        "rawHeight": 3840,
+        "rotation": 0,
+        "displayWidth": 2160,
+        "displayHeight": 3840,
+        "durationSeconds": 26.411,
+        "videoDurationSeconds": 26.333333,
+        "frameRate": "60/1",
+        "colorSpace": "bt709",
+        "colorTransfer": "bt709",
+        "colorPrimaries": "bt709",
+        "audio": [
+          {
+            "codec": "aac",
+            "channels": 2,
+            "sampleRate": 48000,
+            "durationSeconds": 26.411,
+            "bitrate": 319447
+          }
+        ]
+      },
+      "previousId": "film-03",
+      "posterSelection": {
+        "seconds": 11.885,
+        "reason": "Clear portrait showing lace and feather garment detail."
+      },
+      "outputs": [
+        {
+          "role": "poster",
+          "filename": "stella-maxwell-poster.webp",
+          "path": "public/portfolio/2026-11-final/stella-maxwell-poster.webp",
+          "bytes": 51730,
+          "width": 675,
+          "height": 1200,
+          "codec": "webp",
+          "profile": null,
+          "level": -99,
+          "pixelFormat": "yuv420p",
+          "rotation": 0,
+          "colorSpace": "bt470bg",
+          "colorTransfer": null,
+          "colorPrimaries": null,
+          "durationSeconds": null,
+          "videoDurationSeconds": null,
+          "frameRate": null,
+          "audio": [],
+          "sha256": "1a408093430d00ef8b9516c34c413d368d8d78aed7534486fa908d64cc0c59f6",
+          "validation": {
+            "ffprobe": true,
+            "fullDecode": true,
+            "dimensionsMatch": true,
+            "dimensionTolerancePixels": 1,
+            "orientationNormalized": true
+          },
+          "origin": "2026-10/film-03"
+        },
+        {
+          "role": "video",
+          "filename": "stella-maxwell.mp4",
+          "path": "public/portfolio/2026-11-final/stella-maxwell.mp4",
+          "bytes": 7182353,
+          "width": 720,
+          "height": 1280,
+          "codec": "h264",
+          "profile": "High",
+          "level": 31,
+          "pixelFormat": "yuv420p",
+          "rotation": 0,
+          "colorSpace": "bt709",
+          "colorTransfer": "bt709",
+          "colorPrimaries": "bt709",
+          "durationSeconds": 26.366,
+          "videoDurationSeconds": 26.333333,
+          "frameRate": "30/1",
+          "audio": [
+            {
+              "codec": "aac",
+              "channels": 2,
+              "sampleRate": 48000,
+              "durationSeconds": 26.366,
+              "bitrate": 96123
+            }
+          ],
+          "sha256": "37d8fd248a3ea3e8b04f8d80442a5519bcd2bb0344f7af8abd76565fe7a746e6",
+          "validation": {
+            "ffprobe": true,
+            "fullDecode": true,
+            "dimensionsMatch": true,
+            "dimensionTolerancePixels": 0,
+            "orientationNormalized": true,
+            "browserCodec": true,
+            "audioPreserved": true,
+            "durationDeltaSeconds": 0.045000000000001705,
+            "videoDurationDeltaSeconds": 0,
+            "faststart": true,
+            "moovOffset": 32,
+            "mdatOffset": 30405
+          },
+          "origin": "2026-10/film-03"
+        }
+      ]
+    },
+    {
+      "id": "vetements",
+      "title": "VETEMENTS",
+      "type": "video",
+      "source": "VETEMENTS.mp4",
+      "sourceSha256": "7bf1043d490e906f6ffa7c3aa7bbf53f1f91cf70578a5ef1d8fa9d5376ed494a",
+      "sourceStat": {
+        "id": "vetements",
+        "source": "D:\\new-vids-vincent\\final-list\\VETEMENTS.mp4",
+        "bytes": 141598803,
+        "mtimeMs": 1788810262000,
+        "mtimeISO": "2026-09-07T19:44:22.000Z"
+      },
+      "sourceMedia": {
+        "rawWidth": 3840,
+        "rawHeight": 2160,
+        "rotation": 0,
+        "displayWidth": 3840,
+        "displayHeight": 2160,
+        "durationSeconds": 38.634,
+        "videoDurationSeconds": 38.6,
+        "frameRate": "25/1",
+        "colorSpace": "bt709",
+        "colorTransfer": "bt709",
+        "colorPrimaries": "bt709",
+        "audio": [
+          {
+            "codec": "aac",
+            "channels": 2,
+            "sampleRate": 48000,
+            "durationSeconds": 38.634,
+            "bitrate": 319985
+          }
+        ]
+      },
+      "previousId": "film-11",
       "posterSelection": {
         "seconds": 30.907,
         "reason": "Clear two-person event portrait, avoiding the middle-frame flash."
@@ -953,25 +1779,371 @@
       "outputs": [
         {
           "role": "poster",
-          "path": "public/portfolio/2026-10/film-11-poster.webp",
+          "filename": "vetements-poster.webp",
+          "path": "public/portfolio/2026-11-final/vetements-poster.webp",
           "bytes": 33936,
           "width": 1200,
           "height": 675,
           "codec": "webp",
+          "profile": null,
+          "level": -99,
+          "pixelFormat": "yuv420p",
+          "rotation": 0,
+          "colorSpace": "bt470bg",
+          "colorTransfer": null,
+          "colorPrimaries": null,
           "durationSeconds": null,
-          "sha256": "1f55fdc35ac347191861b1820e079383c780fbcab29137611f0a2a5fa60dfff3"
+          "videoDurationSeconds": null,
+          "frameRate": null,
+          "audio": [],
+          "sha256": "1f55fdc35ac347191861b1820e079383c780fbcab29137611f0a2a5fa60dfff3",
+          "validation": {
+            "ffprobe": true,
+            "fullDecode": true,
+            "dimensionsMatch": true,
+            "dimensionTolerancePixels": 1,
+            "orientationNormalized": true
+          },
+          "origin": "2026-10/film-11"
         },
         {
           "role": "video",
-          "path": "public/portfolio/2026-10/film-11.mp4",
+          "filename": "vetements.mp4",
+          "path": "public/portfolio/2026-11-final/vetements.mp4",
           "bytes": 11593408,
           "width": 1280,
           "height": 720,
           "codec": "h264",
+          "profile": "High",
+          "level": 31,
+          "pixelFormat": "yuv420p",
+          "rotation": 0,
+          "colorSpace": "bt709",
+          "colorTransfer": "bt709",
+          "colorPrimaries": "bt709",
           "durationSeconds": 38.633,
-          "sha256": "7d877269d2a8041f6de86db96272527ca1edd7b394e796d0eafc115e1b82c8e3"
+          "videoDurationSeconds": 38.6,
+          "frameRate": "25/1",
+          "audio": [
+            {
+              "codec": "aac",
+              "channels": 2,
+              "sampleRate": 48000,
+              "durationSeconds": 38.633,
+              "bitrate": 96876
+            }
+          ],
+          "sha256": "7d877269d2a8041f6de86db96272527ca1edd7b394e796d0eafc115e1b82c8e3",
+          "validation": {
+            "ffprobe": true,
+            "fullDecode": true,
+            "dimensionsMatch": true,
+            "dimensionTolerancePixels": 0,
+            "orientationNormalized": true,
+            "browserCodec": true,
+            "audioPreserved": true,
+            "durationDeltaSeconds": 0.0009999999999976694,
+            "videoDurationDeltaSeconds": 0,
+            "faststart": true,
+            "moovOffset": 32,
+            "mdatOffset": 29989
+          },
+          "origin": "2026-10/film-11"
+        }
+      ]
+    },
+    {
+      "id": "vincent-x-tommy-hilfiger",
+      "title": "VINCENT X TOMMY HILFIGER",
+      "type": "photo",
+      "source": "VINCENT X TOMMY HILFIGER.jpeg",
+      "sourceSha256": "d3eceba571028625f18cff89dfe0be8a99b1ed3d3fdcedecb1f46b732f164d8f",
+      "sourceStat": {
+        "id": "vincent-x-tommy-hilfiger",
+        "source": "D:\\new-vids-vincent\\final-list\\VINCENT X TOMMY HILFIGER.jpeg",
+        "bytes": 27042033,
+        "mtimeMs": 1793726998000,
+        "mtimeISO": "2026-11-03T17:29:58.000Z"
+      },
+      "sourceMedia": {
+        "rawWidth": 5152,
+        "rawHeight": 7728,
+        "exifOrientation": 1,
+        "displayWidth": 5152,
+        "displayHeight": 7728,
+        "colorSpace": "srgb",
+        "hadIccProfile": true
+      },
+      "previousId": "photo-17",
+      "posterSelection": null,
+      "outputs": [
+        {
+          "role": "detail",
+          "filename": "vincent-x-tommy-hilfiger.webp",
+          "path": "public/portfolio/2026-11-final/vincent-x-tommy-hilfiger.webp",
+          "bytes": 255832,
+          "width": 1067,
+          "height": 1600,
+          "codec": "webp",
+          "profile": null,
+          "level": -99,
+          "pixelFormat": "yuv420p",
+          "rotation": 0,
+          "colorSpace": "bt470bg",
+          "colorTransfer": null,
+          "colorPrimaries": null,
+          "durationSeconds": null,
+          "videoDurationSeconds": null,
+          "frameRate": null,
+          "audio": [],
+          "sha256": "4ff5c056c5d9dee4e7a922b676080eae46eb96c7a87f431a8e88ef0b828430aa",
+          "validation": {
+            "ffprobe": true,
+            "fullDecode": true,
+            "dimensionsMatch": true,
+            "dimensionTolerancePixels": 1,
+            "orientationNormalized": true
+          },
+          "origin": "2026-10/photo-17"
+        },
+        {
+          "role": "thumbnail",
+          "filename": "vincent-x-tommy-hilfiger-thumb.webp",
+          "path": "public/portfolio/2026-11-final/vincent-x-tommy-hilfiger-thumb.webp",
+          "bytes": 107360,
+          "width": 600,
+          "height": 900,
+          "codec": "webp",
+          "profile": null,
+          "level": -99,
+          "pixelFormat": "yuv420p",
+          "rotation": 0,
+          "colorSpace": "bt470bg",
+          "colorTransfer": null,
+          "colorPrimaries": null,
+          "durationSeconds": null,
+          "videoDurationSeconds": null,
+          "frameRate": null,
+          "audio": [],
+          "sha256": "b60ed17161ef617298d02d6b11888bb10284b3019241d6bf6571e68db0f0bc63",
+          "validation": {
+            "ffprobe": true,
+            "fullDecode": true,
+            "dimensionsMatch": true,
+            "dimensionTolerancePixels": 1,
+            "orientationNormalized": true
+          },
+          "origin": "2026-10/photo-17"
+        }
+      ]
+    },
+    {
+      "id": "weinsanto",
+      "title": "WEINSANTO",
+      "type": "photo",
+      "source": "WEINSANTO.jpg",
+      "sourceSha256": "051e20e013be1e295d07db53c8fcba8770e50f51fa1c13b96b3c8dfebba2a532",
+      "sourceStat": {
+        "id": "weinsanto",
+        "source": "D:\\new-vids-vincent\\final-list\\WEINSANTO.jpg",
+        "bytes": 15653030,
+        "mtimeMs": 1793726470000,
+        "mtimeISO": "2026-11-03T17:21:10.000Z"
+      },
+      "sourceMedia": {
+        "rawWidth": 4699,
+        "rawHeight": 7048,
+        "exifOrientation": 1,
+        "displayWidth": 4699,
+        "displayHeight": 7048,
+        "colorSpace": "srgb",
+        "hadIccProfile": true
+      },
+      "previousId": "photo-06",
+      "posterSelection": null,
+      "outputs": [
+        {
+          "role": "detail",
+          "filename": "weinsanto.webp",
+          "path": "public/portfolio/2026-11-final/weinsanto.webp",
+          "bytes": 129616,
+          "width": 1067,
+          "height": 1600,
+          "codec": "webp",
+          "profile": null,
+          "level": -99,
+          "pixelFormat": "yuv420p",
+          "rotation": 0,
+          "colorSpace": "bt470bg",
+          "colorTransfer": null,
+          "colorPrimaries": null,
+          "durationSeconds": null,
+          "videoDurationSeconds": null,
+          "frameRate": null,
+          "audio": [],
+          "sha256": "0ee2cfc7b71b01c335f8a8d7fc9aafb39327de1a2602a018a9c3cdca73e3e151",
+          "validation": {
+            "ffprobe": true,
+            "fullDecode": true,
+            "dimensionsMatch": true,
+            "dimensionTolerancePixels": 1,
+            "orientationNormalized": true
+          },
+          "origin": "2026-10/photo-06"
+        },
+        {
+          "role": "thumbnail",
+          "filename": "weinsanto-thumb.webp",
+          "path": "public/portfolio/2026-11-final/weinsanto-thumb.webp",
+          "bytes": 41810,
+          "width": 600,
+          "height": 900,
+          "codec": "webp",
+          "profile": null,
+          "level": -99,
+          "pixelFormat": "yuv420p",
+          "rotation": 0,
+          "colorSpace": "bt470bg",
+          "colorTransfer": null,
+          "colorPrimaries": null,
+          "durationSeconds": null,
+          "videoDurationSeconds": null,
+          "frameRate": null,
+          "audio": [],
+          "sha256": "798dfb8085e38c4320c62c50d5ce6eb1febe41a5f61214e7ff2cb39dfbb8bf6a",
+          "validation": {
+            "ffprobe": true,
+            "fullDecode": true,
+            "dimensionsMatch": true,
+            "dimensionTolerancePixels": 1,
+            "orientationNormalized": true
+          },
+          "origin": "2026-10/photo-06"
+        }
+      ]
+    },
+    {
+      "id": "zuhair-murad",
+      "title": "ZUHAIR MURAD",
+      "type": "video",
+      "source": "ZUHAIR MURAD_.mp4",
+      "sourceSha256": "c36f5b29c5a7c2301c8771014b9f4257897673b6106a7dfd42404c46ed7303dc",
+      "sourceStat": {
+        "id": "zuhair-murad",
+        "source": "D:\\new-vids-vincent\\final-list\\ZUHAIR MURAD_.mp4",
+        "bytes": 164364792,
+        "mtimeMs": 1789950322000,
+        "mtimeISO": "2026-09-21T00:25:22.000Z"
+      },
+      "sourceMedia": {
+        "rawWidth": 2160,
+        "rawHeight": 3840,
+        "rotation": 0,
+        "displayWidth": 2160,
+        "displayHeight": 3840,
+        "durationSeconds": 32.596,
+        "videoDurationSeconds": 32.56,
+        "frameRate": "25/1",
+        "colorSpace": "bt709",
+        "colorTransfer": "bt709",
+        "colorPrimaries": "bt709",
+        "audio": [
+          {
+            "codec": "aac",
+            "channels": 2,
+            "sampleRate": 48000,
+            "durationSeconds": 32.596,
+            "bitrate": 319983
+          }
+        ]
+      },
+      "previousId": null,
+      "posterSelection": {
+        "seconds": 26.077,
+        "reason": "A clear close view of a floral runway look."
+      },
+      "outputs": [
+        {
+          "role": "poster",
+          "filename": "zuhair-murad-poster.webp",
+          "path": "public/portfolio/2026-11-final/zuhair-murad-poster.webp",
+          "bytes": 46808,
+          "width": 675,
+          "height": 1200,
+          "codec": "webp",
+          "profile": null,
+          "level": -99,
+          "pixelFormat": "yuv420p",
+          "rotation": 0,
+          "colorSpace": "bt470bg",
+          "colorTransfer": null,
+          "colorPrimaries": null,
+          "durationSeconds": null,
+          "videoDurationSeconds": null,
+          "frameRate": null,
+          "audio": [],
+          "sha256": "3b3430029755adcd2218045cfa15e729c3e704809b508e3debb1ca8075362380",
+          "validation": {
+            "ffprobe": true,
+            "fullDecode": true,
+            "dimensionsMatch": true,
+            "dimensionTolerancePixels": 1,
+            "orientationNormalized": true
+          },
+          "origin": "generated"
+        },
+        {
+          "role": "video",
+          "filename": "zuhair-murad.mp4",
+          "path": "public/portfolio/2026-11-final/zuhair-murad.mp4",
+          "bytes": 12134431,
+          "width": 720,
+          "height": 1280,
+          "codec": "h264",
+          "profile": "High",
+          "level": 31,
+          "pixelFormat": "yuv420p",
+          "rotation": 0,
+          "colorSpace": "bt709",
+          "colorTransfer": "bt709",
+          "colorPrimaries": "bt709",
+          "durationSeconds": 32.596,
+          "videoDurationSeconds": 32.56,
+          "frameRate": "25/1",
+          "audio": [
+            {
+              "codec": "aac",
+              "channels": 2,
+              "sampleRate": 48000,
+              "durationSeconds": 32.596,
+              "bitrate": 96315
+            }
+          ],
+          "sha256": "a53368dc73a355756af9f82e5ad041fea5b540c14f1d106618b41d4287420d75",
+          "validation": {
+            "ffprobe": true,
+            "fullDecode": true,
+            "dimensionsMatch": true,
+            "dimensionTolerancePixels": 0,
+            "orientationNormalized": true,
+            "browserCodec": true,
+            "audioPreserved": true,
+            "durationDeltaSeconds": 0,
+            "videoDurationDeltaSeconds": 0,
+            "faststart": true,
+            "moovOffset": 32,
+            "mdatOffset": 26193
+          },
+          "origin": "matching staged encode"
         }
       ]
     }
-  ]
+  ],
+  "validation": {
+    "everyOutputProbed": true,
+    "everyOutputFullyDecoded": true,
+    "allSourcesPreservedSinceRunStart": true,
+    "sourceHashesUnchanged": true,
+    "noReferenceAssetsIncluded": true
+  }
 }

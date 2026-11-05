@@ -6,7 +6,6 @@ export function Navigation(): React.ReactElement {
       <a className="skip-link" href="#work">Skip to work</a>
       <a href="#hero" className="site-identity" aria-label="Vincent Guanco, home">
         <span>VINCENT GUANCO</span>
-        <span className="identity-role">Photographer | Videographer</span>
       </a>
       <nav className="site-navigation" aria-label="Main navigation">
         <a href="#work">Work</a>

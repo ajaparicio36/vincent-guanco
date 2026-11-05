@@ -77,13 +77,9 @@
     },
     "tonalRampNote": "Synthesized OKLCH preview ramps retain source hue/chroma. They are panel metadata, not additional application palette tokens.",
     "typographyMeta": {
-      "display": {
-        "displayName": "Statistics",
-        "purpose": "Light tabular statistic values; not a gallery headline."
-      },
       "headline": {
         "displayName": "Biography name",
-        "purpose": "Large upright Vincent Guanco identity."
+        "purpose": "Responsive uppercase Vincent Guanco identity matching the navigation wordmark."
       },
       "title": {
         "displayName": "Selected work",
@@ -216,9 +212,8 @@
       "caption": "Wide: 1fr auto 1fr, minimum104px, padding18px 0 calc(24px + bottom safe inset). <=1200px: 1fr auto. <=767px: one column, gap14px, minimum144px, top padding16px.",
       "scroll": "Track = pin-height + (work-count - 1) * scroll-step. Step = clamp(220px, 32svh, 320px), or 220px at <=767px; native vertical scroll and touch-action: pan-y.",
       "flat": "Three columns/gap26px; <=767px two columns/gap16px; <=440px one column. Images/videos width100%, height auto.",
-      "biography": "Columns .85fr 1fr, gap clamp(48px, 9vw, 150px); <=1200px gap48px; <=767px one column/gap36px. Portrait3:4 cover fit, max-height700px (680px phone).",
-      "statistics": "Three equal columns. Desktop margins100px gutter140px; phone68px gutter80px. Phone values clamp(36px, 9vw, 64px).",
-      "typography": "Phone biography name clamp(64px, 16vw, 96px), role15px, identity11px/500 with .025em tracking, identity role10px/max-width116px, nav12px. View labels11px; selected title18px; counts/metadata11px.",
+      "biography": "Columns .85fr 1fr, gap clamp(48px, 9vw, 150px); <=1200px gap48px; <=767px one column/gap36px. Gallery separation100px, or68px on phones. Portrait3:4 cover fit, max-height700px (680px phone).",
+      "typography": "Biography name clamp(1.5rem, 2.8vw, 2.25rem), medium500 with .035em tracking; phone tracking .025em. Identity14px/500 (11px phone) with matching tracking; role15px on phone; nav12px. View labels11px; selected title18px; counts/metadata11px.",
       "narrow": "Below360px: nav gap8px; email16px; inspect/playback11px; playback text hidden, aria-label retained, min-width44px.",
       "clipping": "Canvas clips peripheral cards; html/body overflow-x:clip. The corrected projected ensemble balances around the active anchor without reducing scale; active/focused work stays complete."
     },
@@ -244,11 +239,11 @@
     },
     "behavior": {
       "gallery": "Native scroll, horizontal drag and Previous/Next share selection/document position. ArrowLeft/Right and Home/End select immediately. Enter toggles inspection; Escape exits; Space toggles selected film.",
-      "order": "29 supplied works:18 photographs and11 films, shuffled once per load; shared order across Stack/Flat.",
+      "order": "19 supplied works: 7 photographs and 12 films, shuffled once per load; shared order across Stack/Flat.",
       "playback": "Selected spatial film muted, looping, playsInline. Click/Space/Retry forwards synchronously via playbackRef -> controller.setPaused -> video.play(). Motion pause is independent.",
       "flatPlayback": "Intersection ratio >=.12 allows visible autoplay; hidden/offscreen clears source. Play calls video directly; error Retry increments attempt and reinitializes its effect lifecycle.",
       "accessibility": "Real buttons; pressed states; visible focus; named region; polite atomic selected-work announcements; accessible names retained when labels hide.",
-      "supportingContent": "Statistics/contact independent of optional ABOUT_ME portraits; loading/unavailable portrait preserves biography."
+      "supportingContent": "Contact is independent of optional ABOUT_ME portraits; loading/unavailable portrait preserves biography."
     },
     "sourceMap": [
       {
@@ -287,14 +282,9 @@
         "property": "--surface-container"
       },
       {
-        "target": "typography.display",
-        "file": "src/app/globals.css",
-        "line": 213
-      },
-      {
         "target": "typography.headline",
         "file": "src/app/globals.css",
-        "line": 224
+        "line": 219
       },
       {
         "target": "typography.title",
@@ -304,7 +294,7 @@
       {
         "target": "typography.body",
         "file": "src/app/globals.css",
-        "line": 225
+        "line": 220
       },
       {
         "target": "typography.label",
@@ -339,7 +329,6 @@
         "selectors": [
           ".archive-caption",
           ".flat-caption",
-          ".portfolio-statistics",
           ".portfolio-about",
           ".contact-other"
         ]
@@ -387,12 +376,12 @@
       {
         "target": "components.gallery-control-hover",
         "file": "src/app/globals.css",
-        "line": 244
+        "line": 239
       },
       {
         "target": "components.inline-film-control-hover",
         "file": "src/app/globals.css",
-        "line": 245
+        "line": 240
       },
       {
         "target": "extensions.focus",
@@ -417,7 +406,7 @@
       {
         "target": "extensions.breakpoints",
         "file": "src/app/globals.css",
-        "line": 248
+        "line": 243
       },
       {
         "target": "extensions.responsive",
@@ -621,8 +610,8 @@
       "kind": "nav",
       "refersTo": "navigation",
       "description": "Compact identity and Work/About/Contact with a keyboard skip link.",
-      "html": "<header class=\"ds-header\"><a class=\"ds-skip\" href=\"#work\">Skip to work</a><a class=\"ds-identity\" href=\"#hero\" aria-label=\"Vincent Guanco, home\"><span>VINCENT GUANCO</span><span class=\"ds-role\">Photographer | Videographer</span></a><nav class=\"ds-nav\" aria-label=\"Main navigation\"><a href=\"#work\">Work</a><a href=\"#about\">About</a><a href=\"#contact\" class=\"ds-contact\">Contact <svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7 7h10v10\"/><path d=\"M7 17 17 7\"/></svg></a></nav></header>",
-      "css": ".ds-header{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:24px;height:calc(76px + env(safe-area-inset-top,0px));padding:env(safe-area-inset-top,0px) max(var(--page-gutter,clamp(24px,3.2vw,64px)),env(safe-area-inset-right,0px)) 0 max(var(--page-gutter,clamp(24px,3.2vw,64px)),env(safe-area-inset-left,0px));background:var(--background,#080808);color:var(--foreground,#ededeb);font-family:var(--font-dinpro,\"DIN Pro\"),ui-sans-serif,system-ui,sans-serif}.ds-header a{color:inherit;text-decoration:none}.ds-identity{display:flex;flex-direction:column;gap:6px;min-width:0;min-height:44px;justify-content:center}.ds-identity>span:first-child{font-size:14px;font-weight:500;letter-spacing:.035em}.ds-identity .ds-role{font-size:11px;color:var(--secondary,#a6a6a2)}.ds-nav{display:flex;align-items:center;gap:36px;font-size:13px}.ds-nav a{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:44px;min-width:44px}.ds-header a:focus-visible{outline:1px solid var(--foreground,#ededeb);outline-offset:5px}.ds-header .ds-skip{position:absolute;z-index:30;top:12px;left:var(--page-gutter,24px);padding:14px 20px;background:var(--foreground,#ededeb);color:var(--background,#080808);transform:translateY(-180%)}.ds-skip:focus{transform:translateY(0)}@media(hover:hover) and (pointer:fine){.ds-nav a:hover{color:var(--secondary,#a6a6a2)}}@media(max-width:767px){.ds-header{height:calc(80px + env(safe-area-inset-top,0px));gap:16px;padding-left:max(22px,env(safe-area-inset-left,0px));padding-right:max(22px,env(safe-area-inset-right,0px))}.ds-identity>span:first-child{font-size:11px;letter-spacing:.025em}.ds-identity .ds-role{font-size:10px;max-width:116px}.ds-nav{gap:18px;font-size:12px}.ds-nav .ds-contact{gap:0}.ds-contact svg{display:none}}@media(max-width:359px){.ds-header{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}.ds-nav{gap:8px}}"
+      "html": "<header class=\"ds-header\"><a class=\"ds-skip\" href=\"#work\">Skip to work</a><a class=\"ds-identity\" href=\"#hero\" aria-label=\"Vincent Guanco, home\"><span>VINCENT GUANCO</span></a><nav class=\"ds-nav\" aria-label=\"Main navigation\"><a href=\"#work\">Work</a><a href=\"#about\">About</a><a href=\"#contact\" class=\"ds-contact\">Contact <svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7 7h10v10\"/><path d=\"M7 17 17 7\"/></svg></a></nav></header>",
+      "css": ".ds-header{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:24px;height:calc(76px + env(safe-area-inset-top,0px));padding:env(safe-area-inset-top,0px) max(var(--page-gutter,clamp(24px,3.2vw,64px)),env(safe-area-inset-right,0px)) 0 max(var(--page-gutter,clamp(24px,3.2vw,64px)),env(safe-area-inset-left,0px));background:var(--background,#080808);color:var(--foreground,#ededeb);font-family:var(--font-dinpro,\"DIN Pro\"),ui-sans-serif,system-ui,sans-serif}.ds-header a{color:inherit;text-decoration:none}.ds-identity{display:flex;min-width:0;min-height:44px;align-items:center}.ds-identity>span:first-child{font-size:14px;font-weight:500;letter-spacing:.035em}.ds-nav{display:flex;align-items:center;gap:36px;font-size:13px}.ds-nav a{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:44px;min-width:44px}.ds-header a:focus-visible{outline:1px solid var(--foreground,#ededeb);outline-offset:5px}.ds-header .ds-skip{position:absolute;z-index:30;top:12px;left:var(--page-gutter,24px);padding:14px 20px;background:var(--foreground,#ededeb);color:var(--background,#080808);transform:translateY(-180%)}.ds-skip:focus{transform:translateY(0)}@media(hover:hover) and (pointer:fine){.ds-nav a:hover{color:var(--secondary,#a6a6a2)}}@media(max-width:767px){.ds-header{height:calc(80px + env(safe-area-inset-top,0px));gap:16px;padding-left:max(22px,env(safe-area-inset-left,0px));padding-right:max(22px,env(safe-area-inset-right,0px))}.ds-identity>span:first-child{font-size:11px;letter-spacing:.025em}.ds-nav{gap:18px;font-size:12px}.ds-nav .ds-contact{gap:0}.ds-contact svg{display:none}}@media(max-width:359px){.ds-header{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}.ds-nav{gap:8px}}"
     },
     {
       "name": "Inline film control",
@@ -643,7 +632,7 @@
   ],
   "narrative": {
     "northStar": "Floating Media Deck",
-    "overview": "Real photographs and films form a dense, balanced, rounded deck on a neutral black field. Overlap, shallow shared rotation and gentle assembly movement give the work depth; quiet upright DIN Pro keeps navigation and captions secondary to the media.\n\nThe accepted composition prioritizes phone portrait and portrait iPad. Peripheral cards may extend beyond the stage edges, while the selected work stays centered and fitted and the individual view reveals its complete natural aspect ratio. The same neutral surfaces, small corners and restrained controls continue through Flat view, statistics, biography and contact.",
+    "overview": "Real photographs and films form a dense, balanced, rounded deck on a neutral black field. Overlap, shallow shared rotation and gentle assembly movement give the work depth; quiet upright DIN Pro keeps navigation and captions secondary to the media.\n\nThe accepted composition prioritizes phone portrait and portrait iPad. Peripheral cards may extend beyond the stage edges, while the selected work stays centered and fitted and the individual view reveals its complete natural aspect ratio. The same neutral surfaces, small corners and restrained controls continue through Flat view, biography and contact.",
     "keyCharacteristics": [
       "Real media supplies the color; the surrounding interface stays neutral.",
       "Rounded overlapping planes create depth without a floor or ornamental frame.",

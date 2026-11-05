@@ -48,7 +48,7 @@ export function About({ photos, loading = false }: AboutProps): React.ReactEleme
         )}
       </div>
       <div className="about-content">
-        <h2>Vincent<br />Guanco.</h2>
+        <h2>VINCENT GUANCO</h2>
         <p className="about-role">Photographer | Videographer</p>
         <p className="about-location">Based in Paris</p>
         <div id="contact" className="contact-block">

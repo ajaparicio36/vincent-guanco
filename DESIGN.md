@@ -8,18 +8,12 @@ colors:
   border: "#2c2c2b"
   surface-container: "#171717"
 typography:
-  display:
-    fontFamily: "DIN Pro, ui-sans-serif, system-ui, sans-serif"
-    fontSize: "clamp(52px, 6vw, 92px)"
-    fontWeight: 300
-    lineHeight: 1
-    letterSpacing: "-0.03em"
   headline:
     fontFamily: "DIN Pro, ui-sans-serif, system-ui, sans-serif"
-    fontSize: "clamp(56px, 6.4vw, 96px)"
-    fontWeight: 300
-    lineHeight: 1
-    letterSpacing: "-0.035em"
+    fontSize: "clamp(1.5rem, 2.8vw, 2.25rem)"
+    fontWeight: 500
+    lineHeight: 1.15
+    letterSpacing: "0.035em"
   title:
     fontFamily: "DIN Pro, ui-sans-serif, system-ui, sans-serif"
     fontSize: "18px"
@@ -113,7 +107,7 @@ components:
 
 Real photographs and films form a dense, balanced, rounded deck on a neutral black field. Overlap, shallow shared rotation and gentle assembly movement give the work depth; quiet upright DIN Pro keeps navigation and captions secondary to the media.
 
-The accepted composition prioritizes phone portrait and portrait iPad. Peripheral cards may extend beyond the stage edges, while the selected work stays centered and fitted and the individual view reveals its complete natural aspect ratio. The same neutral surfaces, small corners and restrained controls continue through Flat view, statistics, biography and contact.
+The accepted composition prioritizes phone portrait and portrait iPad. Peripheral cards may extend beyond the stage edges, while the selected work stays centered and fitted and the individual view reveals its complete natural aspect ratio. The same neutral surfaces, small corners and restrained controls continue through Flat view, biography and contact.
 
 **Key Characteristics:**
 
@@ -138,28 +132,28 @@ Off-white content and subdued gray labels sit on a continuous neutral near-black
 
 - **Neutral black** unifies the document, sticky header and Three.js clear color.
 - **Secondary gray** supports metadata, instructions and inactive controls.
-- **Fine neutral border** separates statistics, biography, contact and footer content.
+- **Fine neutral border** separates biography, contact and footer content.
 - **Dark container** supports loading/unavailable media and fine-pointer control hover.
 
 **The Media Color Rule.** Keep interface selection, navigation and focus neutral so the supplied photographs and films remain the source of expressive color.
 
 ## Typography
 
-DIN Pro is hosted locally in upright light, regular, medium, bold and black weights. The implementation binds it through the Next.js font variable, with UI sans-serif and system fallbacks. The frontmatter's display role belongs to statistics, headline to the biography name, title to the selected work, body to the biography role, and label to common controls and metadata. There is no large gallery display headline.
+DIN Pro is hosted locally in upright light, regular, medium, bold and black weights. The implementation binds it through the Next.js font variable, with UI sans-serif and system fallbacks. The frontmatter's headline role belongs to the biography name, title to the selected work, body to the biography role, and label to common controls and metadata. There is no large gallery display headline.
 
-Light large type and tighter tracking distinguish statistics and biography; work titles and controls stay regular. Tabular figures stabilize counts and statistics. The compact identity uses medium weight (500), with a smaller secondary role line. Body kerning and ligatures are enabled; italics are normalized to upright.
+The biography name shares the compact navigation identity's uppercase lettering, medium weight (500) and positive tracking at a larger, responsive size. Work titles and controls stay regular. Tabular figures stabilize counts. Body kerning and ligatures are enabled; italics are normalized to upright.
 
-Below the phone breakpoint (767px), statistics use `clamp(36px, 9vw, 64px)`, the biography name uses `clamp(64px, 16vw, 96px)`, and the biography role is (15px). Selected-work titles retain their desktop role. Navigation and view labels reduce to (11–12px), with secondary identity/footer details reaching (10px). These are observed responsive exceptions, not a new type scale.
+Below the phone breakpoint (767px), the biography name and navigation identity use `.025em` tracking, and the biography role is (15px). Selected-work titles retain their desktop role. Navigation and view labels reduce to (11–12px), with secondary footer details reaching (10px). These are observed responsive exceptions, not a new type scale.
 
 ## Layout
 
-Phone portrait and portrait iPad lead the gallery composition. The stage spans the viewport; its toolbar and caption align to page gutters. The header stays sticky, incorporates the top safe area, and retains Work, About and Contact at every tested width. Navigation targets have a minimum size of (44px). On phones, the header's base height is (80px), gutters are (22px), and the identity role may wrap; below (360px), gutters reduce to (16px).
+Phone portrait and portrait iPad lead the gallery composition. The stage spans the viewport; its toolbar and caption align to page gutters. The header stays sticky, incorporates the top safe area, and retains Work, About and Contact at every tested width. Navigation targets have a minimum size of (44px). On phones, the header's base height is (80px) and gutters are (22px); below (360px), gutters reduce to (16px).
 
 The sticky stage uses the available dynamic viewport height with a minimum of (480px). Its canvas flexes between a compact toolbar and the selected-work caption; bottom caption padding includes the safe-area inset. Wide captions have three columns. At (1200px) and below, the instruction text remains available to assistive technology but is visually hidden, leaving caption and actions in two columns. At (767px) and below, the caption becomes two rows with navigation arrows at the trailing edge. The mobile toolbar removes secondary summary text and decorative view icons; the Motion control keeps its accessible name when its label is hidden.
 
 Native document scrolling advances one mixed collection through the sticky stage. The scroll distance per work is `clamp(220px, 32svh, 320px)`, fixed to (220px) on phones. The accepted camera fitting enlarges the deck while reserving the selected plane's silhouette through idle rotation and float. Projected ensemble bounds are balanced around the floating front anchor without reducing image size or moving the settled selected plane; outer cards can be clipped by the canvas. The page itself clips horizontal overflow.
 
-Flat view uses three masonry columns, two at (767px) and below, and one at (440px) and below. Statistics remain in three columns. Biography uses two columns above the phone breakpoint and stacks below it; contact's secondary links keep their two-column arrangement. Spacing comes from the compact shared scale in frontmatter, with larger section margins documented in the source map.
+Flat view uses three masonry columns, two at (767px) and below, and one at (440px) and below. Biography uses two columns above the phone breakpoint and stacks below it; contact's secondary links keep their two-column arrangement. It begins after a (100px) gallery gap, reduced to (68px) on phones. Spacing comes from the compact shared scale in frontmatter, with larger section margins documented in the source map.
 
 **The Portrait Framing Rule.** Balance the surrounding cards around the selected front plane without shrinking the gallery. Allow peripheral cards to clip at the stage edge; keep the selected work fitted, the inspected work complete, and captions and controls within the usable viewport.
 
@@ -187,7 +181,7 @@ Visible keyboard focus uses a foreground outline (1px). Its default offset is (5
 
 ### Navigation
 
-The compact identity and role stay on the left, with three destinations on the right. Contact is neutral like the other links and has a small diagonal SVG arrow on larger screens; the arrow is hidden on phones. Fine-pointer navigation/contact hover changes text to secondary gray. A keyboard skip link becomes visible on focus. Biography and contact content remain usable when the optional portrait is loading or unavailable.
+The compact identity stays on the left, with three destinations on the right. Contact is neutral like the other links and has a small diagonal SVG arrow on larger screens; the arrow is hidden on phones. Fine-pointer navigation/contact hover changes text to secondary gray. A keyboard skip link becomes visible on focus. Biography and contact content remain usable when the optional portrait is loading or unavailable.
 
 ### View and motion controls
 
@@ -209,7 +203,7 @@ Spatial Play, Space and Retry reach the media element synchronously through the 
 
 ### Flat media and supporting content
 
-Flat cards place concise titles and media metadata below rounded, uncropped imagery. Statistics, biography and contact reuse the same neutral text, dividers and DIN Pro; they remain ordinary document content after the gallery. No new claims, credits or analytics values belong in this design record.
+Flat cards place concise titles and media metadata below rounded, uncropped imagery. Biography and contact reuse the same neutral text, dividers and DIN Pro; they remain ordinary document content after the gallery. No new claims, credits or analytics values belong in this design record.
 
 ## Do's and Don'ts
 

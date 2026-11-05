@@ -26,26 +26,26 @@ async function archiveOrder(page: Page): Promise<readonly PortfolioWork[]> {
 }
 
 async function scrollToWork(page: Page, index: number): Promise<void> {
-  await page.evaluate(index => {
+  await page.evaluate(({ index, lastIndex }) => {
     const track = document.querySelector<HTMLElement>(".spatial-scroll-track");
     const pin = document.querySelector<HTMLElement>(".gallery-pin");
     const header = document.querySelector<HTMLElement>(".site-header");
     if (!track || !pin || !header) throw new Error("The spatial scroll track is unavailable.");
     const start = track.getBoundingClientRect().top + scrollY - header.offsetHeight;
-    scrollTo({ top: start + index / 28 * (track.offsetHeight - pin.offsetHeight), behavior: "instant" });
-  }, index);
-  await expect(page.locator(".work-number")).toHaveText(`${String(index + 1).padStart(2, "0")} / 29`);
+    scrollTo({ top: start + index / lastIndex * (track.offsetHeight - pin.offsetHeight), behavior: "instant" });
+  }, { index, lastIndex: PORTFOLIO_WORK.length - 1 });
+  await expect(page.locator(".work-number")).toHaveText(`${String(index + 1).padStart(2, "0")} / ${PORTFOLIO_WORK.length}`);
 }
 
 async function scrollSelection(page: Page): Promise<number> {
-  return page.evaluate(() => {
+  return page.evaluate(lastIndex => {
     const track = document.querySelector<HTMLElement>(".spatial-scroll-track");
     const pin = document.querySelector<HTMLElement>(".gallery-pin");
     const header = document.querySelector<HTMLElement>(".site-header");
     if (!track || !pin || !header) throw new Error("The spatial scroll track is unavailable.");
     const start = track.getBoundingClientRect().top + scrollY - header.offsetHeight;
-    return Math.round((scrollY - start) / (track.offsetHeight - pin.offsetHeight) * 28);
-  });
+    return Math.round((scrollY - start) / (track.offsetHeight - pin.offsetHeight) * lastIndex);
+  }, PORTFOLIO_WORK.length - 1);
 }
 
 async function setHidden(page: Page, hidden: boolean): Promise<void> {
@@ -56,7 +56,8 @@ async function setHidden(page: Page, hidden: boolean): Promise<void> {
 }
 
 async function expectIdentity(page: Page): Promise<void> {
-  for (const value of ["28M+", "33K+", "1M+"]) await expect(page.getByText(value, { exact: true })).toHaveCount(1);
+  await expect(page.locator(".portfolio-statistics")).toHaveCount(0);
+  await expect(page.locator(".site-identity")).toHaveText("VINCENT GUANCO");
   await expect(page.getByText("Based in Paris", { exact: true })).toHaveCount(1);
   await expect(page.locator("#contact a").first()).toHaveAttribute("href", "mailto:vincentguancostaes@gmail.com");
   await expect(page.locator('#contact a[href="https://wa.me/33614984173"]')).toContainText("+33 614 98 41 73");
@@ -79,13 +80,13 @@ test("existing media API preserves category selection and versioned sources", as
   expect((await request.get("/api/media?type=invalid&category=amiri")).status()).toBe(400);
 });
 
-test("29 mixed works shuffle once per load and retain order across view changes", async ({ page }) => {
-  expect(new Set(PORTFOLIO_WORK.map(work => work.id)).size).toBe(29);
-  expect(new Set(PORTFOLIO_WORK.flatMap(work => [work.thumbnail, work.src])).size).toBe(58);
+test("19 final works shuffle once per load and retain order across view changes", async ({ page }) => {
+  expect(new Set(PORTFOLIO_WORK.map(work => work.id)).size).toBe(19);
+  expect(new Set(PORTFOLIO_WORK.flatMap(work => [work.thumbnail, work.src])).size).toBe(38);
   await readySpatial(page);
   const first = await archiveOrder(page);
-  expect(first.filter(work => work.kind === "photo")).toHaveLength(18);
-  expect(first.filter(work => work.kind === "video")).toHaveLength(11);
+  expect(first.filter(work => work.kind === "photo")).toHaveLength(7);
+  expect(first.filter(work => work.kind === "video")).toHaveLength(12);
   expect((await archiveOrder(page)).map(work => work.id)).toEqual(first.map(work => work.id));
   await expect(page.locator("#photos, #videos, #all-work, [role=dialog], video[controls]")).toHaveCount(0);
   await page.reload();
@@ -122,10 +123,10 @@ test("native scroll, keyboard and arrows share selection and Contact immediately
   expect(await scrollSelection(page)).toBe(5);
   await stage.focus();
   await stage.press("End");
-  await expect(page.locator(".current-work h2")).toHaveText(order[28].title);
+  await expect(page.locator(".current-work h2")).toHaveText(order[order.length - 1].title);
   await expect(page.getByRole("button", { name: "Next work", exact: true })).toBeDisabled();
   await page.mouse.wheel(0, 450);
-  await expect(page.locator(".portfolio-statistics")).toBeInViewport();
+  await expect(page.locator("#about")).toBeInViewport();
   await stage.focus();
   await stage.press("Home");
   await expect(page.locator(".current-work h2")).toHaveText(order[0].title);
@@ -343,10 +344,10 @@ for (const mode of ["spatial", "flat"] as const) {
   });
 }
 
-test("WebGL context loss falls back without losing works, statistics or contact", async ({ page }) => {
+test("WebGL context loss falls back without losing works or contact", async ({ page }) => {
   await readySpatial(page);
   await page.locator("canvas").dispatchEvent("webglcontextlost");
-  await expect(page.locator(".flat-work")).toHaveCount(29);
+  await expect(page.locator(".flat-work")).toHaveCount(PORTFOLIO_WORK.length);
   await expect(page.getByRole("status")).toContainText("spatial view is unavailable");
   await expectIdentity(page);
 });
@@ -354,7 +355,7 @@ test("WebGL context loss falls back without losing works, statistics or contact"
 test("failed spatial thumbnails preserve the complete archive and identity", async ({ page }) => {
   await page.route(/\/portfolio\/.*(?:-thumb|-poster)\.webp$/, route => route.abort());
   await page.goto("/");
-  await expect(page.locator(".flat-work")).toHaveCount(29);
+  await expect(page.locator(".flat-work")).toHaveCount(PORTFOLIO_WORK.length);
   await expect(page.getByRole("status")).toContainText("spatial view is unavailable");
   await expect(page.locator(".flat-image img").first()).toBeVisible();
   await expectIdentity(page);
@@ -423,13 +424,20 @@ test.describe("primary portrait touch layouts", () => {
       const y = bounds.y + bounds.height * 0.5;
       await swipe({ x: viewport.width * 0.8, y }, { x: viewport.width * 0.18, y });
       await expect.poll(() => scrollSelection(page)).toBeGreaterThan(3);
-      await scrollToWork(page, 28);
+      await scrollToWork(page, PORTFOLIO_WORK.length - 1);
       await swipe({ x: viewport.width * 0.5, y: bounds.y + bounds.height * 0.8 }, { x: viewport.width * 0.5, y: bounds.y + bounds.height * 0.2 });
-      await expect(page.locator(".portfolio-statistics")).toBeInViewport();
+      await expect(page.locator("#about")).toBeInViewport();
       await page.locator('.site-navigation a[href="#about"]').tap();
       await expect(page.locator("#about")).toBeInViewport();
       await page.locator('.site-navigation a[href="#contact"]').tap();
       await expect(page.locator("#contact")).toBeInViewport();
+      const galleryStillVisible = await page.locator(".spatial-canvas").evaluate(element => {
+        const bounds = element.getBoundingClientRect();
+        return bounds.bottom > 0 && bounds.top < innerHeight;
+      });
+      // With statistics removed, tall tablets can show Contact and part of the deck.
+      // Verify suspension under document hiding there; phones exercise offscreen pause.
+      if (galleryStillVisible) await setHidden(page, true);
       await expect.poll(() => page.locator(".spatial-video-source").evaluateAll(elements => elements.every(element => element instanceof HTMLVideoElement && element.paused))).toBe(true);
       await cdp.detach();
     });

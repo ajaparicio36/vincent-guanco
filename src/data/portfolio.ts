@@ -12,7 +12,7 @@ export type PortfolioWork = WorkBase & (
   | { readonly kind: "video"; readonly src: string; readonly duration: string }
 );
 
-const ROOT = "/portfolio/2026-10/";
+const ROOT = "/portfolio/2026-11-final/";
 
 function photo(id: string, title: string, description: string, width = 1067, height = 1600): PortfolioWork {
   return { id, title, description, width, height, kind: "photo", src: ROOT + id + ".webp", thumbnail: ROOT + id + "-thumb.webp" };
@@ -24,33 +24,23 @@ function film(id: string, title: string, description: string, duration: string, 
 
 /** Stable source catalog; shuffled once per load. Provenance is in docs/portfolio-media.md. */
 export const PORTFOLIO_WORK = [
-  photo("photo-14", "Above Paris", "A fashion portrait on a Paris rooftop overlooking the Eiffel Tower.", 1600, 1323),
-  photo("photo-16", "Silver light", "A close fashion portrait with silver fabric, pale hair and sculptural architecture."),
-  photo("photo-13", "The details", "A blue sculptural handbag, golden jewellery and a red ruffled blouse."),
-  film("film-01", "Street study", "A portrait in a red leather jacket on a city street.", "0:14", 1280, 720),
-  photo("photo-06", "After the walk", "A runway model in a black dress beneath a line of show lights."),
-  photo("photo-18", "By the water", "An evening portrait in a silver dress beside the sea."),
-  film("film-09", "Schiaparelli fittings", "A sequence of garments, fittings and accessories in an atelier.", "0:19", 1280, 720),
-  photo("photo-01", "Between shows", "Two street-style portraits together beside a city crossing."),
-  film("film-08", "AMIRI", "Details, portraits and runway moments from the AMIRI film.", "0:32"),
-  photo("photo-17", "An afternoon outside", "A portrait in a colour-block jacket, lying beneath trees."),
-  film("film-11", "VETEMENTS", "Arrival portraits, event moments and fashion details.", "0:39", 1280, 720),
-  photo("photo-02", "Evening, in lace", "A fashion portrait in black lace inside an ornate room."),
-  film("film-02", "The corridor", "A black evening gown moving through a warmly lit corridor.", "0:21"),
-  film("film-03", "In close-up", "A close portrait sequence in a black lace dress.", "0:26"),
-  photo("photo-15", "Under the lights", "An evening runway look, surrounded by a seated audience."),
-  film("film-04", "On the carpet", "An evening portrait on the carpet, in black lace and green jewellery.", "0:17"),
-  film("film-05", "In the city", "Street fashion in a dark jersey, sunglasses and a fur hat.", "0:20"),
-  film("film-06", "After dark", "A portrait in a dark suit and sunglasses against the night.", "0:18"),
-  film("film-07", "Gold details", "An evening look with sculptural golden jewellery and a black handbag.", "0:18"),
-  film("film-10", "Tamara", "A street portrait in a grey jacket with gold accessories.", "0:19", 960, 720),
-  photo("photo-03", "Runway / Floral", "A floral runway look, photographed full length."),
-  photo("photo-04", "Runway / Graphic", "A graphic black-and-white runway look."),
-  photo("photo-05", "Runway / Texture", "A dark textured runway look beneath overhead lights."),
-  photo("photo-07", "Runway / Gold", "A golden patterned dress on the runway."),
-  photo("photo-08", "Runway / White", "A layered white runway look with a dark handbag."),
-  photo("photo-09", "Runway / Movement", "A flowing white runway dress captured in motion."),
-  photo("photo-10", "Runway / Form", "A sculptural white hat and dress on the runway.", 1066, 1600),
-  photo("photo-11", "Runway / Finale", "A model leading a sequence of evening runway looks."),
-  photo("photo-12", "The final walk", "The runway finale, with several models walking in both directions."),
+  photo("sandro-paris", "SANDRO PARIS", "A fashion portrait on a Paris rooftop overlooking the Eiffel Tower.", 1600, 1323),
+  film("balmain", "BALMAIN", "A fashion portrait in a black outfit against a pale event backdrop.", "0:12"),
+  photo("editorial", "EDITORIAL", "A close portrait in pale fabric against sculptural architecture."),
+  film("amiri", "AMIRI", "Street-style portraits, fashion details and runway moments.", "0:32"),
+  photo("carolines-couture", "CAROLINE'S COUTURE", "A model in a dark evening dress walking a runway beneath warm lights."),
+  film("georges-hobeika", "GEORGES HOBEIKA", "Evening gowns and models on a warmly lit runway.", "0:49"),
+  photo("kristel-x-chopard", "KRISTEL X CHOPARD", "A portrait in a silver dress beside the water."),
+  film("hermes", "HERMES", "A street-style portrait in a red leather jacket and sunglasses.", "0:14", 1280, 720),
+  photo("miumiu", "MIUMIU", "Two street-style portraits together beside a city crossing."),
+  film("karl-lagerfeld", "KARL LAGERFELD", "A portrait in a dark suit and sunglasses at night.", "0:18"),
+  photo("weinsanto", "WEINSANTO", "A runway model in a black dress beneath a line of show lights."),
+  film("le-grand-diner-du-louvre", "LE GRAND DINER DU LOUVRE", "A black evening gown moving through a warmly lit corridor.", "0:21"),
+  photo("vincent-x-tommy-hilfiger", "VINCENT X TOMMY HILFIGER", "A portrait in a colour-block jacket, lying beneath trees."),
+  film("schiaparelli", "SCHIAPARELLI", "Garments, fittings and accessories in an atelier.", "0:19", 1280, 720),
+  film("amfar-gala", "AMFAR GALA", "A black lace evening look and green jewellery at an event backdrop.", "0:17"),
+  film("simon-x-songmont", "SIMON X SONGMONT", "A street-style portrait followed by accessories and an exhibition.", "0:19"),
+  film("stella-maxwell", "STELLA MAXWELL", "A portrait sequence in a black lace and feather dress.", "0:26"),
+  film("vetements", "VETEMENTS", "Arrival portraits, fashion details and event moments.", "0:39", 1280, 720),
+  film("zuhair-murad", "ZUHAIR MURAD", "A sequence of evening looks on a dark runway.", "0:33"),
 ] as const satisfies readonly PortfolioWork[];

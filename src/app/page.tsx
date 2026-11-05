@@ -1,7 +1,6 @@
 import { Suspense } from "react";
 import { Navigation } from "@/components/layout/navigation";
 import { Archive } from "@/components/portfolio/archive";
-import { Statistics } from "@/components/portfolio/statistics";
 import { About, type AboutPhoto } from "@/components/sections/about";
 import { Footer } from "@/components/sections/footer";
 import { listMediaInFolder } from "@/lib/r2";
@@ -27,7 +26,6 @@ export default function Home(): React.ReactElement {
       <Navigation />
       <main>
         <Archive />
-        <Statistics />
         <Suspense fallback={<About photos={[]} loading />}>
           <AboutWithPhotos />
         </Suspense>

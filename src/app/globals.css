@@ -138,9 +138,9 @@
 
 /* Layer order: gallery content, sticky header (20), keyboard skip link (30). */
 .site-header { position: sticky; top: 0; z-index: 20; height: var(--header-size); background: var(--background); display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: env(safe-area-inset-top, 0px) max(var(--page-gutter), env(safe-area-inset-right, 0px)) 0 max(var(--page-gutter), env(safe-area-inset-left, 0px)); }
-.site-identity { display: flex; flex-direction: column; gap: 6px; min-width: 0; min-height: 44px; justify-content: center; }
-.site-identity > span:first-child { font-size: 14px; font-weight: 500; letter-spacing: .035em; }
-.identity-role { color: var(--secondary); font-size: 11px; }
+.site-identity { display: flex; min-width: 0; min-height: 44px; align-items: center; }
+.site-identity > span, .about-content h2 { font-weight: 500; letter-spacing: .035em; }
+.site-identity > span { font-size: 14px; }
 .site-navigation { display: flex; align-items: center; gap: 36px; font-size: 13px; }
 .site-navigation a { min-height: 44px; min-width: 44px; display: inline-flex; gap: 9px; align-items: center; justify-content: center; }
 .skip-link { position: absolute; z-index: 30; top: 12px; left: var(--page-gutter); padding: 14px 20px; background: var(--foreground); color: var(--background); transform: translateY(-180%); }
@@ -206,12 +206,7 @@
 .inline-playback { position: absolute; bottom: 12px; left: 12px; min-height: 44px; display: flex; align-items: center; gap: 8px; padding: 0 14px; border-radius: 6px; background: rgb(8 8 8 / .88); color: var(--foreground); font-size: 12px; }
 .inline-media-notice { position: absolute; top: 12px; left: 12px; right: 12px; padding: 12px; border-radius: 6px; color: var(--foreground); background: var(--background); font-size: 12px; }
 
-.portfolio-statistics { margin: 100px var(--page-gutter) 140px; padding-top: 32px; border-top: 1px solid var(--border); }
-.portfolio-statistics dl { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.portfolio-statistics dl > div { display: flex; flex-direction: column-reverse; gap: 12px; }
-.portfolio-statistics dt { color: var(--secondary); font-size: 13px; }
-.portfolio-statistics dd { font-size: clamp(52px, 6vw, 92px); line-height: 1; font-weight: 300; letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
-.portfolio-about { display: grid; grid-template-columns: .85fr 1fr; margin: 0 var(--page-gutter); gap: clamp(48px, 9vw, 150px); padding-top: 40px; border-top: 1px solid var(--border); }
+.portfolio-about { display: grid; grid-template-columns: .85fr 1fr; margin: 100px var(--page-gutter) 0; gap: clamp(48px, 9vw, 150px); padding-top: 40px; border-top: 1px solid var(--border); }
 .about-portrait { position: relative; aspect-ratio: 3 / 4; max-height: 700px; background: var(--surface-container); overflow: hidden; border-radius: 8px; }
 .portrait-image { object-fit: cover; }
 .portrait-placeholder { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; }
@@ -221,7 +216,7 @@
 .portrait-controls button { width: 44px; height: 44px; display: grid; place-items: center; }
 .portrait-controls span { font-size: 12px; font-variant-numeric: tabular-nums; }
 .about-content { display: flex; flex-direction: column; align-items: flex-start; padding-top: 8px; }
-.about-content h2 { font-size: clamp(56px, 6.4vw, 96px); font-weight: 300; line-height: 1; letter-spacing: -.035em; margin-bottom: 24px; }
+.about-content h2 { font-size: clamp(1.5rem, 2.8vw, 2.25rem); line-height: 1.15; margin-bottom: 24px; }
 .about-role { font-size: 16px; }
 .about-location { font-size: 14px; color: var(--secondary); margin-top: 7px; }
 .contact-block { width: 100%; margin-top: auto; padding-top: 64px; }
@@ -255,8 +250,8 @@
 @media (max-width: 767px) {
   :root { --header-size: calc(80px + env(safe-area-inset-top, 0px)); --scroll-step: 220px; --page-gutter: 22px; }
   .site-header { gap: 16px; }
-  .site-identity > span:first-child { font-size: 11px; letter-spacing: .025em; }
-  .identity-role { font-size: 10px; max-width: 116px; }
+  .site-identity > span { font-size: 11px; }
+  .site-identity > span, .about-content h2 { letter-spacing: .025em; }
   .site-navigation { gap: 18px; font-size: 12px; }
   .site-navigation .contact-link { gap: 0; }
   .contact-link svg { display: none; }
@@ -282,14 +277,9 @@
   .flat-work { margin-bottom: 26px; }
   .flat-caption { flex-wrap: wrap; gap: 4px; font-size: 13px; }
   .flat-caption > span { font-size: 11px; }
-  .portfolio-statistics { margin-top: 68px; margin-bottom: 80px; padding-top: 24px; }
-  .portfolio-statistics dl { gap: 16px; }
-  .portfolio-statistics dd { font-size: clamp(36px, 9vw, 64px); }
-  .portfolio-statistics dt { font-size: 11px; }
-  .portfolio-about { grid-template-columns: 1fr; gap: 36px; padding-top: 28px; }
+  .portfolio-about { grid-template-columns: 1fr; margin-top: 68px; gap: 36px; padding-top: 28px; }
   .about-portrait { max-height: 680px; }
   .about-content { padding-top: 0; }
-  .about-content h2 { font-size: clamp(64px, 16vw, 96px); }
   .about-role { font-size: 15px; }
   .about-location { font-size: 13px; }
   .contact-block { padding-top: 44px; }
